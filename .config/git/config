@@ -1,0 +1,13 @@
+[init]
+	defaultBranch = main
+[user]
+	email = seshu.basava70@gmail.com
+	name = SeshuHomePc
+[alias]
+  s = status
+  lgg = log --graph --all --pretty=format:'%C(auto)%h%Creset %C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %C(bold blue)%an%Creset'
+  ; lgg = log --graph --all --pretty=format:'%C(auto)%h%Creset %C(bold blue)%an%Creset - %C(yellow)%d%Creset %s %Cgreen(%ar)%Creset'
+  lg = log --graph --oneline --decorate --all
+  cob = checkout -b
+  del = delete -D
+  p = push -u origin
