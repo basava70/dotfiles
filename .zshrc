@@ -115,6 +115,6 @@ export PATH=~/.local/bin:$PATH
 eval "$(zoxide init --cmd cd zsh)"
 
 # Nvidia cuda12.2 path
-export PATH=/usr/local/cuda-12.2/bin:$PATH
+export PATH=/usr/local/cuda-12.4/bin:$PATH
 
 source ~/.local/share/lscolors.sh

@@ -11,3 +11,5 @@
   cob = checkout -b
   del = delete -D
   p = push -u origin
+[core]
+  editor = nvim
