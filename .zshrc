@@ -115,6 +115,10 @@ export PATH=~/.local/bin:$PATH
 eval "$(zoxide init --cmd cd zsh)"
 
 # Nvidia cuda12.2 path
-export PATH=/usr/local/cuda-12.4/bin:$PATH
+export PATH=/usr/local/cuda-12.5/bin:$PATH
+
+# Hyprland stuff
+# export ACLOCAL_PATH=/usr/local/share/aclocal:$ACLOCAL_PATH
+
 
 source ~/.local/share/lscolors.sh
