@@ -16,11 +16,12 @@ return {
 		plugins = { spelling = true },
 		defaults = {
 			mode = { "n", "v" },
+			["<leader>e"] = { name = "[E]xplorer" },
 			["<leader>b"] = { name = "[B]uffers", c = { name = "[C]lose" } },
 			["<leader>g"] = { name = "[G]it" },
-			["<leader>t"] = { name = "[T]rouble" },
-			["<leader>s"] = { name = "[S]earch with Telescope" },
-			["<leader>f"] = { name = "[F]ormat enable or disable" },
+			["<leader>x"] = { name = "[T]rouble" },
+			["<leader>f"] = { name = "[F]ind with Telescope" },
+			["<leader>s"] = { name = "[S]tyle options" },
 		},
 	},
 	config = function(_, opts)

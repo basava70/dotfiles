@@ -43,8 +43,8 @@ end
 keymap.set("n", "<leader>br", "<cmd> bufdo e <CR>", { desc = "[R]eload all" }) -- Reload all Buffers
 
 -- formatting
-keymap.set("n", "<leader>dr", "<cmd> FormatDisable <CR>", { desc = "[F]ormat [E]nable" })
-keymap.set("n", "<leader>ef", "<cmd> FormatEnable <CR>", { desc = "[F]ormat [D]isable" })
+keymap.set("n", "<leader>sd", "<cmd> FormatDisable <CR>", { desc = "[D]isable Format" })
+keymap.set("n", "<leader>se", "<cmd> FormatEnable <CR>", { desc = "[E]nable Format" })
 
 -- markdown preview
 keymap.set("n", "<leader>m", "<cmd> MarkdownPreview <CR>", { desc = "[M]arkdown preview" })
