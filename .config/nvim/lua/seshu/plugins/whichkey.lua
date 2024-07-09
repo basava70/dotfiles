@@ -16,10 +16,11 @@ return {
 		plugins = { spelling = true },
 		defaults = {
 			mode = { "n", "v" },
-			["<leader>b"] = { name = "Buffers" },
-			["<leader>g"] = { name = "Git" },
-			["<leader>x"] = { name = "Trouble" },
-			["<leader>s"] = { name = "Windows" },
+			["<leader>b"] = { name = "[B]uffers", c = { name = "[C]lose" } },
+			["<leader>g"] = { name = "[G]it" },
+			["<leader>t"] = { name = "[T]rouble" },
+			["<leader>s"] = { name = "[S]earch with Telescope" },
+			["<leader>f"] = { name = "[F]ormat enable or disable" },
 		},
 	},
 	config = function(_, opts)
@@ -28,3 +29,13 @@ return {
 		wk.register(opts.defaults)
 	end,
 }
+-- set keymaps
+-- local wk = require("which-key")
+-- wk.register({ ["<leader>"] = {
+-- 	b = {
+-- 		name = "[B]uffer",
+-- 		c = {
+-- 			name = "[C]lose",
+-- 		},
+-- 	},
+-- } })
