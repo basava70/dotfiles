@@ -18,16 +18,19 @@ return {
 			local opts = { noremap = true, silent = true, buffer = bufnr }
 
 			-- set keybinds
-			keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts) -- show definition, references
-			keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
-			keymap.set("n", "gd", "<cmd>Lspsaga peek_definition<CR>", opts) -- see definition and make edits in window
-			keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts) -- go to implementation
-			keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts) -- see available code actions
-			keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts) -- smart rename
-			keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", opts) -- show  diagnostics for line
-			keymap.set("n", "<leader>D", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts) -- show diagnostics for cursor
-			keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts) -- jump to previous diagnostic in buffer
-			keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts) -- jump to next diagnostic in buffer
+			keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", { desc = "[F]inder" }) -- show definition, references
+			-- keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
+			keymap.set("n", "gp", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "peek type [D]efinition" }) -- got to declaration
+			keymap.set("n", "gP", "<cmd>Lspsaga peek_definition<CR>", { desc = "peek [d]efinition" }) -- see definition and make edits in window
+			keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "[G]oto [d]efinition" })
+			keymap.set("n", "gD", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "[G]oto type [D]efinition" })
+			keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "lsp buf [i]mplementation" }) -- go to implementation
+			keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "code action" }) -- see available code actions
+			keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "[R]ename" }) -- smart rename
+			keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "line [D]iagnostics" }) -- show  diagnostics for line
+			keymap.set("n", "<leader>D", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { desc = "cusror [D]iagnostics" }) -- show diagnostics for cursor
+			keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "prev [D]iagnostic" }) -- jump to previous diagnostic in buffer
+			keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", { desc = "next [D]iagnostic" }) -- jump to next diagnostic in buffer
 			keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", opts) -- show documentation for what is under cursor
 		end
 
