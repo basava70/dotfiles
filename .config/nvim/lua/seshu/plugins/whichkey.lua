@@ -22,6 +22,7 @@ return {
 			["<leader>x"] = { name = "[T]rouble" },
 			["<leader>f"] = { name = "[F]ind with Telescope" },
 			["<leader>s"] = { name = "[S]tyle options" },
+			["<leader>l"] = { name = "[L]azy" },
 		},
 	},
 	config = function(_, opts)

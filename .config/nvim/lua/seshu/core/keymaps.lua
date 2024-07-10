@@ -48,3 +48,6 @@ keymap.set("n", "<leader>se", "<cmd> FormatEnable <CR>", { desc = "[E]nable Form
 
 -- markdown preview
 keymap.set("n", "<leader>m", "<cmd> MarkdownPreview <CR>", { desc = "[M]arkdown preview" })
+
+-- lazy
+keymap.set("n", "<leader>l", "<cmd> Lazy<CR>", { desc = "[L]azy UI" })
