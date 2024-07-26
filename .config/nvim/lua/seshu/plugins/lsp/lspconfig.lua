@@ -20,8 +20,8 @@ return {
 			-- set keybinds
 			keymap.set("n", "gf", "<cmd>Lspsaga finder<CR>", { desc = "[F]inder" }) -- show definition, references
 			-- keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts) -- got to declaration
-			keymap.set("n", "gp", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "peek type [D]efinition" }) -- got to declaration
-			keymap.set("n", "gP", "<cmd>Lspsaga peek_definition<CR>", { desc = "peek [d]efinition" }) -- see definition and make edits in window
+			keymap.set("n", "gP", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "peek type [D]efinition" }) -- got to declaration
+			keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>", { desc = "peek [d]efinition" }) -- see definition and make edits in window
 			keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", { desc = "[G]oto [d]efinition" })
 			keymap.set("n", "gD", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "[G]oto type [D]efinition" })
 			keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "lsp buf [i]mplementation" }) -- go to implementation
