@@ -113,7 +113,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=~/.local/bin:$PATH
 
 eval "$(zoxide init --cmd cd zsh)"
-alias ls='eza -l --icons -a'
+alias ls='eza --icons -a'
 
 # Nvidia cuda12.2 path
 export PATH=/usr/local/cuda-12.5/bin:$PATH
