@@ -26,7 +26,6 @@ return {
 			keymap.set("n", "gD", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "[G]oto type [D]efinition" })
 			keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", { desc = "lsp buf [i]mplementation" }) -- go to implementation
 			keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { desc = "code action" }) -- see available code actions
-			keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { desc = "[R]ename" }) -- smart rename
 			keymap.set("n", "<leader>d", "<cmd>Lspsaga show_line_diagnostics<CR>", { desc = "line [D]iagnostics" }) -- show  diagnostics for line
 			keymap.set("n", "<leader>D", "<cmd>Lspsaga show_cursor_diagnostics<CR>", { desc = "cusror [D]iagnostics" }) -- show diagnostics for cursor
 			keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { desc = "prev [D]iagnostic" }) -- jump to previous diagnostic in buffer

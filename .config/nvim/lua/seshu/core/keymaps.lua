@@ -23,8 +23,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Close all buffers and exit Neovim
 keymap.set("n", "<leader>q", "<cmd> qall <CR> ", { desc = "Close all buffers without saving" })
 -- save all buffers and exit Neovim
-keymap.set("n", "<leader>w", "<cmd> wqall <CR> ", { desc = "Close all buffers after saving" })
-
 -- bufferline
 keymap.set("n", "<leader>bcl", "<cmd> BufferLineCloseLeft <CR>", { desc = "everything to [L]eft" }) -- close buffers to the left
 keymap.set("n", "<leader>bcr", "<cmd> BufferLineCloseRight <CR>", { desc = "everything to [R]ight" }) -- close buffers to the right
