@@ -123,3 +123,15 @@ export PATH=/usr/local/cuda-12.5/bin:$PATH
 
 
 source ~/.local/share/lscolors.sh
+
+# fzf search history
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+# fzf auto completion
+source /usr/share/doc/fzf/examples/completion.zsh
+# fzf theme catpuccin mocha
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#45475a,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--multi"
+
