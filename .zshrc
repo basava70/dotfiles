@@ -116,7 +116,7 @@ eval "$(zoxide init --cmd cd zsh)"
 alias ls='eza --icons -a'
 
 # Nvidia cuda12.2 path
-export PATH=/usr/local/cuda-12.5/bin:$PATH
+export PATH=/usr/local/cuda-12.6/bin:$PATH
 
 # Hyprland stuff
 # export ACLOCAL_PATH=/usr/local/share/aclocal:$ACLOCAL_PATH
