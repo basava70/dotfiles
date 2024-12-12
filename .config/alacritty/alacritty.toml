@@ -11,7 +11,8 @@ decorations = "None"
 opacity = 0.85
 
 [font]
-normal.family = "FiraCode Nerd Font"
+# normal.family = "FiraCode Nerd Font"
+normal.family = "Liga SFMono Nerd Font"
 
 #regular
 size = 15
