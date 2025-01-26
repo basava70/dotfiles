@@ -15,6 +15,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("lazy").setup({
+	{ "echasnovski/mini.nvim", version = false },
 	{ import = "seshu.plugins" },
 	{ import = "seshu.plugins.lsp" },
 }, {
