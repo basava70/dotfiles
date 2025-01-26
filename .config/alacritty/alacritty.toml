@@ -11,11 +11,13 @@ decorations = "None"
 opacity = 0.85
 
 [font]
-normal.family = "FiraCode Nerd Font"
+# normal.family = "FiraCode Nerd Font"
+normal.family = "FiraMono Nerd Font"
+# normal.family = "JetBrainsMono Nerd Font"
 # normal.family = "Liga SFMono Nerd Font"
 
 #regular
-size = 13
+size = 14
 
 #Mouse
 [mouse]
