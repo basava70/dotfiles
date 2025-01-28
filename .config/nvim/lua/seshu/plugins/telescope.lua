@@ -55,6 +55,7 @@ return {
 
 		pcall(require("telescope").load_extension, "fzf")
 		pcall(require("telescope").load_extension, "ui-select")
+		pcall(require("telescope").load_extension, "noice")
 
 		local builtin = require("telescope.builtin")
 
