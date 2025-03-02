@@ -13,7 +13,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	require("plugins.colorscheme"),
+	require("plugins.mini-icons"),
 	require("plugins.neotree"),
+	require("plugins.mini-animate"),
 	require("plugins.bufferline"),
 	require("plugins.lualine"),
 	require("plugins.treesitter"),
@@ -23,4 +25,10 @@ require("lazy").setup({
 	require("plugins.conform"),
 	require("plugins.gitsigns"),
 	require("plugins.todo-comments"),
+	require("plugins.lint"),
+	require("plugins.vim-tmux-navigator"),
+	require("plugins.which-key"),
+	require("plugins.indent-blankline"),
+	require("plugins.colorizer"),
+	require("plugins.nvim-notify"),
 })
