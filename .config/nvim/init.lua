@@ -24,6 +24,7 @@ require("lazy").setup({
 	require("plugins.colorizer"),
 	require("plugins.vim-tmux-navigator"),
 	require("plugins.lint"),
+	require("plugins.neotree"),
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 
 	-- Highlight todo, notes, etc in comments
