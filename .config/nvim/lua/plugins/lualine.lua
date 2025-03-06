@@ -5,16 +5,17 @@ return {
 			"mode",
 			fmt = function(str)
 				return " " .. str
-				-- return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
 			end,
 		}
-		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+
+		local lazy_status = require("lazy.status")
 
 		local filename = {
 			"filename",
-			file_status = true, -- displays file status (readonly status, modified status)
-			path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+			file_status = true,
+			path = 0,
 		}
+
 		local hide_in_width = function()
 			return vim.fn.winwidth(0) > 100
 		end
@@ -27,23 +28,18 @@ return {
 			colored = true,
 			update_in_insert = true,
 			always_visible = false,
-			-- cond = hide_in_width,
 		}
 
 		local diff = {
 			"diff",
-			colored = false,
-			symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-			-- cond = hide_in_width,
+			symbols = { added = "+", modified = "~", removed = "-" },
 		}
 
+		-- Setup Lualine
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
-				-- theme = 'tokyonight', -- Set theme based on environment variable
-				-- Some useful glyphs:
-				-- https://www.nerdfonts.com/cheat-sheet
-				--        
+				theme = "tokyonight",
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = { "alpha", "neo-tree" },
@@ -55,10 +51,14 @@ return {
 				lualine_c = { filename },
 				lualine_x = {
 					diagnostics,
-					{ "encoding", cond = hide_in_width },
 					{ "filetype", cond = hide_in_width },
 				},
 				lualine_y = {
+					{
+						lazy_status.updates,
+						cond = lazy_status.has_updates,
+						color = { fg = "#ff9e64" },
+					},
 					{
 						function()
 							return " " .. os.date("%R")
@@ -66,27 +66,23 @@ return {
 					},
 				},
 				lualine_z = {
-					{ "progress" },
 					{ "location" },
-					-- { filename },
+					function()
+						local current_line = vim.fn.line(".")
+						local total_lines = vim.fn.line("$")
+						local columns = 15
+						local position = math.floor((current_line / total_lines) * columns)
+						local line = ""
+						for i = 0, columns do
+							if i == position then
+								line = line .. "⬥"
+							else
+								line = line .. "─"
+							end
+						end
+						return line
+					end,
 				},
-				--     function()
-				--       local current_line = vim.fn.line('.')
-				--       local total_lines = vim.fn.line('$')
-				--       local columns = 15  -- Total length of the "track"
-				--       local position = math.floor((current_line / total_lines) * columns)
-				--       local line = ""
-				--       for i = 0, columns do
-				--         if i == position then
-				--           line = line .. '⬥'  -- Diamond symbol (You can replace with ◇ or similar)
-				--         else
-				--           line = line .. '─'
-				--         end
-				--       end
-				--       return line
-				--     end,
-				--   }
-				-- },
 			},
 			inactive_sections = {
 				lualine_a = {},
@@ -99,5 +95,38 @@ return {
 			tabline = {},
 			extensions = { "fugitive" },
 		})
+
+		-- === Force Transparent Background for Lualine ===
+		local function make_lualine_transparent()
+			local sections = { "c", "x" } -- { "a", "b", "c", "x", "y", "z" }
+			local modes = { "normal", "insert", "visual", "replace", "command", "inactive" }
+
+			for _, hl_mode in ipairs(modes) do
+				for _, section in ipairs(sections) do
+					local hl_name = "lualine_" .. section .. "_" .. hl_mode
+					local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = hl_name })
+
+					if ok then
+						vim.api.nvim_set_hl(0, hl_name, {
+							fg = hl.fg,
+							bg = "none", -- Transparent
+							sp = hl.sp,
+							underline = hl.underline,
+							bold = hl.bold,
+							italic = hl.italic,
+						})
+					end
+				end
+			end
+		end
+
+		-- Run this after every colorscheme change to ensure lualine gets reset
+		vim.api.nvim_create_autocmd("ColorScheme", {
+			pattern = "*",
+			callback = make_lualine_transparent,
+		})
+
+		-- Apply transparency immediately (for first launch)
+		make_lualine_transparent()
 	end,
 }
