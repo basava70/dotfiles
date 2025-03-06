@@ -1,4 +1,7 @@
+source ~/.xprofile
 export EDITOR=nvim
+
+
 # Point to custom Starship config location
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
@@ -15,3 +18,13 @@ alias lst1='eza --icons --tree -T --level 1'
 alias lst2='eza --icons --tree -T --level 2'
 alias lst3='eza --icons --tree -T --level 3'
 alias lst4='eza --icons --tree -T --level 4'
+
+# Autosuggestions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# use Ctrl + L for accept
+bindkey '^L' autosuggest-accept
+
+# Syntax highlighting (add at the very end, after any other `source` lines)
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
