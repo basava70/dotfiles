@@ -55,6 +55,17 @@ return {
 						-- ['<C-l>'] = require('telescope.actions').select_default, -- open file
 					},
 				},
+				find_command = { "fd", "--type", "f", "--hidden", "--follow", "--exclude", ".git" },
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+					"--hidden",
+				},
 			},
 			pickers = {
 				find_files = {

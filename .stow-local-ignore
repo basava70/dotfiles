@@ -1,3 +1,6 @@
 FiraCode
 Pictures
 .config/tmux/plugins
+.git
+.gitignore
+README.md
