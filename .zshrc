@@ -1,3 +1,8 @@
+# Initialize Zsh completion system
+autoload -Uz compinit
+zstyle ':completion:*' rehash true
+compinit -C
+
 source ~/.xprofile
 export EDITOR=nvim
 
