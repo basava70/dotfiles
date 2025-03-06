@@ -21,10 +21,10 @@ alias lst4='eza --icons --tree -T --level 4'
 
 # Autosuggestions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# use Ctrl + L for accept
-bindkey '^L' autosuggest-accept
 
-# Syntax highlighting (add at the very end, after any other `source` lines)
+# Accept autosuggestions with Ctrl+L
+bindkey '^y' autosuggest-accept
+
+
+# Syntax highlighting (keep this at the very end)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
