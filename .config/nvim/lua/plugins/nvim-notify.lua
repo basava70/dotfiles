@@ -18,6 +18,9 @@ return {
 		stages = "slide",
 		timeout = 2000,
 	},
-
-	-- vim.notify = require("notify")
+	config = function(_, opts)
+		local notify = require("notify")
+		notify.setup(opts)
+		vim.notify = notify
+	end,
 }

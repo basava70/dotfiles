@@ -98,16 +98,18 @@ format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 [python]
 style = 'teal'
 symbol = ' '
-format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = '[ ${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 pyenv_version_name = true
 pyenv_prefix = ''
 
 [lua]
 symbol = ' '
+style = "fg:#8da6f1 bg:#212736"
+format = "[ $symbol($version)]($style)"
 
 [c]
 symbol = " "
-format = "[$symbol($version)]($style)"
+format = "[ $symbol($version)]($style)"
 style = "fg:#8da6f1 bg:#212736"
 detect_extensions = ["c", "h"]
 commands = [["gcc", "--version"], ["clang", "--version"], ["tcc", "--version"]]
