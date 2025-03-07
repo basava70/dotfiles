@@ -30,11 +30,8 @@ require("lazy").setup({
 	require("plugins.todo-comments"),
 	require("plugins.dashboard"),
 	require("plugins.bufferline"),
+	require("plugins.fugitive"),
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-	{
-		-- Powerful Git integration for Vim
-		"tpope/vim-fugitive",
-	},
 	{
 		-- Autoclose parentheses, brackets, quotes, etc.
 		"windwp/nvim-autopairs",
