@@ -4,7 +4,7 @@ return {
 	cmd = "Notifications",
 	opts = {
 		-- background_colour = "#000",
-		fps = 90,
+		fps = 60,
 		icons = {
 			DEBUG = "",
 			ERROR = "",

@@ -2,7 +2,7 @@ return {
 	"akinsho/toggleterm.nvim",
 	version = "*", -- You can pin to a specific version or use latest
 	opts = {
-		open_mapping = [[<leader>t]], -- Set keymap to open/close terminal
+		open_mapping = "<F7>", -- Set keymap to open/close terminal
 		direction = "float", -- Use floating terminal
 		float_opts = {
 			border = "rounded", -- Optional: rounded borders
