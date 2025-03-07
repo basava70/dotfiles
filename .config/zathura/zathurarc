@@ -1,0 +1,3 @@
+set synctex true
+set synctex-editor-command "nvim --headless +ZathuraSyncTex %f %l"  # Replace %f and %l as placeholders
+
