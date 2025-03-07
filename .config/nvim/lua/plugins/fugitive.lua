@@ -1,7 +1,7 @@
 return {
 	"tpope/vim-fugitive",
 	config = function()
-		require("plugins.fugitive_notify").setup() -- Add this line to hook into commits
+		-- require("plugins.fugitive_notify").setup() -- Add this line to hook into commits
 		vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "[G]it [S]tatus" })
 		vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })
 		vim.keymap.set("n", "<leader>gb", ":Gblame<CR>", { desc = "[G]it [B]lame" })
