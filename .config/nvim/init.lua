@@ -30,11 +30,10 @@ require("lazy").setup({
 	require("plugins.todo-comments"),
 	require("plugins.dashboard"),
 	require("plugins.bufferline"),
+	require("plugins.fugitive"),
+	require("plugins.toggleterm"),
+	require("plugins.nvim-notify"),
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-	{
-		-- Powerful Git integration for Vim
-		"tpope/vim-fugitive",
-	},
 	{
 		-- Autoclose parentheses, brackets, quotes, etc.
 		"windwp/nvim-autopairs",
@@ -92,7 +91,4 @@ require("lazy").setup({
 
 	-- The line beneath this is called `modeline`. See `:help modeline`
 	-- vim: ts=2 sts=2 sw=2 et
-	-- require("plugins.mini-animate"),
-	-- require("plugins.bufferline"),
-	-- require("plugins.nvim-notify"),
 })

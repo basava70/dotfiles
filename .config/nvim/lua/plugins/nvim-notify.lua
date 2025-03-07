@@ -3,8 +3,8 @@ return {
 	event = "VeryLazy",
 	cmd = "Notifications",
 	opts = {
-		background_colour = "#000",
-		fps = 30,
+		-- background_colour = "#000",
+		fps = 60,
 		icons = {
 			DEBUG = "",
 			ERROR = "",
@@ -18,9 +18,7 @@ return {
 		stages = "slide",
 		timeout = 2000,
 	},
-	config = function(_, opts)
-		local notify = require("notify")
-		notify.setup(opts)
-		vim.notify = notify
+	init = function()
+		vim.notify = require("notify") -- Set global notify after plugin loads
 	end,
 }
