@@ -27,6 +27,7 @@ return {
 				tex = { "latexindent" },
 				bibtex = { "bibtex-tidy" },
 				cmake = { "cmake_format" },
+				sh = { "shfmt" },
 			},
 			format_on_save = function(bufnr)
 				-- Disable with a global or buffer-local variable
