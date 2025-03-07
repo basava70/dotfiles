@@ -19,10 +19,12 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear search highlights")
 map("n", "<leader>sn", "<cmd>noautocmd w<CR>", "Save without formatting")
 
 -- Save all buffers and quit
-map("n", "<leader>xs", "<cmd>wqa<CR>", "e[X]it and [S]ave all buffers")
+map("n", "<leader>Q", "<cmd>wqa<CR>", "[Q]uit and [S]ave all buffers")
 
 -- Delete a single character without copying into register
 map("n", "x", '"_x', "Delete without copying")
+-- Substitue a single character without copying into register
+map("n", "s", '"_s', "Delete without copying")
 
 -- [[ Centering Movements ]]
 
