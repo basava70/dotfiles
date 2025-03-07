@@ -32,7 +32,6 @@ require("lazy").setup({
 	require("plugins.bufferline"),
 	require("plugins.fugitive"),
 	require("plugins.toggleterm"),
-	require("plugins.nvim-notify"),
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	{
 		-- Autoclose parentheses, brackets, quotes, etc.
