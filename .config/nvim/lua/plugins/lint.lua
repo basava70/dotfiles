@@ -6,7 +6,7 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			markdown = { "remark-lint" },
+			markdown = { "markdownlint-cli2" },
 			latex = { "chktex", "vale" },
 			text = { "vale" },
 			python = { "ruff" },
