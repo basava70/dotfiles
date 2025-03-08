@@ -1,0 +1,62 @@
+---
+# Use the latest Clang-Format style
+BasedOnStyle: LLVM
+
+# Column width limit for better readability
+ColumnLimit: 120
+
+# Always use braces even for single-line if/for/while
+AlwaysBreakBeforeMultilineStrings: false
+AlwaysBreakTemplateDeclarations: true
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: true
+  AfterFunction: true
+  AfterNamespace: false
+  AfterStruct: true
+  AfterEnum: true
+  BeforeElse: true
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+
+# Indentation rules
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+
+# Namespace indentation
+NamespaceIndentation: All
+
+# Align pointer/reference symbols (* &)
+PointerAlignment: Left  # Industry standard
+
+# Enforce trailing commas in lists (good for diffs)
+TrailingCommaCPP: Always
+
+# Improve readability of lambdas
+LambdaBodyIndentation: Signature
+
+# Always wrap long function declarations
+BreakConstructorInitializers: BeforeColon
+ConstructorInitializerIndentWidth: 4
+
+# Improve readability of function calls
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# Align function parameters for readability
+AlignAfterOpenBracket: Align
+AlignEscapedNewlines: Right
+AlignOperands: true
+
+# Enforce consistent spacing
+SpaceAfterTemplateKeyword: true
+SpacesBeforeTrailingComments: 1
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+
+# Sort include directives
+SortIncludes: CaseSensitive
+

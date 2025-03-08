@@ -53,3 +53,4 @@ bindkey '^y' autosuggest-accept
 # Syntax highlighting (keep this at the very end)
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="$HOME/.npm-global/bin:$PATH"
+export PATH=$HOME/dotfiles/code:$PATH

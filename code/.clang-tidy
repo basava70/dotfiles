@@ -1,0 +1,70 @@
+# Clang-Tidy Configuration
+# Save as ~/dot_clang_tidy and copy into each repo you want to use clang-tidy with.
+# This config balances:
+# - Modern C++ (cppcoreguidelines, modernize)
+# - Bug detection (bugprone, clang-analyzer)
+# - Style/readability
+# - Portability & performance
+
+Checks: >
+  # Core diagnostics from clang itself
+  clang-diagnostic-*,
+
+  # Static analysis (null dereference, etc.)
+  clang-analyzer-*,
+
+  # C++ Core Guidelines enforcement
+  cppcoreguidelines-*,
+
+  # Catch common bugs
+  bugprone-*,
+
+  # Enforce modern C++ practices (C++11/14/17/20)
+  modernize-*,
+
+  # Enforce consistent code style
+  readability-*,
+
+  # Detect performance pitfalls
+  performance-*,
+
+  # Improve cross-platform compatibility
+  portability-*,
+
+  # Miscellaneous helpful checks
+  misc-*
+
+# Disable specific checks if they cause noise for your projects.
+# Example:
+#   -modernize-use-trailing-return-type
+
+# Treat these warnings as errors (if any)
+WarningsAsErrors: ''
+
+# Define project-wide header file paths, so headers from these paths are treated as "system" headers.
+# Example:
+# HeaderFilterRegex: 'src/.*'
+
+# Format suggestions will match your project's coding style
+FormatStyle: file  # Use .clang-format if present
+
+# Don't check headers from third-party libraries (like system includes or vendored dependencies)
+HeaderFilterRegex: '.*'
+
+# Configure the C++ standard (match your project)
+# Options: c++11, c++14, c++17, c++20, c++23 (if supported)
+Standard: c++17
+
+# Set target architecture if needed (optional)
+# Example: 'x86_64-pc-linux-gnu'
+# Target: ''
+
+# Run in a more thorough mode to capture issues across translation units
+AnalyzeTemporaryDtors: true
+
+# Allow inline suppressions (// NOLINT) in code
+AllowInlineSuppressions: true
+
+# Fix what can be automatically fixed
+Fix: true
+
