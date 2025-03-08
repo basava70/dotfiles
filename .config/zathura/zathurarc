@@ -1,0 +1,9 @@
+set synctex true
+set synctex-editor-command "nvr --remote-silent +'VimtexInverseSearch %{input} %{line}'"
+# set synctex-editor-command "nvim --headless +'VimtexInverseSearch %f %l'"
+# map <C-Enter> synctex edit
+# map <S-Return> synctex edit
+map <F9> exec synctex edit
+set window-title-home-tilde true
+
+

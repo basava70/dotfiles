@@ -27,6 +27,7 @@ return {
 				tex = { "latexindent" },
 				bibtex = { "bibtex-tidy" },
 				cmake = { "cmake_format" },
+				sh = { "shfmt" },
 			},
 			format_on_save = function(bufnr)
 				-- Disable with a global or buffer-local variable
@@ -41,10 +42,8 @@ return {
 			if args.bang then
 				-- FormatDisable! will disable formatting just for this buffer
 				vim.b.disable_autoformat = true
-				-- require("notify")("disabling autoformat on save")
 			else
 				vim.g.disable_autoformat = true
-				-- require("notify")("disabling autoformat on save")
 			end
 		end, {
 			desc = "Disable autoformat-on-save",
@@ -53,7 +52,6 @@ return {
 		vim.api.nvim_create_user_command("FormatEnable", function()
 			vim.b.disable_autoformat = false
 			vim.g.disable_autoformat = false
-			-- require("notify")("enabling autoformat on save")
 		end, {
 			desc = "Re-enable autoformat-on-save",
 		})

@@ -33,6 +33,7 @@ return { -- Autocompletion
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
+		"micangl/cmp-vimtex",
 	},
 	config = function()
 		-- See `:help cmp`
@@ -157,6 +158,7 @@ return { -- Autocompletion
 					-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
 					group_index = 0,
 				},
+				{ name = "vimtex" },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
@@ -171,6 +173,7 @@ return { -- Autocompletion
 						luasnip = "[Snippet]",
 						buffer = "[Buffer]",
 						path = "[Path]",
+						vimtex = "[LaTeX]",
 					})[entry.source.name]
 					return vim_item
 				end,
