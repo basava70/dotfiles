@@ -25,6 +25,25 @@ alias lst3='eza --icons --tree -T --level 3'
 alias lst4='eza --icons --tree -T --level 4'
 
 # Autosuggestions
+#
+# Ensure persistent history across reboots
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+# Append history instead of overwriting it
+setopt inc_append_history
+setopt share_history
+
+# Remove duplicate entries and optimize history
+setopt hist_ignore_all_dups
+setopt hist_expire_dups_first
+setopt hist_reduce_blanks
+setopt hist_ignore_space  # Ignore commands that start with a space
+
+# Ensure zsh-autosuggestions uses persistent history
+ZSH_AUTOSUGGEST_STRATEGY=(history)
+
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Accept autosuggestions with Ctrl+L
