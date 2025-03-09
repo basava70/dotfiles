@@ -15,15 +15,15 @@ return {
 		require("mini.indentscope").setup()
 
 		-- Simple statusline
-		local statusline = require("mini.statusline")
-		statusline.setup({
-			use_icons = vim.g.have_nerd_font,
-			content = {
-				location = function()
-					return "%2l:%-2v"
-				end,
-			},
-		})
+		-- local statusline = require("mini.statusline")
+		-- statusline.setup({
+		-- 	use_icons = vim.g.have_nerd_font,
+		-- 	content = {
+		-- 		location = function()
+		-- 			return "%2l:%-2v"
+		-- 		end,
+		-- 	},
+		-- })
 
 		-- ✅ Mini Notify (corrected with proper format function)
 		require("mini.notify").setup({
@@ -98,12 +98,12 @@ return {
 				end
 			end,
 		})
-		vim.api.nvim_create_autocmd("BufWritePost", {
-			group = vim.api.nvim_create_augroup("FileWriteNotifyGroup", { clear = true }),
-			callback = function()
-				local file_name = vim.fn.expand("%:t") -- Get current file name
-				vim.notify(string.format("File '%s' saved", file_name), vim.log.levels.INFO)
-			end,
-		})
+		-- vim.api.nvim_create_autocmd("BufWritePost", {
+		-- 	group = vim.api.nvim_create_augroup("FileWriteNotifyGroup", { clear = true }),
+		-- 	callback = function()
+		-- 		local file_name = vim.fn.expand("%:t") -- Get current file name
+		-- 		vim.notify(string.format("File '%s' saved", file_name), vim.log.levels.INFO)
+		-- 	end,
+		-- })
 	end,
 }

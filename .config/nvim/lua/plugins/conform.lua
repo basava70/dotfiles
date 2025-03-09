@@ -28,6 +28,7 @@ return {
 				bibtex = { "bibtex-tidy" },
 				cmake = { "cmake_format" },
 				sh = { "shfmt" },
+				yaml = { "prettier" },
 			},
 			format_on_save = function(bufnr)
 				-- Disable with a global or buffer-local variable

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SOURCE_DIR="$HOME/code"
+SOURCE_DIR="$HOME/dotfiles/code"
 
 if [ -z "$1" ]; then
     echo "Usage: $0 <destination_directory>"
