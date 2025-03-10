@@ -14,14 +14,13 @@ if [ ! -d "$DEST_DIR" ]; then
     mkdir -p "$DEST_DIR"
 fi
 
-cp "$SOURCE_DIR/.clang-tidy" "$DEST_DIR"
 cp "$SOURCE_DIR/.clang-format" "$DEST_DIR"
 
 # Initialize Git if not already a repo
 if [ ! -d "$DEST_DIR/.git" ]; then
     cd "$DEST_DIR" || exit
     git init
-    echo "✅ Git repository initialized in '$DEST_DIR'"
+    echo "Git repository initialized in '$DEST_DIR'"
 fi
 
-echo "✅ .clang-tidy and .clang-format copied to '$DEST_DIR'"
+echo ".clang-format copied to '$DEST_DIR'"
