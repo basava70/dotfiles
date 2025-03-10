@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	require("plugins.colorscheme"),
+	require("plugins.nvim-web-devicons"),
 	require("plugins.mini"),
 	require("plugins.which-key"),
 	require("plugins.lualine"),

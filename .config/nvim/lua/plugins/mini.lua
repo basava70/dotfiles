@@ -9,7 +9,7 @@ return {
 		-- require("mini.surround").setup()
 
 		-- Optional icons module
-		require("mini.icons").setup()
+		-- require("mini.icons").setup()
 
 		-- Indent scope visualization
 		require("mini.indentscope").setup()

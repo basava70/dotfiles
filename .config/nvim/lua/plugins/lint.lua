@@ -5,16 +5,14 @@ return {
 	config = function()
 		local lint = require("lint")
 
+		-- Assign linters to filetypes
 		lint.linters_by_ft = {
-			markdown = { "markdownlint-cli2" },
-			latex = { "chktex", "vale" },
-			text = { "vale" },
-			python = { "ruff" },
-			c = { "clang-tidy", "cppcheck" },
-			cpp = { "clang-tidy", "cppcheck" },
-			cuda = { "clang-tidy", "cppcheck" },
+			cpp = { "cppcheck" },
+			c = { "cppcheck" },
+			cuda = { "cppcheck" },
 		}
 
+		-- Auto-run linting when opening, saving, or exiting insert mode
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			group = lint_augroup,

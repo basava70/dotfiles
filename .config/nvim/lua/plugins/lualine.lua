@@ -10,15 +10,38 @@ return {
 
 		local lazy_status = require("lazy.status")
 
-		local filename = {
-			"filename",
-			file_status = true,
-			path = 0,
-		}
+		local function file_icon_with_name()
+			local devicons = require("nvim-web-devicons")
+			local fname = vim.fn.expand("%:t") -- Get filename
+			local ext = vim.fn.expand("%:e") -- Get file extension
+			local icon, icon_color = devicons.get_icon_color(fname, ext, { default = true })
 
-		local hide_in_width = function()
-			return vim.fn.winwidth(0) > 100
+			if fname == "" then
+				return "" -- If there's no filename, return empty
+			end
+
+			-- Apply the correct color to the icon
+			local icon_hl = "%#LualineFileIcon#" -- Default highlight group for icon
+			if icon_color then
+				-- Define a highlight group dynamically
+				local hl_group = "LualineFileIcon_" .. ext
+				vim.api.nvim_set_hl(0, hl_group, { fg = icon_color, bg = "none" })
+				icon_hl = "%#" .. hl_group .. "#"
+			end
+
+			-- Return the icon (with color) + filename
+			return icon_hl .. (icon or "") .. " %#Normal#" .. fname
 		end
+
+		-- local filename = {
+		-- 	"filename",
+		-- 	file_status = true,
+		-- 	path = 0,
+		-- }
+
+		-- local hide_in_width = function()
+		-- 	return vim.fn.winwidth(0) > 100
+		-- end
 
 		local diagnostics = {
 			"diagnostics",
@@ -48,11 +71,8 @@ return {
 			sections = {
 				lualine_a = { mode },
 				lualine_b = { "branch", diff },
-				lualine_c = { filename },
-				lualine_x = {
-					diagnostics,
-					{ "filetype", cond = hide_in_width },
-				},
+				lualine_c = { file_icon_with_name },
+				lualine_x = { diagnostics },
 				lualine_y = {
 					{
 						lazy_status.updates,
