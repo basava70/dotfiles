@@ -87,6 +87,7 @@ file_type:
   compiled: { foreground: "#737aa2" }
   build: { foreground: "#1abc9c" }
   source: { foreground: "#bb9af7" }
+  cpp: { foreground: "#7AA2F7" }
 
 punctuation: { foreground: "#292e42" }
 date: { foreground: "#e0af68" }
@@ -103,5 +104,22 @@ broken_path_overlay: { foreground: "#ff007c" }
 
 filenames:
   CMakeLists.txt:
+    foreground: "#ffa500"
     icon:
       glyph: ""
+
+  .zshrc:
+    icon:
+      glyph: ""
+
+extensions:
+  cmake:
+    # filename:
+    # foreground: "#ffa500" # Color for filename
+    icon:
+      glyph: ""
+      # foreground: "#ff0000" # Specify color for the icon (e.g., red)
+
+  cc: { icon: { glyph: "󰙲" } }
+  cpp: { icon: { glyph: "󰙲" } }
+  hpp: { icon: { glyph: "" } }

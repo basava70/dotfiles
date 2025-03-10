@@ -2,12 +2,6 @@ return {
 	"nvim-tree/nvim-web-devicons",
 	opts = {
 		override = {
-			zsh = {
-				icon = "",
-				color = "#428850",
-				cterm_color = "65",
-				name = "Zsh",
-			},
 			[".zshrc"] = {
 				icon = "", -- Use the same Zsh icon
 				color = "#428850",
@@ -24,9 +18,14 @@ return {
 				color = "#ffa500",
 				name = "CMakelists",
 			},
+			["Makefile"] = {
+				icon = "",
+				color = "#1abc9c",
+				name = "Makefile",
+			},
 			["cmake"] = {
 				icon = "",
-				color = "#1abc9c",
+				color = "#ffa500",
 				name = "cmakeicon",
 			},
 			["cc"] = {
