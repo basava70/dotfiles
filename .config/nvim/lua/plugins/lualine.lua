@@ -1,15 +1,73 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		local mode = {
-			"mode",
-			fmt = function(str)
-				return " " .. str
+		local lualine = require("lualine")
+		local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+
+		-------------------------------------------------------------
+		-- Lsp stuff --
+		local function getLspName()
+			local buf_clients = vim.lsp.get_clients()
+			local buf_ft = vim.bo.filetype
+			if next(buf_clients) == nil then
+				return "  No servers"
+			end
+			local buf_client_names = {}
+
+			for _, client in pairs(buf_clients) do
+				if client.name ~= "null-ls" then
+					table.insert(buf_client_names, "  [" .. client.name .. "]")
+				end
+			end
+
+			local lint_s, lint = pcall(require, "lint")
+			if lint_s then
+				for ft_k, ft_v in pairs(lint.linters_by_ft) do
+					if type(ft_v) == "table" then
+						for _, linter in ipairs(ft_v) do
+							if buf_ft == ft_k then
+								table.insert(buf_client_names, " [" .. linter .. "]")
+							end
+						end
+					elseif type(ft_v) == "string" then
+						if buf_ft == ft_k then
+							table.insert(buf_client_names, ft_v)
+						end
+					end
+				end
+			end
+
+			local ok, conform = pcall(require, "conform")
+			if ok then
+				for _, formatter in pairs(conform.formatters_by_ft[vim.bo.filetype]) do
+					if formatter then
+						table.insert(buf_client_names, "󰉠 [" .. formatter .. "]")
+					end
+				end
+			end
+
+			local hash = {}
+			local unique_client_names = {}
+
+			for _, v in ipairs(buf_client_names) do
+				if not hash[v] then
+					unique_client_names[#unique_client_names + 1] = v
+					hash[v] = true
+				end
+			end
+			local language_servers = table.concat(unique_client_names, " ")
+
+			return language_servers
+		end
+
+		local lsp = {
+			function()
+				return getLspName()
 			end,
 		}
-
-		local lazy_status = require("lazy.status")
-
+		-------------------------------------------------------------
+		--
 		local function file_icon_with_name()
 			local devicons = require("nvim-web-devicons")
 			local fname = vim.fn.expand("%:t") -- Get filename
@@ -32,17 +90,7 @@ return {
 			-- Return the icon (with color) + filename
 			return icon_hl .. (icon or "") .. " %#Normal#" .. fname
 		end
-
-		-- local filename = {
-		-- 	"filename",
-		-- 	file_status = true,
-		-- 	path = 0,
-		-- }
-
-		-- local hide_in_width = function()
-		-- 	return vim.fn.winwidth(0) > 100
-		-- end
-
+		--
 		local diagnostics = {
 			"diagnostics",
 			sources = { "nvim_diagnostic" },
@@ -52,14 +100,13 @@ return {
 			update_in_insert = true,
 			always_visible = false,
 		}
-
+		--
 		local diff = {
 			"diff",
 			symbols = { added = "+", modified = "~", removed = "-" },
 		}
 
-		-- Setup Lualine
-		require("lualine").setup({
+		lualine.setup({
 			options = {
 				icons_enabled = true,
 				theme = "tokyonight",
@@ -69,16 +116,22 @@ return {
 				always_divide_middle = true,
 			},
 			sections = {
-				lualine_a = { mode },
+				lualine_a = {
+					{
+						"mode",
+						icon = { "" },
+					},
+				},
 				lualine_b = { "branch", diff },
 				lualine_c = { file_icon_with_name },
-				lualine_x = { diagnostics },
-				lualine_y = {
+				lualine_x = {
 					{
 						lazy_status.updates,
 						cond = lazy_status.has_updates,
 						color = { fg = "#ff9e64" },
 					},
+				},
+				lualine_y = {
 					{
 						function()
 							return " " .. os.date("%R")
@@ -86,7 +139,7 @@ return {
 					},
 				},
 				lualine_z = {
-					{ "location" },
+					lsp,
 					function()
 						local current_line = vim.fn.line(".")
 						local total_lines = vim.fn.line("$")
@@ -104,49 +157,6 @@ return {
 					end,
 				},
 			},
-			inactive_sections = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = { { "filename", path = 1 } },
-				lualine_x = { { "location", padding = 0 } },
-				lualine_y = {},
-				lualine_z = {},
-			},
-			tabline = {},
-			extensions = { "fugitive" },
 		})
-
-		-- === Force Transparent Background for Lualine ===
-		local function make_lualine_transparent()
-			local sections = { "c", "x" } -- { "a", "b", "c", "x", "y", "z" }
-			local modes = { "normal", "insert", "visual", "replace", "command", "inactive" }
-
-			for _, hl_mode in ipairs(modes) do
-				for _, section in ipairs(sections) do
-					local hl_name = "lualine_" .. section .. "_" .. hl_mode
-					local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = hl_name })
-
-					if ok then
-						vim.api.nvim_set_hl(0, hl_name, {
-							fg = hl.fg,
-							bg = "none", -- Transparent
-							sp = hl.sp,
-							underline = hl.underline,
-							bold = hl.bold,
-							italic = hl.italic,
-						})
-					end
-				end
-			end
-		end
-
-		-- Run this after every colorscheme change to ensure lualine gets reset
-		vim.api.nvim_create_autocmd("ColorScheme", {
-			pattern = "*",
-			callback = make_lualine_transparent,
-		})
-
-		-- Apply transparency immediately (for first launch)
-		make_lualine_transparent()
 	end,
 }
