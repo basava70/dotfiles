@@ -40,19 +40,5 @@ return {
 				name = "Log",
 			},
 		},
-		override_by_filename = {
-			["README.md"] = {
-				icon = "",
-				color = "#ffa500",
-				name = "README",
-			},
-		},
-		override_by_extension = {
-			["md"] = {
-				icon = "󰍔",
-				color = "#ffffff",
-				name = "markdown",
-			},
-		},
 	},
 }
