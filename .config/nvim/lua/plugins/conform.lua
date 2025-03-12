@@ -30,6 +30,16 @@ return {
 				sh = { "shfmt" },
 				yaml = { "prettier" },
 			},
+			formatters = {
+				clang_format = {
+					command = "clang-format",
+					prepend_args = {
+						"-style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: Never, \
+						AccessModifierOffset: 0, IndentAccessModifiers: true, \
+						PackConstructorInitializers: Never}",
+					},
+				},
+			},
 			format_on_save = function(bufnr)
 				-- Disable with a global or buffer-local variable
 				if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then

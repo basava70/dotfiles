@@ -33,6 +33,7 @@ return { -- Highlight, edit, and navigate code
 			"css",
 			"html",
 			"c",
+			"cpp",
 			"diff",
 			"luadoc",
 			"query",

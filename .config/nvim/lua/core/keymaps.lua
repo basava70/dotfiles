@@ -16,7 +16,7 @@ end
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear search highlights")
 
 -- Save file without triggering autoformat
-map("n", "<leader>sn", "<cmd>noautocmd w<CR>", "Save without formatting")
+map("n", "<leader>sN", "<cmd>noautocmd w<CR>", "Save without formatting")
 
 -- Save all buffers and quit
 map("n", "<leader>Q", "<cmd>wqa<CR>", "[Q]uit and [S]ave all buffers")

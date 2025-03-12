@@ -86,6 +86,7 @@ return {
 					clangdFileStatus = true, -- Show file processing status
 				},
 			},
+
 			pyright = {},
 
 			lua_ls = {
@@ -116,6 +117,13 @@ return {
 		-- Attach capabilities & setup each server
 		for server, config in pairs(servers) do
 			config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
+			if server == "clangd" then
+				config.on_attach = function(client, bufnr)
+					-- Disable document formatting to avoid conflicts
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
+				end
+			end
 			require("lspconfig")[server].setup(config)
 		end
 
