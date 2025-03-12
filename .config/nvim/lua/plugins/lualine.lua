@@ -105,6 +105,12 @@ return {
 			"diff",
 			symbols = { added = "+", modified = "~", removed = "-" },
 		}
+		local mode = {
+			"mode",
+			fmt = function(str)
+				return " " .. str
+			end,
+		}
 
 		lualine.setup({
 			options = {
@@ -116,12 +122,7 @@ return {
 				always_divide_middle = true,
 			},
 			sections = {
-				lualine_a = {
-					{
-						"mode",
-						icon = { "" },
-					},
-				},
+				lualine_a = { mode },
 				lualine_b = { "branch", diff },
 				lualine_c = { file_icon_with_name },
 				lualine_x = {
