@@ -19,7 +19,7 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear search highlights")
 map("n", "<leader>sN", "<cmd>noautocmd w<CR>", "Save without formatting")
 
 -- Save all buffers and quit
-map("n", "<leader>Q", "<cmd>wqa<CR>", "[Q]uit and [S]ave all buffers")
+map("n", "<leader>xs", "<cmd>wqa<CR>", "e[X]it and [S]ave all buffers")
 
 -- Delete a single character without copying into register
 map("n", "x", '"_x', "Delete without copying")
@@ -36,11 +36,21 @@ map("n", "<C-u>", "<C-u>zz", "Scroll up and center")
 map("n", "n", "nzzzv", "Next search result and center")
 map("n", "N", "Nzzzv", "Previous search result and center")
 
--- [[ Buffer Management ]]
-
--- Navigate buffers
-map("n", "<Tab>", "<cmd>bnext<CR>", "Next buffer")
-map("n", "<S-Tab>", "<cmd>bprevious<CR>", "Previous buffer")
+--[[ Buffer Management]]
+map("n", "<leader>xL", "<cmd> BufferLineCloseLeft <CR>", "Close all buffers to left") -- close buffers to the left
+map("n", "<leader>xR", "<cmd> BufferLineCloseRight <CR>", "Close all buffers to right") -- close buffers to the right
+map("n", "<leader>xA", "<cmd> BufferLineCloseOthers <CR>", "Close all other buffers") -- close all buffers expect current one
+map("n", "<A-.>", "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer")
+map("n", "<A-,>", "<cmd> BufferLineCyclePrev <CR>", "  cycle prev buffer")
+map("n", "<A-s-.>", "<cmd> BufferLineMoveNext <CR>", "  move next buffer")
+map("n", "<A-s-,>", "<cmd> BufferLineMovePrev <CR>", "  move prev buffer")
+map("n", "<A-f>", "<cmd> BufferLinePick <CR>")
+map("n", "<leader>xx", "<cmd> bp|sp|bn|bd! <CR>", "Close the current buffer") --"	close buffer"
+for i = 1, 9 do
+	vim.keymap.set("n", "<A-" .. i .. ">", function() -- choose <A-i> to choose that buffer
+		require("bufferline").go_to_buffer(i)
+	end)
+end
 
 -- [[ Window Management ]]
 
