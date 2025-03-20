@@ -18,8 +18,7 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear search highlights")
 -- Save file without triggering autoformat
 map("n", "<leader>sN", "<cmd>noautocmd w<CR>", "Save without formatting")
 
--- Save all buffers and quit
-map("n", "<leader>xs", "<cmd>wqa<CR>", "e[X]it and [S]ave all buffers")
+map("n", "<leader>qq", "<cmd>wqa<CR>", "e[X]it and [S]ave all buffers")
 
 -- Delete a single character without copying into register
 map("n", "x", '"_x', "Delete without copying")
@@ -84,7 +83,7 @@ map("v", "p", '"_dP', "Paste without overwriting register")
 
 map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
 map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
-map("n", "<leader>q", vim.diagnostic.setloclist, "Open diagnostic list")
+map("n", "<leader>dq", vim.diagnostic.setloclist, "Open diagnostic list")
 map("n", "<leader>dd", function()
 	vim.diagnostic.open_float()
 end, "Open diagnostic in float")
