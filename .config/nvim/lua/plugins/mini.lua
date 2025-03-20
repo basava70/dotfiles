@@ -25,6 +25,8 @@ return {
 		-- 	},
 		-- })
 
+		-- require("mini.animate").setup()
+
 		-- ✅ Mini Notify (corrected with proper format function)
 		require("mini.notify").setup({
 			content = {
@@ -51,59 +53,5 @@ return {
 
 		-- Replace global `vim.notify` so all notifications go through `mini.notify`
 		vim.notify = require("mini.notify").make_notify()
-
-		-- ✅ Yank notification (works with mini.notify now)
-		local function get_yanked_line_count()
-			local regtype = vim.v.event.regtype
-			local mode = vim.fn.mode()
-
-			if mode:match("[vV\22]") then
-				-- Visual Mode (line, block, character)
-				local start_pos = vim.fn.getpos("'<")
-				local end_pos = vim.fn.getpos("'>")
-				local line_count = math.abs(end_pos[2] - start_pos[2]) + 1
-				return line_count
-			elseif regtype:match("\22") then
-				-- Visual Block Mode (Ctrl-V) - should also work via regtype
-				local start_pos = vim.fn.getpos("'<")
-				local end_pos = vim.fn.getpos("'>")
-				local line_count = math.abs(end_pos[2] - start_pos[2]) + 1
-
-				return line_count
-			elseif regtype:match("V") then
-				-- Linewise yank (normal yy or V)
-				local start_pos = vim.fn.getpos("'[")
-				local end_pos = vim.fn.getpos("']")
-				local line_count = math.abs(end_pos[2] - start_pos[2]) + 1
-
-				return line_count
-			else
-				-- Character-wise yank (yw, etc.)
-				return 1
-			end
-		end
-		vim.api.nvim_create_autocmd("TextYankPost", {
-			group = vim.api.nvim_create_augroup("YankNotifyGroup", { clear = true }),
-			callback = function()
-				-- Only show notification if the last operator was 'y' (yank)
-				if vim.v.operator ~= "y" then
-					return
-				end
-				local lines = get_yanked_line_count()
-
-				if lines > 1 then
-					vim.notify(string.format("Yanked %d lines", lines), vim.log.levels.INFO)
-				else
-					vim.notify("Yanked 1 line", vim.log.levels.INFO)
-				end
-			end,
-		})
-		-- vim.api.nvim_create_autocmd("BufWritePost", {
-		-- 	group = vim.api.nvim_create_augroup("FileWriteNotifyGroup", { clear = true }),
-		-- 	callback = function()
-		-- 		local file_name = vim.fn.expand("%:t") -- Get current file name
-		-- 		vim.notify(string.format("File '%s' saved", file_name), vim.log.levels.INFO)
-		-- 	end,
-		-- })
 	end,
 }

@@ -85,6 +85,9 @@ map("v", "p", '"_dP', "Paste without overwriting register")
 map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
 map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
 map("n", "<leader>q", vim.diagnostic.setloclist, "Open diagnostic list")
+map("n", "<leader>dd", function()
+	vim.diagnostic.open_float()
+end, "Open diagnostic in float")
 
 -- [[ Wrapping Toggle ]]
 

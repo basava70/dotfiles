@@ -4,38 +4,38 @@ return {
 		color_icons = true,
 		override = {
 			[".zshrc"] = {
-				icon = "", -- Use the same Zsh icon
+				icon = " ", -- Use the same Zsh icon
 				color = "#428850",
 				cterm_color = "65",
 				name = "ZshRC",
 			},
 			["CMakelists.txt"] = {
-				icon = "",
+				icon = " ",
 				color = "#ffa500",
 				name = "CMakelists",
 			},
 			["Makefile"] = {
-				icon = "",
+				icon = " ",
 				color = "#1abc9c",
 				name = "Makefile",
 			},
 			["cmake"] = {
-				icon = "",
+				icon = " ",
 				color = "#ffa500",
 				name = "cmakeicon",
 			},
 			["cc"] = {
-				icon = "󰙲",
+				icon = "󰙲 ",
 				color = "#7AA2F7",
 				name = "cppicon",
 			},
 			["cpp"] = {
-				icon = "󰙲",
+				icon = "󰙲 ",
 				color = "#7AA2F7",
 				name = "cppicon",
 			},
 			["log"] = {
-				icon = "󰺿",
+				icon = "󰺿 ",
 				color = "#81e043",
 				name = "Log",
 			},
