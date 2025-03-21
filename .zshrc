@@ -3,9 +3,7 @@ autoload -Uz compinit
 zstyle ':completion:*' rehash true
 compinit -C
 
-source ~/.xprofile
 export EDITOR=nvim
-
 
 # Point to custom Starship config location
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
