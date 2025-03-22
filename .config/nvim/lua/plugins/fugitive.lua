@@ -4,6 +4,8 @@ return {
 		vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "[G]it [S]tatus" })
 		vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })
 		vim.keymap.set("n", "<leader>gb", ":Gblame<CR>", { desc = "[G]it [B]lame" })
+
+		-- Push branch to origin (works even if its a new branch)
 		vim.keymap.set("n", "<leader>gp", function()
 			local handle = io.popen("git rev-parse --abbrev-ref HEAD")
 			if not handle then
@@ -25,6 +27,7 @@ return {
 			vim.cmd("Git push --set-upstream origin " .. branch)
 		end, { desc = "[G]it [P]ush (auto upstream)" })
 
+		-- Create a new branch
 		vim.keymap.set("n", "<leader>gb", function()
 			vim.ui.input({ prompt = "New branch name: " }, function(branch)
 				if branch ~= nil and branch ~= "" then
