@@ -36,6 +36,27 @@ return {
 			end)
 		end, { desc = "[G]it checkout -[b] (new branch)" })
 
+		-- Git merge
+		vim.keymap.set("n", "<leader>gm", function()
+			-- Get local branches
+			local handle = io.popen("git for-each-ref --format='%(refname:short)' refs/heads/")
+			local output = handle and handle:read("*a") or ""
+			if handle then
+				handle:close()
+			end
+
+			local branches = {}
+			for line in output:gmatch("[^\r\n]+") do
+				table.insert(branches, line)
+			end
+
+			vim.ui.select(branches, { prompt = "Merge branch into current:" }, function(choice)
+				if choice and choice ~= "" then
+					vim.cmd("Git merge --no-ff " .. choice)
+				end
+			end)
+		end, { desc = "[G]it [M]erge branch into current" })
+
 		-- Create augroup to namespace this autocmd
 		local group = vim.api.nvim_create_augroup("FugitiveCloseStatusBuffer", { clear = true })
 
