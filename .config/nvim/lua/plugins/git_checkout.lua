@@ -8,11 +8,11 @@ local previewers = require("telescope.previewers")
 local Job = require("plenary.job")
 
 -- Set up custom highlights for Git UI
-vim.api.nvim_set_hl(0, "GitCommitIcon", { fg = "#f7768e", bold = true })
-vim.api.nvim_set_hl(0, "GitRemoteBranchIcon", { fg = "#7aa2f7", bold = true })
-vim.api.nvim_set_hl(0, "GitRemoteBranchText", { fg = "#0db9d7", bold = true })
-vim.api.nvim_set_hl(0, "GitLocalBranchIcon", { fg = "#41a6b5", bold = true })
-vim.api.nvim_set_hl(0, "GitLocalBranchText", { fg = "#9ece6a", bold = true })
+vim.api.nvim_set_hl(0, "GitCommitIcon", { fg = "#f7768e" })
+vim.api.nvim_set_hl(0, "GitRemoteBranchIcon", { fg = "#7aa2f7" })
+vim.api.nvim_set_hl(0, "GitRemoteBranchText", { fg = "#0db9d7" })
+vim.api.nvim_set_hl(0, "GitLocalBranchIcon", { fg = "#41a6b5" })
+vim.api.nvim_set_hl(0, "GitLocalBranchText", { fg = "#9ece6a" })
 vim.api.nvim_set_hl(0, "GitAheadBehind", { fg = "#e0af68" })
 
 local M = {}
