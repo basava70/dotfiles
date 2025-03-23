@@ -5,6 +5,7 @@ local action_state = require("telescope.actions.state")
 local entry_display = require("telescope.pickers.entry_display")
 local conf = require("telescope.config").values
 local previewers = require("telescope.previewers")
+local Job = require("plenary.job")
 
 -- Set up custom highlights for Git UI
 vim.api.nvim_set_hl(0, "GitCommitIcon", { fg = "#f7768e" }) -- commit icon
@@ -95,9 +96,9 @@ function M.git_checkout()
 	local displayer = entry_display.create({
 		separator = " ",
 		items = {
-			{ width = 2 }, -- icon
-			{ width = 30 }, -- branch/tag/hash
-			{ remaining = true }, -- extra annotation
+			{ width = 2 },
+			{ width = 30 },
+			{ remaining = true },
 		},
 	})
 
@@ -131,7 +132,7 @@ function M.git_checkout()
 									{ entry.value, "GitRemoteBranchText" },
 									{ entry.annotation or "", "GitAheadBehind" },
 								})
-							else -- local branch
+							else
 								return displayer({
 									{ "󰘬", "GitLocalBranchIcon" },
 									{ entry.value, "GitLocalBranchText" },
@@ -143,13 +144,22 @@ function M.git_checkout()
 				end,
 			}),
 			sorter = conf.generic_sorter({}),
-			previewer = previewers.new_termopen_previewer({
-				get_command = function(entry)
-					if entry.kind == "commit" then
-						return { "git", "show", "--color=always", entry.value }
-					else
-						return { "git", "log", "--oneline", "-n", "10", entry.value }
-					end
+			previewer = previewers.new_buffer_previewer({
+				define_preview = function(self, entry)
+					local cmd = { "git", "show", entry.value }
+					Job:new({
+						command = cmd[1],
+						args = { unpack(cmd, 2) },
+						on_exit = function(j)
+							vim.schedule(function()
+								if not self.state then
+									return
+								end
+								vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, j:result())
+								vim.bo[self.state.bufnr].filetype = "diff" -- 🌈 add syntax highlighting
+							end)
+						end,
+					}):start()
 				end,
 			}),
 			attach_mappings = function(prompt_bufnr, map)
