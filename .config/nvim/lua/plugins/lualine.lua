@@ -84,10 +84,10 @@ return {
 
 			local status = ""
 			if ahead > 0 then
-				status = status .. " " .. ahead
+				status = status .. "" .. ahead
 			end
 			if behind > 0 then
-				status = status .. " " .. behind
+				status = status .. "" .. behind
 			end
 
 			return " " .. branch .. (status ~= "" and ("[" .. status .. "]") or "")
