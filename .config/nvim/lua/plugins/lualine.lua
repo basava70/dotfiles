@@ -67,6 +67,32 @@ return {
 			end,
 		}
 		-------------------------------------------------------------
+		local function branch_with_git_status()
+			local branch = vim.fn.FugitiveHead() or vim.fn.system("git rev-parse --abbrev-ref HEAD"):gsub("\n", "")
+			if not branch or branch == "" then
+				return ""
+			end
+
+			local output = vim.fn.system("git rev-list --left-right --count HEAD...@{upstream} 2>/dev/null")
+			if vim.v.shell_error ~= 0 then
+				return " " .. branch
+			end
+
+			local ahead, behind = output:match("(%d+)%s+(%d+)")
+			ahead = tonumber(ahead) or 0
+			behind = tonumber(behind) or 0
+
+			local status = ""
+			if ahead > 0 then
+				status = status .. " " .. ahead
+			end
+			if behind > 0 then
+				status = status .. " " .. behind
+			end
+
+			return " " .. branch .. (status ~= "" and ("[" .. status .. "]") or "")
+		end
+
 		--
 		local function branch_with_git_status()
 			local gitsigns = vim.b.gitsigns_status_dict
