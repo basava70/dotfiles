@@ -5,7 +5,7 @@ return {
 		vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })
 		vim.keymap.set("n", "<leader>gb", ":Gblame<CR>", { desc = "[G]it [B]lame" })
 
-		vim.keymap.set("n", "<leader>glgg", function()
+		vim.keymap.set("n", "<leader>gl", function()
 			local width = math.floor(vim.o.columns * 0.9)
 			local height = math.floor(vim.o.lines * 0.85)
 			local row = math.floor((vim.o.lines - height) / 2)
@@ -38,7 +38,7 @@ return {
 			-- Optional: close with q or <Esc>
 			vim.keymap.set("t", "<Esc>", "<C-\\><C-n>:close<CR>", { buffer = buf, silent = true })
 			vim.keymap.set("t", "q", "<C-\\><C-n>:close<CR>", { buffer = buf, silent = true })
-		end, { desc = "[G]it [L]og --[g]raph (floating terminal)" })
+		end, { desc = "[G]it [L]og (floating terminal)" })
 
 		-- Push branch to origin (works even if its a new branch)
 		vim.keymap.set("n", "<leader>gp", function()
