@@ -153,9 +153,21 @@ function M.git_checkout()
 								end
 								local result = j:result()
 								vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, result)
-								vim.bo[self.state.bufnr].filetype = "diff"
 								vim.bo[self.state.bufnr].modifiable = false
 								vim.wo[self.state.winid].wrap = false
+								vim.bo[self.state.bufnr].filetype = "diff"
+
+								-- Try to detect actual filetype from diff header
+								for _, line in ipairs(result) do
+									local filename = line:match("^diff %-%-git a/.+%.([%w_]+) b/.*")
+									if filename then
+										local ft = vim.filetype.match({ filename = "file." .. filename })
+										if ft then
+											vim.bo[self.state.bufnr].syntax = ft
+										end
+										break
+									end
+								end
 							end)
 						end,
 					}):start()
