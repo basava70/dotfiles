@@ -18,7 +18,18 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear search highlights")
 -- Save file without triggering autoformat
 map("n", "<leader>sN", "<cmd>noautocmd w<CR>", "Save without formatting")
 
-map("n", "<leader>qq", "<cmd>wqa<CR>", "e[X]it and [S]ave all buffers")
+-- map("n", "<leader>qq", "<cmd>wqa<CR>", "e[X]it and [S]ave all buffers")
+map("n", "<leader>qq", function()
+	-- Close all terminal buffers, but don't save anything yet
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_valid(buf) and vim.bo[buf].buftype == "terminal" then
+			vim.api.nvim_buf_delete(buf, { force = true })
+		end
+	end
+
+	-- Let Neovim handle unsaved changes normally
+	vim.cmd("qa")
+end, "[Q]uit all (after closing terminals, like wqa)")
 
 -- Delete a single character without copying into register
 map("n", "x", '"_x', "Delete without copying")

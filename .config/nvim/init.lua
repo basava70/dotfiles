@@ -35,6 +35,7 @@ require("lazy").setup({
 	require("plugins.toggleterm"),
 	require("plugins.vimtex"),
 	require("plugins.snacks"),
+	require("plugins.hlslens"),
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	{
 		-- Autoclose parentheses, brackets, quotes, etc.
