@@ -25,21 +25,34 @@ return {
 				title_pos = "center",
 			})
 
-			vim.fn.termopen({
-				"git",
-				"log",
-				"--graph",
-				"--all",
-				"--color=always",
-				"--pretty=format:%C(auto)%h%Creset %C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %C(bold blue)%an%Creset",
-			})
+			-- Get how many lines the log will produce
+			local log_lines = vim.fn.systemlist(
+				[[git log --graph --all --color=always --pretty=format:'%C(auto)%h%Creset %C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %C(bold blue)%an%Creset']]
+			)
 
-			vim.cmd("startinsert")
+			if vim.v.shell_error ~= 0 then
+				vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "Git log failed." })
+				return
+			end
 
-			-- Optional: close with q or <Esc>
+			local should_insert = #log_lines >= height - 4
+
+			vim.api.nvim_buf_call(buf, function()
+				vim.fn.termopen({
+					"sh",
+					"-c",
+					[[git log --graph --all --color=always --pretty=format:'%C(auto)%h%Creset %C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %C(bold blue)%an%Creset'; sleep 1000d]],
+				})
+			end)
+
+			if should_insert then
+				vim.cmd("startinsert")
+			end
+
+			-- Add this after termopen block
+			vim.keymap.set({ "n", "t" }, "q", "<C-\\><C-n>:close<CR>", { buffer = buf, silent = true })
 			vim.keymap.set("t", "<Esc>", "<C-\\><C-n>:close<CR>", { buffer = buf, silent = true })
-			vim.keymap.set("t", "q", "<C-\\><C-n>:close<CR>", { buffer = buf, silent = true })
-		end, { desc = "[G]it [L]og (floating terminal)" })
+		end, { desc = "[G]it [L]og (smart terminal)" })
 
 		-- Push branch to origin (works even if its a new branch)
 		vim.keymap.set("n", "<leader>gp", function()
