@@ -5,6 +5,41 @@ return {
 		vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })
 		vim.keymap.set("n", "<leader>gb", ":Gblame<CR>", { desc = "[G]it [B]lame" })
 
+		vim.keymap.set("n", "<leader>gl", function()
+			local width = math.floor(vim.o.columns * 0.9)
+			local height = math.floor(vim.o.lines * 0.85)
+			local row = math.floor((vim.o.lines - height) / 2)
+			local col = math.floor((vim.o.columns - width) / 2)
+
+			local buf = vim.api.nvim_create_buf(false, true)
+			local win = vim.api.nvim_open_win(buf, true, {
+				relative = "editor",
+				row = row,
+				col = col,
+				width = width,
+				height = height,
+				style = "minimal",
+				border = "rounded",
+				title = "Git Log Graph",
+				title_pos = "center",
+			})
+
+			vim.fn.termopen({
+				"git",
+				"log",
+				"--graph",
+				"--all",
+				"--color=always",
+				"--pretty=format:%C(auto)%h%Creset %C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %C(bold blue)%an%Creset",
+			})
+
+			vim.cmd("startinsert")
+
+			-- Optional: close with q or <Esc>
+			vim.keymap.set("t", "<Esc>", "<C-\\><C-n>:close<CR>", { buffer = buf, silent = true })
+			vim.keymap.set("t", "q", "<C-\\><C-n>:close<CR>", { buffer = buf, silent = true })
+		end, { desc = "[G]it [L]og (floating terminal)" })
+
 		-- Push branch to origin (works even if its a new branch)
 		vim.keymap.set("n", "<leader>gp", function()
 			local handle = io.popen("git rev-parse --abbrev-ref HEAD")
@@ -26,6 +61,11 @@ return {
 
 			vim.cmd("Git push --set-upstream origin " .. branch)
 		end, { desc = "[G]it [P]ush (auto upstream)" })
+
+		-- git checkout using the git_switcher.lua file and telescope
+		vim.keymap.set("n", "<leader>gc", function()
+			require("plugins.git_switcher").git_switcher()
+		end, { desc = "[G]it [C]heckout (branch/tag/commit)" })
 
 		-- Create a new branch
 		vim.keymap.set("n", "<leader>gb", function()

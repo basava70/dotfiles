@@ -1,21 +1,36 @@
 return {
 	"folke/snacks.nvim",
 	event = "VeryLazy",
-	opts = {
-		-- optional: customize only the input UI
-		input = {
-			border = "rounded",
-			winblend = 10,
-			relative = "editor",
-		},
-		-- Add notifier to handle advanced notifications
-		notify = {
-			backend = "snacks", -- Use snacks' own stylish notify
-		},
-		notifier = {
-			-- Optional: you can set default configurations for notifier here
-			-- Customize any part of the notifier UI as needed
-			timeout = 3000, -- Example: Set the timeout for notifications (in milliseconds)
-		},
-	},
+	config = function()
+		require("snacks").setup({
+			input = {
+				border = "rounded",
+				winblend = 10,
+				relative = "editor",
+			},
+			notify = {
+				backend = "snacks",
+			},
+			notifier = {
+				backend = "snacks",
+				timeout = 3000,
+				integrations = {},
+				kitty_method = "notify",
+			},
+		})
+
+		-- Basic LSP progress using snacks
+		vim.api.nvim_create_autocmd("LspProgress", {
+			---@param ev {data: {client_id: integer, params: lsp.ProgressParams}}
+			callback = function(ev)
+				local spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
+				vim.notify(vim.lsp.status(), vim.log.levels.INFO, {
+					title = "LSP Progress",
+					icon = ev.data.params.value.kind == "end" and ""
+						or spinner[math.floor(vim.uv.hrtime() / (1e6 * 80)) % #spinner + 1],
+					replace = "lsp_progress",
+				})
+			end,
+		})
+	end,
 }
