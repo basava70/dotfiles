@@ -5,6 +5,7 @@ return {
 		vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })
 		vim.keymap.set("n", "<leader>gb", ":Gblame<CR>", { desc = "[G]it [B]lame" })
 
+		-- Fancy git log
 		vim.keymap.set("n", "<leader>gl", function()
 			local width = math.floor(vim.o.columns * 0.9)
 			local height = math.floor(vim.o.lines * 0.85)
@@ -20,7 +21,7 @@ return {
 				height = height,
 				style = "minimal",
 				border = "rounded",
-				title = "Git Log Graph",
+				title = "Git Log",
 				title_pos = "center",
 			})
 
@@ -62,9 +63,9 @@ return {
 			vim.cmd("Git push --set-upstream origin " .. branch)
 		end, { desc = "[G]it [P]ush (auto upstream)" })
 
-		-- git checkout using the git_switcher.lua file and telescope
+		-- git checkout using the git_checkout.lua file and telescope
 		vim.keymap.set("n", "<leader>gc", function()
-			require("plugins.git_switcher").git_switcher()
+			require("plugins.git_checkout").git_checkout()
 		end, { desc = "[G]it [C]heckout (branch/tag/commit)" })
 
 		-- Create a new branch
