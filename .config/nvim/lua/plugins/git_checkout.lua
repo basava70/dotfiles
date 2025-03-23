@@ -8,12 +8,12 @@ local previewers = require("telescope.previewers")
 local Job = require("plenary.job")
 
 -- Set up custom highlights for Git UI
-vim.api.nvim_set_hl(0, "GitCommitIcon", { fg = "#f7768e" }) -- commit icon
-vim.api.nvim_set_hl(0, "GitRemoteBranchIcon", { fg = "#7aa2f7" }) -- remote icon
-vim.api.nvim_set_hl(0, "GitRemoteBranchText", { fg = "#0db9d7" }) -- remote text (cyan)
-vim.api.nvim_set_hl(0, "GitLocalBranchIcon", { fg = "#41a6b5" }) -- local icon
-vim.api.nvim_set_hl(0, "GitLocalBranchText", { fg = "#9ece6a" }) -- local text (green)
-vim.api.nvim_set_hl(0, "GitAheadBehind", { fg = "#41a6b5" }) -- orange
+vim.api.nvim_set_hl(0, "GitCommitIcon", { fg = "#f7768e", bold = true })
+vim.api.nvim_set_hl(0, "GitRemoteBranchIcon", { fg = "#7aa2f7", bold = true })
+vim.api.nvim_set_hl(0, "GitRemoteBranchText", { fg = "#0db9d7", bold = true })
+vim.api.nvim_set_hl(0, "GitLocalBranchIcon", { fg = "#41a6b5", bold = true })
+vim.api.nvim_set_hl(0, "GitLocalBranchText", { fg = "#9ece6a", bold = true })
+vim.api.nvim_set_hl(0, "GitAheadBehind", { fg = "#e0af68" })
 
 local M = {}
 
@@ -36,7 +36,6 @@ local function get_git_refs()
 	local refs = {}
 	local local_branches = {}
 
-	-- Get local branches
 	local branch_handle = io.popen("git for-each-ref --format='%(refname:short)' refs/heads/")
 	if branch_handle then
 		for line in branch_handle:lines() do
@@ -46,7 +45,6 @@ local function get_git_refs()
 		branch_handle:close()
 	end
 
-	-- Get remote branches and check for divergence
 	local remote_handle = io.popen("git for-each-ref --format='%(refname:short)' refs/remotes/origin/")
 	if remote_handle then
 		for line in remote_handle:lines() do
@@ -69,7 +67,6 @@ local function get_git_refs()
 		remote_handle:close()
 	end
 
-	-- Get all commits
 	local log_handle = io.popen("git log --pretty=format:'%h %s'")
 	if log_handle then
 		for line in log_handle:lines() do
@@ -146,17 +143,19 @@ function M.git_checkout()
 			sorter = conf.generic_sorter({}),
 			previewer = previewers.new_buffer_previewer({
 				define_preview = function(self, entry)
-					local cmd = { "git", "show", entry.value }
 					Job:new({
-						command = cmd[1],
-						args = { unpack(cmd, 2) },
+						command = "git",
+						args = { "show", entry.value },
 						on_exit = function(j)
 							vim.schedule(function()
 								if not self.state then
 									return
 								end
-								vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, j:result())
-								vim.bo[self.state.bufnr].filetype = "diff" -- 🌈 add syntax highlighting
+								local result = j:result()
+								vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, result)
+								vim.bo[self.state.bufnr].filetype = "diff"
+								vim.bo[self.state.bufnr].modifiable = false
+								vim.wo[self.state.winid].wrap = false
 							end)
 						end,
 					}):start()
