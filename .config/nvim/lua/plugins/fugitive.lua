@@ -27,6 +27,11 @@ return {
 			vim.cmd("Git push --set-upstream origin " .. branch)
 		end, { desc = "[G]it [P]ush (auto upstream)" })
 
+		-- git checkout using the git_switcher.lua file and telescope
+		vim.keymap.set("n", "<leader>gc", function()
+			require("plugins.git_switcher").git_switcher()
+		end, { desc = "[G]it [C]heckout (branch/tag/commit)" })
+
 		-- Create a new branch
 		vim.keymap.set("n", "<leader>gb", function()
 			vim.ui.input({ prompt = "New branch name: " }, function(branch)
