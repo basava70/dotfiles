@@ -68,6 +68,25 @@ return {
 		}
 		-------------------------------------------------------------
 		--
+		local function branch_with_git_status()
+			local gitsigns = vim.b.gitsigns_status_dict
+			if not gitsigns or not gitsigns.head then
+				return ""
+			end
+
+			local branch = gitsigns.head
+			local status = ""
+
+			if gitsigns.ahead and gitsigns.ahead > 0 then
+				status = status .. " " .. gitsigns.ahead
+			end
+			if gitsigns.behind and gitsigns.behind > 0 then
+				status = status .. " " .. gitsigns.behind
+			end
+
+			return " " .. branch .. (status ~= "" and (" [" .. status .. "]") or "")
+		end
+
 		local function file_icon_with_name()
 			local devicons = require("nvim-web-devicons")
 			local fname = vim.fn.expand("%:t") -- Get filename
@@ -123,7 +142,7 @@ return {
 			},
 			sections = {
 				lualine_a = { mode },
-				lualine_b = { "branch", diff },
+				lualine_b = { branch_with_git_status, diff },
 				lualine_c = { file_icon_with_name },
 				lualine_x = {
 					diagnostics,
