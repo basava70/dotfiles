@@ -111,6 +111,7 @@ return {
 				return " " .. str
 			end,
 		}
+
 		local gstatus = { ahead = 0, behind = 0 }
 
 		-- Setup the timer once, globally
@@ -154,6 +155,18 @@ return {
 		local branch = {
 			"branch",
 			fmt = function(branch_name)
+				-- Fallback when lualine fails (e.g. in Fugitive buffer)
+				if not branch_name or branch_name == "" then
+					local fallback = vim.fn.system("git -C " .. vim.fn.getcwd() .. " rev-parse --abbrev-ref HEAD")
+					fallback = fallback and fallback:gsub("%s+", "") -- trim whitespace/newlines
+					if fallback ~= "" then
+						branch_name = fallback
+					else
+						branch_name = "(no branch)"
+					end
+				end
+
+				-- Add ahead/behind arrows if any
 				local parts = {}
 				if gstatus.ahead > 0 then
 					table.insert(parts, string.format("%d", gstatus.ahead))
@@ -161,10 +174,12 @@ return {
 				if gstatus.behind > 0 then
 					table.insert(parts, string.format("%d", gstatus.behind))
 				end
+
 				if #parts == 0 then
 					return branch_name
+				else
+					return string.format("%s [%s]", branch_name, table.concat(parts, " "))
 				end
-				return string.format("%s [%s]", branch_name, table.concat(parts, " "))
 			end,
 		}
 

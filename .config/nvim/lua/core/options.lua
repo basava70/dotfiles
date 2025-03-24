@@ -75,7 +75,7 @@ vim.opt.linebreak = true
 vim.opt.whichwrap = "bs<>[]hl"
 
 -- Minimal number of screen lines to keep above and below cursor
-vim.opt.scrolloff = 4
+vim.opt.scrolloff = 10
 
 -- Minimal number of columns to keep left/right of cursor when not wrapping
 vim.opt.sidescrolloff = 8
