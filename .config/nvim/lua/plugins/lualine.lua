@@ -112,6 +112,27 @@ return {
 			end,
 		}
 
+		local function fugitive_ahead_behind()
+			local lines = vim.fn["FugitiveExecute"]("rev-list --left-right --count HEAD...@{upstream}")
+			if not lines or #lines == 0 then
+				return ""
+			end
+
+			local ahead, behind = lines[1]:match("(%d+)%s+(%d+)")
+			ahead = tonumber(ahead)
+			behind = tonumber(behind)
+
+			local status = ""
+			if ahead > 0 then
+				status = status .. "↑" .. ahead .. " "
+			end
+			if behind > 0 then
+				status = status .. "↓" .. behind
+			end
+
+			return status
+		end
+
 		lualine.setup({
 			options = {
 				icons_enabled = true,
@@ -123,7 +144,7 @@ return {
 			},
 			sections = {
 				lualine_a = { mode },
-				lualine_b = { "branch", diff },
+				lualine_b = { "branch", fugitive_ahead_behind, diff },
 				lualine_c = { file_icon_with_name },
 				lualine_x = {
 					diagnostics,
