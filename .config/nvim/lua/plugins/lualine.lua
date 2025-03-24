@@ -111,6 +111,62 @@ return {
 				return " " .. str
 			end,
 		}
+		local gstatus = { ahead = 0, behind = 0 }
+
+		-- Setup the timer once, globally
+		if not _G._branch_ahead_timer_started then
+			_G._branch_ahead_timer_started = true
+
+			local function update_gstatus()
+				local Job = require("plenary.job")
+
+				Job:new({
+					command = "git",
+					args = { "rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}" },
+					on_exit = function(j, _)
+						if j.code ~= 0 then
+							gstatus = { ahead = 0, behind = 0 }
+							return
+						end
+
+						Job:new({
+							command = "git",
+							args = { "rev-list", "--left-right", "--count", "HEAD...@{u}" },
+							on_exit = function(job, _)
+								local res = job:result()[1]
+								local ahead, behind = res:match("(%d+)%s*(%d+)")
+								gstatus = {
+									ahead = tonumber(ahead) or 0,
+									behind = tonumber(behind) or 0,
+								}
+							end,
+						}):start()
+					end,
+				}):start()
+			end
+
+			vim.defer_fn(function()
+				local timer = vim.loop.new_timer()
+				timer:start(0, 2000, vim.schedule_wrap(update_gstatus))
+			end, 0)
+		end
+
+		local branch = {
+			"branch",
+			fmt = function(branch_name)
+				local parts = {}
+				if gstatus.ahead > 0 then
+					table.insert(parts, string.format("%d", gstatus.ahead))
+				end
+				if gstatus.behind > 0 then
+					table.insert(parts, string.format("%d", gstatus.behind))
+				end
+				if #parts == 0 then
+					return branch_name
+				end
+				return string.format("%s [%s]", branch_name, table.concat(parts, " "))
+			end,
+		}
 
 		lualine.setup({
 			options = {
@@ -123,7 +179,10 @@ return {
 			},
 			sections = {
 				lualine_a = { mode },
-				lualine_b = { "branch", diff },
+				lualine_b = {
+					branch,
+					diff,
+				},
 				lualine_c = { file_icon_with_name },
 				lualine_x = {
 					diagnostics,
