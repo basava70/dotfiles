@@ -9,7 +9,7 @@ return {
 		-- Lsp stuff --
 		local function getLspName()
 			local buf_clients = vim.lsp.get_clients()
-			local buf_ft = vim.bo.filetype
+			-- local buf_ft = vim.bo.filetype
 			if next(buf_clients) == nil then
 				return "  No servers"
 			end
