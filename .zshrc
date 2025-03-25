@@ -1,5 +1,5 @@
 # Turn off screen going black after 10 seconds of inactivity
-xset s off && xset -dpms
+# xset s off && xset -dpms
 
 # Initialize Zsh completion system
 autoload -Uz compinit

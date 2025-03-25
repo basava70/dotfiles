@@ -7,12 +7,12 @@ padding.x = 0
 padding.y = 0
 dynamic_padding = true
 
-decorations = "None"
-opacity = 0.85
+# decorations = "None"
+opacity = 1
 
 [font]
-# normal.family = "FiraCode Nerd Font"
-normal.family = "FiraMono Nerd Font"
+normal.family = "FiraCode Nerd Font"
+# normal.family = "FiraMono Nerd Font"
 # normal.family = "JetBrainsMono Nerd Font"
 # normal.family = "Liga SFMono Nerd Font"
 
