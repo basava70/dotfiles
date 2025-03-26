@@ -42,6 +42,10 @@ setopt hist_expire_dups_first
 setopt hist_reduce_blanks
 setopt hist_ignore_space  # Ignore commands that start with a space
 
+# cuda relatted stuff
+export PATH=/opt/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
+
 # Ensure zsh-autosuggestions uses persistent history
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 

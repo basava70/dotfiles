@@ -133,13 +133,15 @@ return {
 			ensure_installed = {
 				-- Add formatters you want Mason to manage (optional)
 				-- These are non-Pacman tools, e.g., prettier, bibtex-tidy, etc.
-				-- "stylua",
-				-- "black",
-				-- "isort",
-				-- "prettier",
-				-- "latexindent",
-				-- "bibtex-tidy",
-				-- "cmake-format",
+				"stylua",
+				"black",
+				"isort",
+				"prettier",
+				"latexindent",
+				"bibtex-tidy",
+				"cmake-language-server",
+				"cmakelang",
+				"shfmt",
 			},
 		})
 		-- 🔹 Customize Hover Window with Rounded Borders
