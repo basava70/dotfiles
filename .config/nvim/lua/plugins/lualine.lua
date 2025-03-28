@@ -155,17 +155,6 @@ return {
 		local branch = {
 			"branch",
 			fmt = function(branch_name)
-				-- Fallback when lualine fails (e.g. in Fugitive buffer)
-				if not branch_name or branch_name == "" then
-					local fallback = vim.fn.system("git -C " .. vim.fn.getcwd() .. " rev-parse --abbrev-ref HEAD")
-					fallback = fallback and fallback:gsub("%s+", "") -- trim whitespace/newlines
-					if fallback ~= "" then
-						branch_name = fallback
-					else
-						branch_name = "(no branch)"
-					end
-				end
-
 				-- Add ahead/behind arrows if any
 				local parts = {}
 				if gstatus.ahead > 0 then
