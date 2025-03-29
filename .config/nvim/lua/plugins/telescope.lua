@@ -114,9 +114,9 @@ return {
 		end, { desc = "[/] Fuzzily search in current buffer" })
 
 		-- Search files in nvim config path
-		vim.keymap.set("n", "<leader>sn", function()
+		vim.keymap.set("n", "<leader>sc", function()
 			require("telescope.builtin").find_files({
-				cwd = vim.fn.stdpath("config"),
+				cwd = vim.fn.expand("~/dotfiles/"),
 			})
 		end, { desc = "[S]earch in [N]eovim config files" })
 

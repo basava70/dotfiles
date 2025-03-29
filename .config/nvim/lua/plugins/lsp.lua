@@ -119,8 +119,6 @@ return {
 				"prettier",
 				"latexindent",
 				"bibtex-tidy",
-				"cmake-language-server",
-				"cmakelang",
 				"shfmt",
 			},
 		})

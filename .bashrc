@@ -37,21 +37,21 @@ export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH=$HOME/dotfiles/code:$PATH
 
 # Theming fzf
-export FZF_DEFAULT_OPTS="
-  --layout=reverse
-  --border=rounded
-  --info=inline-right
-  --ansi
-  --prompt='❯ '
-  --pointer='➤'
-  --marker='✓'
-  --color=fg:#c8d3f5,bg:#222436,hl:#82aaff
-  --color=fg+:#c8d3f5,bg+:#2f334d,hl+:#86e1fc
-  --color=info:#86e1fc,prompt:#c099ff,pointer:#ff757f
-  --color=marker:#c3e88d,spinner:#86e1fc,header:#82aaff
-  --color=gutter:#222436,separator:#2f334d,scrollbar:#2f334d,border:#82aaff
-  --preview-window=right:60%:wrap
-"
+# export FZF_DEFAULT_OPTS="
+#   --layout=reverse
+#   --border=rounded
+#   --info=inline-right
+#   --ansi
+#   --prompt='❯ '
+#   --pointer='➤'
+#   --marker='✓'
+#   --color=fg:#c8d3f5,bg:#222436,hl:#82aaff
+#   --color=fg+:#c8d3f5,bg+:#2f334d,hl+:#86e1fc
+#   --color=info:#86e1fc,prompt:#c099ff,pointer:#ff757f
+#   --color=marker:#c3e88d,spinner:#86e1fc,header:#82aaff
+#   --color=gutter:#222436,separator:#2f334d,scrollbar:#2f334d,border:#82aaff
+#   --preview-window=right:60%:wrap
+# "
 
 # fzf key bindings and completion (if installed)
 [ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash

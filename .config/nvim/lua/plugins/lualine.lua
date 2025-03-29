@@ -175,7 +175,7 @@ return {
 		lualine.setup({
 			options = {
 				icons_enabled = true,
-				theme = "tokyonight-moon",
+				-- theme = "tokyonight-moon",
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = { "alpha", "neo-tree" },
@@ -210,7 +210,10 @@ return {
 						local current_line = vim.fn.line(".")
 						local total_lines = vim.fn.line("$")
 						local columns = 15
-						local position = math.floor((current_line / total_lines) * columns)
+						if total_lines <= 1 then
+							return "⬥" .. string.rep("─", columns) -- fallback for very short files
+						end
+						local position = math.floor(((current_line - 1) / (total_lines - 1)) * columns)
 						local line = ""
 						for i = 0, columns do
 							if i == position then

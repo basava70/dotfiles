@@ -3,6 +3,12 @@ return {
 	opts = {
 		color_icons = true,
 		override = {
+			[".bashrc"] = {
+				icon = "", -- Use the same Zsh icon
+				color = "#ff2a68",
+				cterm_color = "65",
+				name = "bashrc",
+			},
 			[".zshrc"] = {
 				icon = "", -- Use the same Zsh icon
 				color = "#428850",
