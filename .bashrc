@@ -14,6 +14,7 @@ eval "$(zoxide init --cmd cd bash)"
 # eza aliases
 export EZA_CONFIG_DIR="$HOME/.config/eza/"
 alias ls='eza --icons -a'
+alias lst='eza --icons --tree -T --level 1'
 alias lst1='eza --icons --tree -T --level 1'
 alias lst2='eza --icons --tree -T --level 2'
 alias lst3='eza --icons --tree -T --level 3'
