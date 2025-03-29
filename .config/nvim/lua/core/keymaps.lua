@@ -91,13 +91,58 @@ map("v", ">", ">gv", "Indent right and stay in visual mode")
 map("v", "p", '"_dP', "Paste without overwriting register")
 
 -- [[ Diagnostic Keymaps ]]
+vim.diagnostic.config({
+	-- Use the default configuration
+	-- virtual_lines = true
 
-map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
-map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
+	-- Alternatively, customize specific options
+	virtual_lines = {
+		-- Only show virtual line diagnostics for the current cursor line
+		current_line = true,
+	},
+})
 map("n", "<leader>dq", vim.diagnostic.setloclist, "Open diagnostic list")
-map("n", "<leader>dd", function()
-	vim.diagnostic.open_float()
-end, "Open diagnostic in float")
+-- map("n", "<leader>dd", function()
+-- 	vim.diagnostic.open_float()
+-- end, "Open diagnostic in float")
+
+map("n", "ge", function()
+	vim.diagnostic.jump({ count = 1 })
+end, "󰒕 Next diagnostic")
+
+map("n", "gE", function()
+	vim.diagnostic.jump({ count = -1 })
+end, "󰒕 Prev diagnostic")
+
+-- local function diagnosticsAsVirtualLines()
+-- 	local initialVirtTextConf = vim.diagnostic.config().virtual_text
+-- 	vim.diagnostic.config({
+-- 		-- virtual_text = false,
+-- 		virtual_lines = { current_line = true },
+-- 	})
+-- 	vim.defer_fn(function() -- deferred to not trigger by jump itself
+-- 		vim.api.nvim_create_autocmd("CursorMoved", {
+-- 			desc = "User(once): Reset diagnostics virtual lines",
+-- 			once = true,
+-- 			callback = function()
+-- 				vim.diagnostic.config({
+-- 					virtual_lines = false,
+-- 					virtual_text = initialVirtTextConf,
+-- 				})
+-- 			end,
+-- 		})
+-- 	end, 1)
+-- end
+--
+-- vim.keymap.set("n", "ge", function()
+-- 	vim.diagnostic.jump({ count = 1 })
+-- 	diagnosticsAsVirtualLines()
+-- end, { desc = "󰒕 Next diagnostic" })
+--
+-- vim.keymap.set("n", "gE", function()
+-- 	vim.diagnostic.jump({ count = -1 })
+-- 	diagnosticsAsVirtualLines()
+-- end, { desc = "󰒕 Prev diagnostic" })
 
 -- [[ Wrapping Toggle ]]
 
