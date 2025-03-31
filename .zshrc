@@ -49,13 +49,15 @@ export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
 # Ensure zsh-autosuggestions uses persistent history
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Accept autosuggestions with Ctrl+L
 bindkey '^y' autosuggest-accept
 
 
 # Syntax highlighting (keep this at the very end)
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export PATH="$HOME/.npm-global/bin:$PATH"
 export PATH=$HOME/dotfiles/code:$PATH
