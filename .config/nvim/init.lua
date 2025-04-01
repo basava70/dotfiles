@@ -37,6 +37,7 @@ require("lazy").setup({
 	require("plugins.vimtex"),
 	require("plugins.snacks"),
 	require("plugins.hlslens"),
+	-- require("plugins.fzf-lua"),
 	-- require("plugins.nvim-navic"),
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	{
