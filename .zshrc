@@ -3,6 +3,11 @@
 
 fastfetch 
 
+# Initialize Zsh completion system
+autoload -Uz compinit
+zstyle ':completion:*' rehash true
+compinit -C
+
 export EDITOR=nvim
 
 # Point to custom Starship config location
@@ -79,4 +84,3 @@ if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.
 fi
 
 export PATH="$HOME/.npm-global/bin:$PATH"
-export PATH=$HOME/dotfiles/code:$PATH
