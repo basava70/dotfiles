@@ -56,8 +56,17 @@ ZSH_AUTOSUGGEST_STRATEGY=(history)
 
 # fzf key bindings and completion (if installed)
 [ -f "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh"
+# For Arch Linux (system-wide plugin location)
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
+# For Homebrew (macOS)
+if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ]]; then 
+  source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
+fi
+if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" ]]; then  
+  source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"
+fi
 
 # For Homebrew (macOS)
 if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
