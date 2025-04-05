@@ -37,6 +37,7 @@ require("lazy").setup({
 	require("plugins.vimtex"),
 	require("plugins.snacks"),
 	require("plugins.hlslens"),
+	require("plugins.noice"),
 	-- require("plugins.fzf-lua"),
 	-- require("plugins.nvim-navic"),
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
@@ -98,4 +99,4 @@ require("lazy").setup({
 	-- The line beneath this is called `modeline`. See `:help modeline`
 	-- vim: ts=2 sts=2 sw=2 et
 })
-require("plugins.fugitive_notifications")
+-- require("plugins.fugitive_notifications")
