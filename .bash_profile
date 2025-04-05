@@ -4,4 +4,4 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-[ -f "$HOME/dotfiles/code/fzf/dist/rose-pine.sh" ] && source "$HOME/dotfiles/code/fzf/dist/rose-pine.sh"
+[ -f "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh"

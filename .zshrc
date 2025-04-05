@@ -3,11 +3,6 @@
 
 fastfetch 
 
-# Initialize Zsh completion system
-autoload -Uz compinit
-zstyle ':completion:*' rehash true
-compinit -C
-
 export EDITOR=nvim
 
 # Point to custom Starship config location
@@ -30,12 +25,12 @@ alias lst4='eza --icons --tree -T --level 4'
 # Remove nvim cache
 alias remove_nvim_cache='rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim'
 
-# Autosuggestions
 #
 # Ensure persistent history across reboots
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
+
 
 # Append history instead of overwriting it
 setopt inc_append_history
@@ -53,6 +48,11 @@ export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
 
 # Ensure zsh-autosuggestions uses persistent history
 ZSH_AUTOSUGGEST_STRATEGY=(history)
+
+# fzf key bindings and completion (if installed)
+[ -f "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh"
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 
 # For Homebrew (macOS)
 if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
