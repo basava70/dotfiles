@@ -17,18 +17,13 @@ return {
 			inc_rename = false,
 			lsp_doc_border = false,
 		},
-
-		-- ✅ Add custom routes here
 		routes = {
 			{
 				filter = {
 					event = "msg_show",
-					kind = "", -- regular echo output
-					find = "%[.*%]", -- matches "[main abc123]" style commit lines
 				},
 				opts = {
-					title = "Git Commit",
-					icon = "",
+					title = "NOICE DEBUG",
 					level = vim.log.levels.INFO,
 				},
 			},
