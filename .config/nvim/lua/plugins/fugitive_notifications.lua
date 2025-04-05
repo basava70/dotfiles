@@ -1,8 +1,6 @@
 vim.api.nvim_create_autocmd("User", {
 	pattern = "FugitiveCommitPost",
 	callback = function()
-		local notifier = require("snacks.notifier")
-
 		local handle = io.popen("git log -1 --pretty=format:%h\\ %s 2>/dev/null")
 		local output = handle and handle:read("*a") or ""
 		if handle then
@@ -25,6 +23,9 @@ vim.api.nvim_create_autocmd("User", {
 			msg = "Git Error: " .. trimmed
 		end
 
-		notifier.new():title("Git Commit"):message(msg):icon(icon):level(level):timeout(4000):open()
+		require("snacks.notifier").notify(msg, level, { icon = icon })
+
+		-- Optional: clear any lingering Fugitive echo
+		vim.cmd("redraw!")
 	end,
 })
