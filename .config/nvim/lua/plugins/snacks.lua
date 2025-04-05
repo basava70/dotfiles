@@ -13,7 +13,7 @@ return {
 		},
 		notifier = {
 			backend = "snacks",
-			timeout = 10000,
+			timeout = 3000,
 			integrations = {},
 			kitty_method = "notify",
 		},

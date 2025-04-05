@@ -17,18 +17,6 @@ return {
 			inc_rename = false,
 			lsp_doc_border = false,
 		},
-		routes = {
-			{
-				filter = {
-					event = "msg_show",
-				},
-				opts = {
-					title = "NOICE DEBUG",
-					level = vim.log.levels.INFO,
-					timeout = 10000,
-				},
-			},
-		},
 	},
 
 	dependencies = {
