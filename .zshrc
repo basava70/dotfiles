@@ -27,6 +27,9 @@ alias lst2='eza --icons --tree -T --level 2'
 alias lst3='eza --icons --tree -T --level 3'
 alias lst4='eza --icons --tree -T --level 4'
 
+# Remove nvim cache
+alias remove_nvim_cache='rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim'
+
 # Autosuggestions
 #
 # Ensure persistent history across reboots
