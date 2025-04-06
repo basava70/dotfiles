@@ -29,7 +29,7 @@ require("lazy").setup({
 	require("plugins.vim-tmux-navigator"),
 	require("plugins.lint"),
 	require("plugins.neotree"),
-	require("plugins.indent-blankline"),
+	-- require("plugins.indent-blankline"),
 	require("plugins.todo-comments"),
 	require("plugins.dashboard"),
 	require("plugins.bufferline"),
@@ -100,3 +100,4 @@ require("lazy").setup({
 	-- The line beneath this is called `modeline`. See `:help modeline`
 	-- vim: ts=2 sts=2 sw=2 et
 })
+	require("plugins.lsp_progress")
