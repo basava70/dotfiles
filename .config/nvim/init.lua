@@ -29,7 +29,7 @@ require("lazy").setup({
 	require("plugins.vim-tmux-navigator"),
 	require("plugins.lint"),
 	require("plugins.neotree"),
-	-- require("plugins.indent-blankline"),
+	require("plugins.indent-blankline"),
 	require("plugins.todo-comments"),
 	require("plugins.dashboard"),
 	require("plugins.bufferline"),

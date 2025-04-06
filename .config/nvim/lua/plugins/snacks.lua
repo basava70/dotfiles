@@ -3,7 +3,7 @@ return {
 	priority = 1000,
 	lazy = false,
 	opts = {
-		indent = { enabled = true, char = "┊" },
+		-- indent = { enabled = true, char = "┊" },
 		input = {
 			border = "rounded",
 			winblend = 10,
