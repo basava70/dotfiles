@@ -1,5 +1,7 @@
 return {
 	"tpope/vim-fugitive",
+	cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gblame" }, -- loads on :Git etc
+	event = "BufReadPre", -- loads on first file read
 	config = function()
 		vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "[G]it [S]tatus" })
 		vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })

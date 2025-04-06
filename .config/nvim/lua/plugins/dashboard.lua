@@ -77,7 +77,7 @@ return {
 				},
 			},
 			footer = {
-				"Welcome to Neovim, enjoy your session!",
+				"Nannayi always does Nannayi!",
 			},
 		},
 	},
@@ -88,6 +88,18 @@ return {
 				vim.api.nvim_set_hl(0, "DashboardShortCut", { fg = "#9ece6a", bold = true }) -- Green for section keys
 				vim.api.nvim_set_hl(0, "DashboardFiles", { fg = "#6c6f93" }) -- DarkGray for file paths
 				vim.api.nvim_set_hl(0, "DashboardNewFile", { fg = "#7AA2F7", bold = true }) -- 🔹 Blue for "New File"
+			end,
+		})
+		-- Return to dashboard after Lazy (or other special buffers) close
+		vim.api.nvim_create_autocmd("BufWinLeave", {
+			pattern = "*",
+			callback = function()
+				local buftype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+				if buftype == "lazy" and #vim.api.nvim_list_bufs() == 1 then
+					vim.schedule(function()
+						vim.cmd("Dashboard")
+					end)
+				end
 			end,
 		})
 	end,
