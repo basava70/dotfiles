@@ -1,13 +1,6 @@
-local pickers = require("telescope.pickers")
-local finders = require("telescope.finders")
-local actions = require("telescope.actions")
-local action_state = require("telescope.actions.state")
-local entry_display = require("telescope.pickers.entry_display")
-local conf = require("telescope.config").values
-local previewers = require("telescope.previewers")
-local Job = require("plenary.job")
+local fzf = require("fzf-lua")
 
--- Set up custom highlights for Git UI
+-- Custom highlight groups (define your own colors if needed)
 vim.api.nvim_set_hl(0, "GitCommitIcon", { fg = "#f7768e" })
 vim.api.nvim_set_hl(0, "GitRemoteBranchIcon", { fg = "#7aa2f7" })
 vim.api.nvim_set_hl(0, "GitRemoteBranchText", { fg = "#0db9d7" })
@@ -40,7 +33,7 @@ local function get_git_refs()
 	if branch_handle then
 		for line in branch_handle:lines() do
 			local_branches[line] = true
-			table.insert(refs, { kind = "branch", value = line, label = "󰘬 " .. line })
+			table.insert(refs, { label = "󰘬 " .. line, value = line, kind = "local" })
 		end
 		branch_handle:close()
 	end
@@ -51,15 +44,14 @@ local function get_git_refs()
 			local remote = line
 			local local_name = remote:gsub("^origin/", "")
 			if not local_branches[local_name] then
-				table.insert(refs, { kind = "remote", value = remote, label = "󰑔 " .. remote })
+				table.insert(refs, { label = "󰑔 " .. remote, value = remote, kind = "remote" })
 			else
 				local differs, annotation = is_branch_different(local_name, remote)
 				if differs then
 					table.insert(refs, {
-						kind = "remote",
-						value = remote,
 						label = "󰑔 " .. remote .. (annotation or ""),
-						annotation = annotation,
+						value = remote,
+						kind = "remote",
 					})
 				end
 			end
@@ -73,11 +65,9 @@ local function get_git_refs()
 			local hash, msg = line:match("^(%w+)%s+(.+)$")
 			if hash and msg then
 				table.insert(refs, {
-					kind = "commit",
-					value = hash,
 					label = " " .. hash .. " " .. msg,
-					hash = hash,
-					msg = msg,
+					value = hash,
+					kind = "commit",
 				})
 			end
 		end
@@ -88,108 +78,42 @@ local function get_git_refs()
 end
 
 function M.git_checkout()
-	local results = get_git_refs()
+	local refs = get_git_refs()
+	local entries = {}
+	for _, entry in ipairs(refs) do
+		table.insert(entries, entry.label)
+	end
 
-	local displayer = entry_display.create({
-		separator = " ",
-		items = {
-			{ width = 2 },
-			{ width = 30 },
-			{ remaining = true },
+	fzf.fzf_exec(entries, {
+		prompt = "Git Checkout> ",
+		previewer = "builtin",
+		preview = "git show --color=always {1}",
+		winopts = {
+			title = " Git Checkout",
+			preview = { layout = "vertical", vertical = "up:65%" },
+		},
+		actions = {
+			["default"] = function(selected)
+				local line = selected[1]
+				if not line then
+					return
+				end
+
+				local remote = line:match("^󰑔 (%S+)")
+				local commit = line:match("^ (%S+)")
+				local local_branch = line:match("^󰘬 (%S+)")
+
+				if remote then
+					local local_name = remote:gsub("^origin/", "")
+					vim.cmd("Git checkout -b " .. local_name .. " " .. remote)
+				elseif commit then
+					vim.cmd("Git checkout " .. commit)
+				elseif local_branch then
+					vim.cmd("Git checkout " .. local_branch)
+				end
+			end,
 		},
 	})
-
-	pickers
-		.new({}, {
-			prompt_title = "Git Checkout",
-			finder = finders.new_table({
-				results = results,
-				entry_maker = function(entry)
-					local ord = entry.kind == "commit" and (entry.hash .. " " .. entry.msg) or entry.value
-					return {
-						value = entry.value,
-						kind = entry.kind,
-						ordinal = ord,
-						display = function()
-							if entry.kind == "commit" then
-								return displayer({
-									{ "", "GitCommitIcon" },
-									{ entry.hash, "TelescopeResultsNumber" },
-									{ entry.msg, "TelescopeResultsComment" },
-								})
-							elseif entry.kind == "tag" then
-								return displayer({
-									{ "", "TelescopeResultsConstant" },
-									{ entry.value, "TelescopeResultsString" },
-									{ "", "" },
-								})
-							elseif entry.kind == "remote" then
-								return displayer({
-									{ "󰑔", "GitRemoteBranchIcon" },
-									{ entry.value, "GitRemoteBranchText" },
-									{ entry.annotation or "", "GitAheadBehind" },
-								})
-							else
-								return displayer({
-									{ "󰘬", "GitLocalBranchIcon" },
-									{ entry.value, "GitLocalBranchText" },
-									{ "", "" },
-								})
-							end
-						end,
-					}
-				end,
-			}),
-			sorter = conf.generic_sorter({}),
-			previewer = previewers.new_buffer_previewer({
-				define_preview = function(self, entry)
-					Job:new({
-						command = "git",
-						args = { "show", entry.value },
-						on_exit = function(j)
-							vim.schedule(function()
-								if not self.state then
-									return
-								end
-								local result = j:result()
-								vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, result)
-								vim.bo[self.state.bufnr].modifiable = false
-								vim.wo[self.state.winid].wrap = false
-								vim.bo[self.state.bufnr].filetype = "diff"
-
-								-- Try to detect actual filetype from diff header
-								for _, line in ipairs(result) do
-									local filename = line:match("^diff %-%-git a/.+%.([%w_]+) b/.*")
-									if filename then
-										local ft = vim.filetype.match({ filename = "file." .. filename })
-										if ft then
-											vim.bo[self.state.bufnr].syntax = ft
-										end
-										break
-									end
-								end
-							end)
-						end,
-					}):start()
-				end,
-			}),
-			attach_mappings = function(prompt_bufnr, map)
-				actions.select_default:replace(function()
-					local selection = action_state.get_selected_entry()
-					actions.close(prompt_bufnr)
-					if selection then
-						if selection.kind == "remote" then
-							local local_name = selection.value:gsub("^origin/", "")
-							vim.cmd("Git checkout -b " .. local_name .. " " .. selection.value)
-						else
-							vim.cmd("Git checkout " .. selection.value)
-						end
-					end
-				end)
-				return true
-			end,
-		})
-		:find()
 end
 
 return M

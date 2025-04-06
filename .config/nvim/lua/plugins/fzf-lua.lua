@@ -4,7 +4,38 @@ return {
 	-- dependencies = { "nvim-tree/nvim-web-devicons" },
 	-- or if using mini.icons/mini.nvim
 	dependencies = { "echasnovski/mini.icons" },
-	opts = { grep = { hidden = true } },
+	opts = {
+		grep = { hidden = true },
+		winopts = {
+			height = 0.85,
+			width = 0.85,
+			row = 0.35,
+			col = 0.5,
+			border = "rounded",
+			preview = {
+				border = "rounded",
+				layout = "vertical", -- or "horizontal"
+				vertical = "up:60%", -- or "down:60%"
+			},
+		},
+		fzf_colors = {
+			true, -- inherit fzf colors that aren't specified below from
+			-- the auto-generated theme similar to `fzf_colors=true`
+			["fg"] = { "fg", "CursorLine" },
+			["bg"] = { "bg", "Normal" },
+			["hl"] = { "fg", "Comment" },
+			["fg+"] = { "fg", "Normal", "underline" },
+			["bg+"] = { "bg", { "CursorLine", "Normal" } },
+			["hl+"] = { "fg", "Statement" },
+			["info"] = { "fg", "PreProc" },
+			["prompt"] = { "fg", "Conditional" },
+			["pointer"] = { "fg", "Exception" },
+			["marker"] = { "fg", "Keyword" },
+			["spinner"] = { "fg", "Label" },
+			["header"] = { "fg", "Comment" },
+			["gutter"] = "-1",
+		},
+	},
 	keys = {
 		{
 			"<leader>sf",
