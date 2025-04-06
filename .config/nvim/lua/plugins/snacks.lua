@@ -3,19 +3,14 @@ return {
 	priority = 1000,
 	lazy = false,
 	opts = {
+		indent = { enabled = true, char = "┊" },
 		input = {
 			border = "rounded",
 			winblend = 10,
 			relative = "editor",
 		},
-		notify = {
-			backend = "snacks",
-		},
 		notifier = {
-			backend = "snacks",
-			timeout = 3000,
-			integrations = {},
-			kitty_method = "notify",
+			enabled = true,
 		},
 	},
 }

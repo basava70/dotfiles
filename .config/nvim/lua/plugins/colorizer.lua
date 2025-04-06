@@ -1,7 +1,15 @@
 return {
-	-- High-performance color highlighter
-	"norcalli/nvim-colorizer.lua",
-	config = function()
-		require("colorizer").setup()
-	end,
+	"catgoose/nvim-colorizer.lua",
+	event = "BufReadPre",
+	opts = {
+		filetypes = { "*" }, -- enable for all files
+		user_default_options = {
+			names = true, -- "blue" instead of just #0000ff
+			css = true, -- enable parsing of CSS functions: rgb(), hsl()
+			rgb_fn = true, -- enable parsing rgb(...) functions
+			hsl_fn = true, -- enable parsing hsl(...) functions
+			tailwind = true, -- enable tailwind colors
+			mode = "foreground", -- "background" or "foreground"
+		},
+	},
 }

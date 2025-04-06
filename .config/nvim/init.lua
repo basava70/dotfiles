@@ -19,16 +19,17 @@ require("lazy").setup({
 	require("plugins.which-key"),
 	require("plugins.lualine"),
 	require("plugins.gitsigns"),
-	require("plugins.telescope"),
+	-- require("plugins.telescope"),
 	require("plugins.lsp"),
-	require("plugins.cmp"),
+	-- require("plugins.cmp"),
+	require("plugins.blink"),
 	require("plugins.conform"),
 	require("plugins.treesitter"),
 	require("plugins.colorizer"),
 	require("plugins.vim-tmux-navigator"),
 	require("plugins.lint"),
 	require("plugins.neotree"),
-	require("plugins.indent-blankline"),
+	-- require("plugins.indent-blankline"),
 	require("plugins.todo-comments"),
 	require("plugins.dashboard"),
 	require("plugins.bufferline"),
@@ -38,7 +39,7 @@ require("lazy").setup({
 	require("plugins.snacks"),
 	require("plugins.hlslens"),
 	require("plugins.noice"),
-	-- require("plugins.fzf-lua"),
+	require("plugins.fzf-lua"),
 	-- require("plugins.nvim-navic"),
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	{
@@ -99,3 +100,4 @@ require("lazy").setup({
 	-- The line beneath this is called `modeline`. See `:help modeline`
 	-- vim: ts=2 sts=2 sw=2 et
 })
+require("plugins.lsp_progress")

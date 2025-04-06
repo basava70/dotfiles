@@ -1,5 +1,7 @@
 return {
 	"tpope/vim-fugitive",
+	cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gblame" }, -- loads on :Git etc
+	event = "BufReadPre", -- loads on first file read
 	config = function()
 		vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "[G]it [S]tatus" })
 		vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })
@@ -91,24 +93,27 @@ return {
 		end, { desc = "[G]it checkout -[b] (new branch)" })
 
 		-- Git merge
+		local notifier = require("snacks.notifier")
+
 		vim.keymap.set("n", "<leader>gm", function()
-			-- Get local branches
-			local handle = io.popen("git for-each-ref --format='%(refname:short)' refs/heads/")
-			local output = handle and handle:read("*a") or ""
-			if handle then
-				handle:close()
-			end
-
-			local branches = {}
-			for line in output:gmatch("[^\r\n]+") do
-				table.insert(branches, line)
-			end
-
-			vim.ui.select(branches, { prompt = "Merge branch into current:" }, function(choice)
-				if choice and choice ~= "" then
-					vim.cmd("Git merge --no-ff " .. choice)
-				end
-			end)
+			require("fzf-lua").git_branches({
+				prompt = "Merge branch into current:",
+				actions = {
+					["default"] = function(selected)
+						local branch = selected[1]
+						if branch and branch ~= "" then
+							vim.cmd("Git merge --no-ff " .. branch)
+							vim.defer_fn(function()
+								notifier.notify("🔀 Merged branch: " .. branch, "info", {
+									title = "Git Merge",
+									icon = "",
+									timeout = 4000,
+								})
+							end, 300)
+						end
+					end,
+				},
+			})
 		end, { desc = "[G]it [M]erge branch into current" })
 
 		-- Create augroup to namespace this autocmd
