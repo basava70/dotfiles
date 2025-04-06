@@ -58,10 +58,10 @@ return {
 			-- completion = { documentation = { auto_show = true } },
 			-- signature = { enabled = true },
 			completion = {
-				menu = { border = "single" },
-				documentation = { window = { border = "single" } },
+				menu = { border = "rounded" },
+				documentation = { window = { border = "rounded" } },
 			},
-			signature = { window = { border = "single" } },
+			signature = { window = { border = "rounded" } },
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
