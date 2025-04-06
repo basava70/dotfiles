@@ -5,6 +5,7 @@ local function NewFilePrompt()
 		vim.cmd("edit " .. vim.fn.expand(filename)) -- Open the file at the specified path
 	end
 end
+
 return {
 	"nvimdev/dashboard-nvim",
 	event = "VimEnter",
@@ -23,9 +24,9 @@ return {
 			shortcut = {
 				{
 					icon = " ",
-					icon_hl = "@variable", -- Highlight for icon (use your preferred hl group)
+					icon_hl = "@variable",
 					desc = "Find Files",
-					group = "Lable", -- Highlight for description
+					group = "Lable",
 					action = "Telescope find_files",
 					key = "f",
 				},
@@ -41,7 +42,7 @@ return {
 					icon = " ",
 					icon_hl = "Number",
 					desc = "Dotfiles",
-					group = "Number", -- You can pick a color group you like
+					group = "Number",
 					action = function()
 						require("telescope.builtin").find_files({
 							cwd = "$HOME/dotfiles/",
@@ -53,7 +54,7 @@ return {
 					icon = " ",
 					icon_hl = "DashboardNewFile",
 					desc = "New",
-					group = "DashboardNewFile", -- 🔹 Apply the new highlight group
+					group = "DashboardNewFile",
 					action = function()
 						NewFilePrompt()
 					end,
@@ -81,26 +82,52 @@ return {
 			},
 		},
 	},
+
 	init = function()
+		-- Highlight tweaks
 		vim.api.nvim_create_autocmd("ColorScheme", {
 			callback = function()
-				vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#e0af68", bold = true }) -- Orange
-				vim.api.nvim_set_hl(0, "DashboardShortCut", { fg = "#9ece6a", bold = true }) -- Green for section keys
-				vim.api.nvim_set_hl(0, "DashboardFiles", { fg = "#6c6f93" }) -- DarkGray for file paths
-				vim.api.nvim_set_hl(0, "DashboardNewFile", { fg = "#7AA2F7", bold = true }) -- 🔹 Blue for "New File"
+				vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#e0af68", bold = true })
+				vim.api.nvim_set_hl(0, "DashboardShortCut", { fg = "#9ece6a", bold = true })
+				vim.api.nvim_set_hl(0, "DashboardFiles", { fg = "#6c6f93" })
+				vim.api.nvim_set_hl(0, "DashboardNewFile", { fg = "#7AA2F7", bold = true })
 			end,
 		})
-		-- Return to dashboard after Lazy (or other special buffers) close
-		vim.api.nvim_create_autocmd("BufWinLeave", {
+
+		-- Return to dashboard when Lazy is closed and it's the only window
+		vim.api.nvim_create_autocmd("WinClosed", {
 			pattern = "*",
-			callback = function()
-				local buftype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
-				if buftype == "lazy" and #vim.api.nvim_list_bufs() == 1 then
-					vim.schedule(function()
-						vim.cmd("Dashboard")
-					end)
+			callback = function(args)
+				local closed_buf = tonumber(args.buf)
+				local ft = vim.api.nvim_buf_get_option(closed_buf, "filetype")
+
+				if ft == "lazy" then
+					vim.defer_fn(function()
+						local visible_buffers = vim.tbl_filter(function(buf)
+							return vim.api.nvim_buf_is_loaded(buf)
+								and vim.api.nvim_buf_get_option(buf, "buflisted")
+								and vim.fn.bufwinid(buf) ~= -1
+						end, vim.api.nvim_list_bufs())
+
+						if #visible_buffers == 0 then
+							vim.cmd("Dashboard")
+						end
+					end, 50)
 				end
 			end,
 		})
+
+		-- Alternative approach (also works if Lazy opens and closes instantly)
+		if vim.o.filetype == "lazy" then
+			vim.api.nvim_create_autocmd("WinClosed", {
+				pattern = tostring(vim.api.nvim_get_current_win()),
+				once = true,
+				callback = function()
+					vim.schedule(function()
+						vim.api.nvim_exec_autocmds("UIEnter", { group = "dashboard" })
+					end)
+				end,
+			})
+		end
 	end,
 }
