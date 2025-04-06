@@ -1,7 +1,7 @@
 return {
 	"tpope/vim-fugitive",
 	cmd = { "Git", "G", "Gdiffsplit", "Gvdiffsplit", "Gblame" }, -- loads on :Git etc
-	event = "BufReadPre", -- loads on first file read
+	event = "VimEnter", -- loads on first file read
 	config = function()
 		vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "[G]it [S]tatus" })
 		vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })
@@ -103,13 +103,6 @@ return {
 						local branch = selected[1]
 						if branch and branch ~= "" then
 							vim.cmd("Git merge --no-ff " .. branch)
-							vim.defer_fn(function()
-								notifier.notify("🔀 Merged branch: " .. branch, "info", {
-									title = "Git Merge",
-									icon = "",
-									timeout = 4000,
-								})
-							end, 300)
 						end
 					end,
 				},
