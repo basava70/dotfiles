@@ -4,91 +4,91 @@ return {
 	-- dependencies = { "nvim-tree/nvim-web-devicons" },
 	-- or if using mini.icons/mini.nvim
 	dependencies = { "echasnovski/mini.icons" },
-	opts = {},
+	opts = { grep = { hidden = true } },
 	keys = {
 		{
-			"<leader>ff",
+			"<leader>sf",
 			function()
 				require("fzf-lua").files()
 			end,
-			desc = "Find Files in project directory",
+			desc = "[S]earch [F]iles",
 		},
 		{
-			"<leader>fg",
+			"<leader>sg",
 			function()
 				require("fzf-lua").live_grep()
 			end,
-			desc = "Find by grepping in project directory",
+			desc = "[S]earch by [G]rep",
 		},
 		{
-			"<leader>fc",
+			"<leader>sc",
 			function()
-				require("fzf-lua").files({ cwd = vim.fn.stdpath("config") })
+				require("fzf-lua").files({ cwd = vim.fn.expand("~/dotfiles/") })
 			end,
-			desc = "Find in neovim configuration",
+			desc = "[S]earch in [C]onfig (dotfiles)",
 		},
 		{
-			"<leader>fh",
+			"<leader>sh",
 			function()
 				require("fzf-lua").helptags()
 			end,
-			desc = "[F]ind [H]elp",
+			desc = "[S]earch [H]elp",
 		},
 		{
-			"<leader>fk",
+			"<leader>sk",
 			function()
 				require("fzf-lua").keymaps()
 			end,
-			desc = "[F]ind [K]eymaps",
+			desc = "[S]earch [K]eymaps",
 		},
 		{
-			"<leader>fb",
+			"<leader>sb",
 			function()
 				require("fzf-lua").builtin()
 			end,
-			desc = "[F]ind [B]uiltin FZF",
+			desc = "[S]earch [B]uiltin FZF",
 		},
 		{
-			"<leader>fw",
+			"<leader>sw",
 			function()
 				require("fzf-lua").grep_cword()
 			end,
-			desc = "[F]ind current [W]ord",
+			desc = "[S]earch current [W]ord",
 		},
 		{
-			"<leader>fW",
+			"<leader>sW",
 			function()
 				require("fzf-lua").grep_cWORD()
 			end,
-			desc = "[F]ind current [W]ORD",
+			desc = "[S]earch current [W]ORD",
 		},
 		{
-			"<leader>fd",
+			"<leader>sd",
 			function()
 				require("fzf-lua").diagnostics_document()
 			end,
-			desc = "[F]ind [D]iagnostics",
+			desc = "[S]earch [D]iagnostics",
 		},
 		{
-			"<leader>fr",
+			"<leader>sr",
 			function()
 				require("fzf-lua").resume()
 			end,
-			desc = "[F]ind [R]esume",
+			desc = "[S]earch [R]esume",
 		},
 		{
-			"<leader>fo",
+			"<leader>so",
 			function()
 				require("fzf-lua").oldfiles()
 			end,
-			desc = "[F]ind [O]ld Files",
+			desc = "[S]earch [O]ld Files",
 		},
 		{
 			"<leader><leader>",
 			function()
 				require("fzf-lua").buffers()
 			end,
-			desc = "[,] Find existing buffers",
+			desc = "[,] search existing buffers",
 		},
 		{
 			"<leader>/",
