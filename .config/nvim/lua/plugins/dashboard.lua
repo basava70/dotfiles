@@ -27,7 +27,7 @@ return {
 					icon_hl = "@variable",
 					desc = "Find Files",
 					group = "Lable",
-					action = "Telescope find_files",
+					action = "FzfLua files",
 					key = "f",
 				},
 				{
@@ -35,7 +35,7 @@ return {
 					icon_hl = "Label",
 					desc = "Live Grep",
 					group = "Label",
-					action = "Telescope live_grep",
+					action = "FzfLua live_grep",
 					key = "g",
 				},
 				{
@@ -44,9 +44,7 @@ return {
 					desc = "Dotfiles",
 					group = "Number",
 					action = function()
-						require("telescope.builtin").find_files({
-							cwd = "$HOME/dotfiles/",
-						})
+						require("fzf-lua").files({ cwd = vim.fn.expand("~/dotfiles/") })
 					end,
 					key = "d",
 				},
