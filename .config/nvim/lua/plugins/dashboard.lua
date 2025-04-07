@@ -27,7 +27,9 @@ return {
 					icon_hl = "@variable",
 					desc = "Find Files",
 					group = "Lable",
-					action = "FzfLua files",
+					action = function()
+						require("fzf-lua").files()
+					end,
 					key = "f",
 				},
 				{
@@ -35,7 +37,10 @@ return {
 					icon_hl = "Label",
 					desc = "Live Grep",
 					group = "Label",
-					action = "FzfLua live_grep",
+					action = function()
+						require("fzf-lua").live_grep()
+					end,
+
 					key = "g",
 				},
 				{

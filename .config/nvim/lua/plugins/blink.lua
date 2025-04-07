@@ -41,11 +41,17 @@ return {
 			-- See :h blink-cmp-config-keymap for defining your own keymap
 			keymap = {
 				preset = "default",
-				["<CR>"] = { "accept", "fallback" },
+				["<CR>"] = { "select_and_accept", "fallback" },
 				-- ["<C-Y>"] = { "accept", "fallback" },
 				["<C-k>"] = { "select_prev", "fallback_to_mappings" },
 				["<C-j>"] = { "select_next", "fallback_to_mappings" },
 				["<C-y>"] = { "show_signature", "hide_signature", "fallback" },
+			},
+			cmdline = {
+				keymap = {
+					["<C-k>"] = { "select_prev", "fallback_to_mappings" },
+					["<C-j>"] = { "select_next", "fallback_to_mappings" },
+				},
 			},
 
 			appearance = {
