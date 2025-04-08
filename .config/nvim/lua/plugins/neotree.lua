@@ -1,7 +1,12 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
-	cmd = "Neotree",
+	keys = {
+		{ "<leader>ee", "<cmd>Neotree toggle position=left<cr>", desc = "Neo-tree Toggle" },
+		{ "<leader>ec", "<cmd>Neotree reveal<cr>", desc = "Neo-tree Reveal" },
+		{ "<leader>er", "<cmd>Neotree refresh<cr>", desc = "Neo-tree Refresh" },
+		{ "\\", "<cmd>Neotree reveal<cr>", desc = "Neo-tree Reveal (\\)" },
+	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
@@ -314,10 +319,5 @@ return {
 				},
 			},
 		})
-
-		vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
-		vim.keymap.set("n", "<leader>ee", ":Neotree toggle position=left<CR>", { noremap = true, silent = true }) -- focus file explorer
-		vim.keymap.set("n", "<leader>ec", ":Neotree reveal<CR>", { desc = "Explorer Current File" })
-		vim.keymap.set("n", "<leader>er", ":Neotree refresh<CR>", { desc = "Explorer Refresh" })
 	end,
 }
