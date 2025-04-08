@@ -20,5 +20,18 @@ return {
 			long_message_to_split = true,
 			lsp_doc_border = false,
 		},
+		routes = {
+			{
+				filter = {
+					event = "msg_show",
+					kind = { "echo", "echomsg" },
+				},
+				view = "notify",
+				opts = {
+					title = "Fugitive Messages",
+					merge = true,
+				},
+			},
+		},
 	},
 }
