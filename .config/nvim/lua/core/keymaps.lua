@@ -91,16 +91,16 @@ map("v", ">", ">gv", "Indent right and stay in visual mode")
 map("v", "p", '"_dP', "Paste without overwriting register")
 
 -- [[ Diagnostic Keymaps ]]
-vim.diagnostic.config({
-	-- Use the default configuration
-	-- virtual_lines = true
-
-	-- Alternatively, customize specific options
-	virtual_lines = {
-		-- Only show virtual line diagnostics for the current cursor line
-		current_line = true,
-	},
-})
+-- vim.diagnostic.config({
+-- 	-- Use the default configuration
+-- 	-- virtual_lines = true
+--
+-- 	-- Alternatively, customize specific options
+-- 	virtual_lines = {
+-- 		-- Only show virtual line diagnostics for the current cursor line
+-- 		current_line = true,
+-- 	},
+-- })
 map("n", "<leader>dq", vim.diagnostic.setloclist, "Open diagnostic list")
 -- map("n", "<leader>dd", function()
 -- 	vim.diagnostic.open_float()
