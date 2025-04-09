@@ -101,3 +101,4 @@ require("lazy").setup({
 })
 require("plugins.lsp_progress")
 require("plugins.virtual_lines")
+require("plugins.recording")
