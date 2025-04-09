@@ -191,7 +191,7 @@ return {
 				lualine_c = { file_icon_with_name },
 				lualine_x = {
 					diagnostics,
-						{
+					{
 						lazy_status.updates,
 						cond = lazy_status.has_updates,
 						color = { fg = "#ff9e64" },
