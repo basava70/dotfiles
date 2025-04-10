@@ -59,13 +59,13 @@ local function get_git_refs()
 		remote_handle:close()
 	end
 
-	local log_handle = io.popen("git log --all --pretty=format:'%h %s'")
+	local log_handle = io.popen("git log --all --pretty=format:'%h|%cr|%s'")
 	if log_handle then
 		for line in log_handle:lines() do
-			local hash, msg = line:match("^(%w+)%s+(.+)$")
+			local hash, reltime, msg = line:match("^(%w+)|([^|]+)|(.+)$")
 			if hash and msg then
 				table.insert(refs, {
-					label = " " .. hash .. " " .. msg,
+					label = string.format(" %s 󰥔 %s %s", hash, reltime, msg),
 					value = hash,
 					kind = "commit",
 				})
