@@ -2,6 +2,7 @@ return {
 	"akinsho/toggleterm.nvim",
 	version = "*", -- You can pin to a specific version or use latest
 	cmd = { "ToggleTerm", "TermExec" },
+	keys = { "<f7>" },
 	opts = {
 		open_mapping = "<F7>", -- Set keymap to open/close terminal
 		direction = "float", -- Use floating terminal
