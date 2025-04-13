@@ -5,6 +5,14 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	opts = {
+		views = {
+			cmdline_popup = {
+				position = {
+					row = 0.5,
+					-- col = "50%",
+				},
+			},
+		},
 		lsp = {
 			progress = {
 				enabled = false,
@@ -15,7 +23,7 @@ return {
 			},
 		},
 		presets = {
-			bottom_search = true,
+			-- bottom_search = true,
 			command_palette = true,
 			long_message_to_split = true,
 			lsp_doc_border = false,
