@@ -5,7 +5,7 @@ return {
 	config = function()
 		vim.keymap.set("n", "<leader>gs", ":Git<CR>", { desc = "[G]it [S]tatus" })
 		vim.keymap.set("n", "<leader>gd", ":Gvdiffsplit<CR>", { desc = "[G]it [D]iff" })
-		vim.keymap.set("n", "<leader>gb", ":Gblame<CR>", { desc = "[G]it [B]lame" })
+		vim.keymap.set("n", "<leader>gB", ":Gblame<CR>", { desc = "[G]it [B]lame" })
 
 		-- Fancy git log
 		vim.keymap.set("n", "<leader>gl", function()
@@ -78,25 +78,10 @@ return {
 			vim.cmd("Git push --set-upstream origin " .. branch)
 		end, { desc = "[G]it [P]ush (auto upstream)" })
 
-		-- git checkout using the git_checkout.lua file and telescope
-		vim.keymap.set("n", "<leader>gc", function()
-			require("plugins.git_checkout").git_checkout()
-		end, { desc = "[G]it [C]heckout (branch/tag/commit)" })
-
-		-- Create a new branch
-		vim.keymap.set("n", "<leader>gb", function()
-			vim.ui.input({ prompt = "New branch name: " }, function(branch)
-				if branch ~= nil and branch ~= "" then
-					vim.cmd("Git checkout -b " .. branch)
-				end
-			end)
-		end, { desc = "[G]it checkout -[b] (new branch)" })
-
 		-- Git merge
-		local notifier = require("snacks.notifier")
-
 		vim.keymap.set("n", "<leader>gm", function()
-			require("fzf-lua").git_branches({
+			Snacks.picker.git_branches({
+				all = true,
 				prompt = "Merge branch into current:",
 				actions = {
 					["default"] = function(selected)
@@ -119,27 +104,5 @@ return {
 				vim.keymap.set("n", "q", ":close<CR>", { buffer = true, silent = true })
 			end,
 		})
-
-		-- Show snacks notification after Git commit
-		-- vim.api.nvim_create_autocmd("User", {
-		-- 	pattern = "FugitiveCommitPost",
-		-- 	callback = function()
-		-- 		local notifier = require("snacks.notifier")
-		--
-		-- 		vim.defer_fn(function()
-		-- 			local handle = io.popen("git log -1 --pretty=format:[%h] %s")
-		-- 			local output = handle and handle:read("*a") or "Git commit complete"
-		-- 			if handle then
-		-- 				handle:close()
-		-- 			end
-		--
-		-- 			notifier.notify(output, "info", {
-		-- 				title = "Git Commit",
-		-- 				icon = "",
-		-- 				timeout = 10000,
-		-- 			})
-		-- 		end, 10000)
-		-- 	end,
-		-- })
 	end,
 }
