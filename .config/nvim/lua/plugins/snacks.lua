@@ -61,7 +61,7 @@ return {
 			desc = "Git Branches",
 		},
 		{
-			"<leader>sb",
+			"<leader><leader>",
 			function()
 				Snacks.picker.buffers()
 			end,
@@ -96,14 +96,14 @@ return {
 			desc = "Buffer Diagnostics",
 		},
 		{
-			"<leader><space>",
+			"<leader>sf",
 			function()
 				Snacks.picker.smart()
 			end,
 			desc = "Smart Find Files",
 		},
 		{
-			"<leader>sf",
+			"<leader>sF",
 			function()
 				Snacks.picker.files({ hidden = true })
 			end,
@@ -273,7 +273,13 @@ return {
 				Snacks.picker.git_branches({
 					all = true,
 					layout = "select",
-					actions = { cmd = { "git merge --no-ff" } },
+					title = "Merge Branch",
+					confirm = function(picker, item)
+						picker:close()
+						return picker:norm(function()
+							vim.cmd("Git merge --no-ff " .. item.value)
+						end)
+					end,
 				})
 			end,
 			desc = "Git merge",
