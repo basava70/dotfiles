@@ -26,19 +26,15 @@ return {
 				title = "Git Log",
 				title_pos = "center",
 			})
-
 			-- Get how many lines the log will produce
 			local log_lines = vim.fn.systemlist(
 				[[git log --graph --all --color=always --pretty=format:'%C(auto)%h%Creset %C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %C(bold blue)%an%Creset']]
 			)
-
 			if vim.v.shell_error ~= 0 then
 				vim.api.nvim_buf_set_lines(buf, 0, -1, false, { "Git log failed." })
 				return
 			end
-
 			local should_insert = #log_lines >= height - 4
-
 			vim.api.nvim_buf_call(buf, function()
 				vim.fn.termopen({
 					"sh",
@@ -46,11 +42,9 @@ return {
 					[[git log --graph --all --color=always --pretty=format:'%C(auto)%h%Creset %C(yellow)%d%Creset %s %Cgreen(%ar)%Creset %C(bold blue)%an%Creset'; sleep 1000d]],
 				})
 			end)
-
 			if should_insert then
 				vim.cmd("startinsert")
 			end
-
 			-- Add this after termopen block
 			vim.keymap.set({ "n", "t" }, "q", "<C-\\><C-n>:close<CR>", { buffer = buf, silent = true })
 			vim.keymap.set("t", "<Esc>", "<C-\\><C-n>:close<CR>", { buffer = buf, silent = true })
@@ -63,24 +57,19 @@ return {
 				vim.notify("Failed to get current Git branch", vim.log.levels.ERROR)
 				return
 			end
-
 			local branch = handle:read("*a")
 			handle:close()
-
 			if not branch or branch == "" then
 				vim.notify("Git branch name is empty", vim.log.levels.ERROR)
 				return
 			end
-
 			-- Clean up whitespace/newlines
 			branch = branch:gsub("%s+", "")
-
 			vim.cmd("Git push --set-upstream origin " .. branch)
 		end, { desc = "[G]it [P]ush (auto upstream)" })
 
 		-- Create augroup to namespace this autocmd
 		local group = vim.api.nvim_create_augroup("FugitiveCloseStatusBuffer", { clear = true })
-
 		vim.api.nvim_create_autocmd("FileType", {
 			group = group,
 			pattern = "fugitive",

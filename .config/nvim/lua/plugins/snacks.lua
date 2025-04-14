@@ -1,4 +1,3 @@
--- local custom_pickers = require("plugins.test")
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -279,12 +278,10 @@ return {
 						return picker:norm(function()
 							local line = item.text
 							local branch = line:match("^%*?%s*([%w%-%._/]+)")
-
 							if not branch then
 								vim.notify("Could not parse branch name from: " .. line, vim.log.levels.ERROR)
 								return
 							end
-
 							vim.cmd("Git merge --no-ff " .. branch)
 						end)
 					end,
@@ -292,6 +289,5 @@ return {
 			end,
 			desc = "Git merge",
 		},
-		-- { "<leader>gm", custom_pickers.git_merge_branch, desc = "Git Merge (Snacks)" },
 	},
 }
