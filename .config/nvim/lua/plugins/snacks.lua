@@ -277,7 +277,15 @@ return {
 					confirm = function(picker, item)
 						picker:close()
 						return picker:norm(function()
-							vim.cmd("Git merge --no-ff " .. item.value)
+							local line = item.text
+							local branch = line:match("^%*?%s*([%w%-%._/]+)")
+
+							if not branch then
+								vim.notify("Could not parse branch name from: " .. line, vim.log.levels.ERROR)
+								return
+							end
+
+							vim.cmd("Git merge --no-ff " .. branch)
 						end)
 					end,
 				})
