@@ -78,22 +78,6 @@ return {
 			vim.cmd("Git push --set-upstream origin " .. branch)
 		end, { desc = "[G]it [P]ush (auto upstream)" })
 
-		-- Git merge
-		vim.keymap.set("n", "<leader>gm", function()
-			Snacks.picker.git_branches({
-				all = true,
-				prompt = "Merge branch into current:",
-				actions = {
-					["default"] = function(selected)
-						local branch = selected[1]
-						if branch and branch ~= "" then
-							vim.cmd("Git merge --no-ff " .. branch)
-						end
-					end,
-				},
-			})
-		end, { desc = "[G]it [M]erge branch into current" })
-
 		-- Create augroup to namespace this autocmd
 		local group = vim.api.nvim_create_augroup("FugitiveCloseStatusBuffer", { clear = true })
 

@@ -1,3 +1,4 @@
+-- local custom_pickers = require("plugins.test")
 return {
 	"folke/snacks.nvim",
 	priority = 1000,
@@ -266,5 +267,17 @@ return {
 			end,
 			desc = "LSP Workspace Symbols",
 		},
+		{
+			"<leader>gm",
+			function()
+				Snacks.picker.git_branches({
+					all = true,
+					layout = "select",
+					actions = { cmd = { "git merge --no-ff" } },
+				})
+			end,
+			desc = "Git merge",
+		},
+		-- { "<leader>gm", custom_pickers.git_merge_branch, desc = "Git Merge (Snacks)" },
 	},
 }
