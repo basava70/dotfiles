@@ -1,6 +1,6 @@
 -- Define the function BEFORE `return { ... }`
 local function NewFilePrompt()
-	local filename = vim.fn.input("📄 New File: ", "", "file") -- Prompt for file path
+	local filename = vim.fn.input(" New File: ", "", "file") -- Prompt for file path
 	if filename ~= "" then
 		vim.cmd("edit " .. vim.fn.expand(filename)) -- Open the file at the specified path
 	end
