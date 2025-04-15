@@ -28,7 +28,7 @@ return {
 					desc = "Find Files",
 					group = "Lable",
 					action = function()
-						require("fzf-lua").files()
+						Snacks.picker.smart()
 					end,
 					key = "f",
 				},
@@ -38,7 +38,7 @@ return {
 					desc = "Live Grep",
 					group = "Label",
 					action = function()
-						require("fzf-lua").live_grep()
+						Snacks.picker.grep({ hidden = true })
 					end,
 
 					key = "g",
@@ -49,7 +49,7 @@ return {
 					desc = "Dotfiles",
 					group = "Number",
 					action = function()
-						require("fzf-lua").files({ cwd = vim.fn.expand("~/dotfiles/") })
+						Snacks.picker.files({ cwd = vim.fn.expand("~/dotfiles/") })
 					end,
 					key = "d",
 				},

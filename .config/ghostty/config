@@ -1,3 +1,87 @@
-font-family = FiraCode Nerd Font Mono
+# Cursor
+cursor-style = block
+cursor-opacity = 0.75
+# cursor-invert-fg-bg
+# cursor-style-blink = true
+
+# Fonts
+font-size = 13.5
+font-family = "FiraCode Nerd Font Mono"
+font-family-bold = "FiraCode Nerd Font Mono"
+font-family-italic = "FiraCode Nerd Font Mono"
+font-family-bold-italic = "FiraCode Nerd Font Mono"
+font-style = "Regular"
+font-style-bold = "Bold"
+font-style-italic = "Italic"
+font-style-bold-italic = "Bold Italic"
+# adjust-cell-width = -5%
+
+# General settings
+# initial-command = tmux
+
+# GTK
+gtk-adwaita = true
+gtk-titlebar= true
+gtk-wide-tabs = false
+gtk-tabs-location = bottom
+
+# Keybindings
+keybind = ctrl+g>d=toggle_window_decorations
+keybind = ctrl+g>f=toggle_fullscreen
+
+keybind = ctrl+g>r=reload_config
+keybind = ctrl+g>t=new_tab
+keybind = ctrl+g>p=previous_tab
+keybind = ctrl+g>n=next_tab
+# keybind = ctrl+g>h=move_tab:-1
+# keybind = ctrl+g>l=move_tab:+1
+
+keybind = ctrl+g>v=new_split:right
+keybind = ctrl+g>s=new_split:down
+keybind = ctrl+g>h=goto_split:left
+keybind = ctrl+g>j=goto_split:bottom
+keybind = ctrl+g>k=goto_split:top
+keybind = ctrl+g>l=goto_split:right
+keybind = ctrl+g>z=toggle_split_zoom
+
+keybind = ctrl+g>c=open_config
+keybind = ctrl+g>w=new_window
+keybind = ctrl+g>o=toggle_tab_overview
+
+# keybind = ctrl+u=scroll_page_fractional:-0.1
+# keybind = ctrl+d=scroll_page_fractional:0.1
+#
+# Change Option to Alt in macos
+macos-option-as-alt = left
+keybind = alt+one=unbind
+keybind = alt+two=unbind
+keybind = alt+three=unbind
+keybind = alt+four=unbind
+keybind = alt+five=unbind
+keybind = alt+six=unbind
+keybind = alt+seven=unbind
+
+# Shell
+shell-integration = zsh
+
+# Themes
 theme = rose-pine
-maximize = true
+background = #191724
+foreground = #e0def4
+# alpha-blending = linear-corrected
+# background-opacity = 1
+# background-blur = true
+
+# Title
+title = "Terminal"
+# title = " 󰮯  •••• 󱙝 •••• 󰊠  ••••  "
+
+# Window
+# window-decoration = none
+window-save-state = always
+window-title-font-family = "FiraCode Nerd Font Mono"
+window-titlebar-background = #191724
+window-titlebar-foreground = #e0def4
+window-width = 200
+window-height = 55
+# window-padding-balance = true
