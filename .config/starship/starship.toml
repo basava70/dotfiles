@@ -89,23 +89,25 @@ style_user = "bg:overlay fg:iris"
 style = "bg:overlay fg:pine"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
-symbol = " "
+symbol = "󰙱 "
 detect_extensions = ["c", "h"]
 commands = [["gcc", "--version"], ["clang", "--version"], ["tcc", "--version"]]
 
 [custom.cuda]
-detect_extensions = ['cu', 'cuh']
+detect_extensions = ["cu", "cuh"]
 symbol = ""
-style = "fg:#8da6f1 bg:#212736"
-format = '[ $symbol ($output) ]($style)'
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol $output ]($style)[](fg:overlay)"
 command = "nvcc --version | awk '/release/ {print $6}'"
+disabled = false
 
 [custom.cpp]
-detect_extensions = ['cpp', 'hpp']
-symbol = " "
-style = "fg:#8da6f1 bg:#212736"
-format = '[ $symbol ($output) ]($style)'
-command = "g++ --version | awk 'nr==1 {print $3}'"
+detect_extensions = ["cpp", "hpp"]
+symbol = "󰙲"
+style = "bg:overlay fg:pine"
+format = " [](fg:overlay)[ $symbol $output ]($style)[](fg:overlay)"
+command = "g++ --version | awk 'NR==1 {print $3}'"
+disabled = false
 
 [elixir]
 style = "bg:overlay fg:pine"
