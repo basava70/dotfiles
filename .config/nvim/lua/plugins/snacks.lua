@@ -165,13 +165,13 @@ return {
 		-- 	end,
 		-- 	desc = "Git Log Line",
 		-- },
-		-- {
-		-- 	"<leader>gS",
-		-- 	function()
-		-- 		Snacks.picker.git_status()
-		-- 	end,
-		-- 	desc = "Git Status",
-		-- },
+		{
+			"<leader>gS",
+			function()
+				Snacks.picker.git_status()
+			end,
+			desc = "Git Status",
+		},
 		-- { "<leader>gSs", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
 		{
 			"<leader>gf",
