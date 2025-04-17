@@ -6,14 +6,15 @@ cursor-opacity = 0.75
 
 # Fonts
 font-size = 12.5
-font-family = "JetBrainsMono Nerd Font"
-font-family-bold = "JetBrainsMono Nerd Font"
-font-family-italic = "JetBrainsMono Nerd Font"
-font-family-bold-italic = "JetBrainsMono Nerd Font"
-font-style = "Regular"
-font-style-bold = "Bold"
-font-style-italic = "Italic"
-font-style-bold-italic = "Bold Italic"
+font-family = "Maple Mono NF"
+# font-family = "Maple Mono NF"
+# font-family-bold = "JetBrainsMono Nerd Font"
+# font-family-italic = "JetBrainsMono Nerd Font"
+# font-family-bold-italic = "JetBrainsMono Nerd Font"
+# font-style = "Regular"
+# font-style-bold = "Bold"
+# font-style-italic = "Italic"
+# font-style-bold-italic = "Bold Italic"
 # adjust-cell-width = -5%
 
 # General settings
@@ -79,7 +80,7 @@ title = "Terminal"
 # Window
 # window-decoration = none
 window-save-state = always
-window-title-font-family = "JetBrainsMono Nerd Font"
+window-title-font-family = "Maple Mono NF"
 window-titlebar-background = #191724
 window-titlebar-foreground = #e0def4
 window-width = 200
