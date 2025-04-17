@@ -53,6 +53,17 @@ setopt hist_ignore_space  # Ignore commands that start with a space
 export PATH=/opt/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
 
+# Detect platform and set GCC accordingly
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS (Homebrew GCC)
+    export CC=/opt/homebrew/bin/gcc-14
+    export CXX=/opt/homebrew/bin/g++-14
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # Arch Linux (typically GCC is already default)
+    export CC=/usr/bin/gcc
+    export CXX=/usr/bin/g++
+fi
+
 # Ensure zsh-autosuggestions uses persistent history
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 
