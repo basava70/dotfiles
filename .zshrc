@@ -3,6 +3,8 @@
 
 # fastfetch 
 
+alias c='clear'
+
 # Initialize Zsh completion system
 autoload -Uz compinit
 zstyle ':completion:*' rehash true
