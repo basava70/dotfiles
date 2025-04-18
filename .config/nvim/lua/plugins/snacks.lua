@@ -21,7 +21,7 @@ return {
 						local line = item.text
 						local branch = line:match("^%*?%s*([%w%-%._/]+)")
 						local current = vim.b.gitsigns_head
-						vim.cmd("Git merge --no-ff" .. branch)
+						vim.cmd("Git merge --no-ff " .. branch)
 						vim.notify("Merged branch " .. branch .. " into " .. current, vim.log.levels.INFO, {
 							title = "Git",
 						})
