@@ -122,7 +122,7 @@ return {
 			desc = "Smart Find Files",
 		},
 		{
-			"<leader>sF",
+			"<leader>ff",
 			function()
 				Snacks.picker.files({ hidden = true })
 			end,
