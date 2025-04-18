@@ -66,7 +66,8 @@ return {
 				menu = { border = "rounded" },
 				documentation = { window = { border = "rounded" } },
 			},
-			signature = { enabled = true, window = { border = "rounded" } },
+			-- signature = { enabled = true, window = { border = "rounded" } },
+			signature = { window = { border = "rounded" } },
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
