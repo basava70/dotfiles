@@ -54,18 +54,26 @@ return {
 		vim.keymap.set("n", "<leader>gp", function()
 			local handle = io.popen("git rev-parse --abbrev-ref HEAD")
 			if not handle then
-				vim.notify("Failed to get current Git branch", vim.log.levels.ERROR)
+				vim.notify("Failed to get current Git branch", vim.log.levels.ERROR, { title = "Git" })
 				return
 			end
 			local branch = handle:read("*a")
 			handle:close()
 			if not branch or branch == "" then
-				vim.notify("Git branch name is empty", vim.log.levels.ERROR)
+				vim.notify("Git branch name is empty", vim.log.levels.ERROR, { title = "Git" })
 				return
 			end
 			-- Clean up whitespace/newlines
 			branch = branch:gsub("%s+", "")
-			vim.cmd("Git push --set-upstream origin " .. branch)
+			vim.system({ "git", "push", "--set-upstream", "origin", branch }, {
+				on_exit = function(obj)
+					if obj.code == 0 then
+						vim.notify(obj.stdout, vim.log.levels.INFO, { title = "Git Push" })
+					else
+						vim.notify(obj.stderr or "Git push failed", vim.log.levels.ERROR, { title = "Git Error" })
+					end
+				end,
+			})
 		end, { desc = "[G]it [P]ush (auto upstream)" })
 
 		-- Create augroup to namespace this autocmd
