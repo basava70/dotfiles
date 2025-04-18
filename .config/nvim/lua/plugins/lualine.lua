@@ -10,7 +10,7 @@ return {
 		-- Lsp stuff --
 		local function getLspName()
 			local buf_clients = vim.lsp.get_clients()
-			-- local buf_ft = vim.bo.filetype
+			local buf_ft = vim.bo.filetype
 			if next(buf_clients) == nil then
 				return "  No servers"
 			end
@@ -38,7 +38,7 @@ return {
 			-- 		end
 			-- 	end
 			-- end
-
+			--
 			-- local ok, conform = pcall(require, "conform")
 			-- if ok then
 			-- 	for _, formatter in pairs(conform.formatters_by_ft[vim.bo.filetype]) do
