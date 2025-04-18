@@ -2,7 +2,7 @@ return {
 	{
 		"saghen/blink.compat",
 		-- use the latest release, via version = '*', if you also use the latest release for blink.cmp
-		version = "*",
+		version = "1.*",
 		-- lazy.nvim will automatically load the plugin when it's required by blink.cmp
 		lazy = true,
 		-- make sure to set opts so that lazy.nvim calls blink.compat's setup
@@ -45,7 +45,7 @@ return {
 				["<C-Y>"] = { "accept", "fallback" },
 				["<C-k>"] = { "select_prev", "fallback_to_mappings" },
 				["<C-j>"] = { "select_next", "fallback_to_mappings" },
-				-- ["<C-y>"] = { "show_signature", "hide_signature", "fallback" },
+				["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
 			},
 			cmdline = {
 				keymap = {
@@ -62,12 +62,11 @@ return {
 
 			-- (Default) Only show the documentation popup when manually triggered
 			-- completion = { documentation = { auto_show = true } },
-			-- signature = { enabled = true },
 			completion = {
 				menu = { border = "rounded" },
 				documentation = { window = { border = "rounded" } },
 			},
-			signature = { window = { border = "rounded" } },
+			signature = { enabled = true, window = { border = "rounded" } },
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`

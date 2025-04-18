@@ -12,6 +12,16 @@ return {
 					},
 				},
 			},
+			actions = {
+				custom = {
+					desc = "Git merge selected branch into current",
+					name = "custom",
+					action = function(self, item)
+						vim.notify("git_merge triggered")
+						vim.notify(item)
+					end,
+				},
+			},
 			layout = "dropdown",
 			layouts = {
 				dropdown = {
@@ -55,7 +65,11 @@ return {
 		{
 			"<leader>gb",
 			function()
-				Snacks.picker.git_branches({ all = true, layout = "select" })
+				Snacks.picker.git_branches({
+					all = true,
+					layout = "select",
+					win = { input = { keys = { ["<C-f>"] = { "custom", mode = { "i", "n" } } } } },
+				})
 			end,
 			desc = "Git Branches",
 		},
