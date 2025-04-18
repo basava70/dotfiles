@@ -109,7 +109,7 @@ return {
 			desc = "Find Files",
 		},
 		{
-			"<leader>fc",
+			"<leader>sc",
 			function()
 				Snacks.picker.files({ cwd = vim.fn.expand("~/dotfiles/") })
 			end,
