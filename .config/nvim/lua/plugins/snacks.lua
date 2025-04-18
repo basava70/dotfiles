@@ -17,8 +17,14 @@ return {
 					desc = "Git merge selected branch into current",
 					name = "custom",
 					action = function(self, item)
-						vim.notify("git_merge triggered")
-						vim.notify(item)
+						self:close()
+						local line = item.text
+						local branch = line:match("^%*?%s*([%w%-%._/]+)")
+						local current = vim.b.gitsigns_head
+						vim.cmd("Git merge --no-ff " .. branch)
+						vim.notify("Merged branch " .. branch .. " into " .. current, vim.log.levels.INFO, {
+							title = "Git",
+						})
 					end,
 				},
 			},
@@ -68,7 +74,7 @@ return {
 				Snacks.picker.git_branches({
 					all = true,
 					layout = "select",
-					win = { input = { keys = { ["<C-f>"] = { "custom", mode = { "i", "n" } } } } },
+					win = { input = { keys = { ["<C-o>"] = "custom", mode = { "i", "n" } } } },
 				})
 			end,
 			desc = "Git Branches",
@@ -279,29 +285,6 @@ return {
 				Snacks.picker.lsp_workspace_symbols()
 			end,
 			desc = "LSP Workspace Symbols",
-		},
-		{
-			"<leader>gm",
-			function()
-				Snacks.picker.git_branches({
-					all = true,
-					layout = "select",
-					title = "Merge Branch",
-					confirm = function(picker, item)
-						picker:close()
-						return picker:norm(function()
-							local line = item.text
-							local branch = line:match("^%*?%s*([%w%-%._/]+)")
-							if not branch then
-								vim.notify("Could not parse branch name from: " .. line, vim.log.levels.ERROR)
-								return
-							end
-							vim.cmd("Git merge --no-ff " .. branch)
-						end)
-					end,
-				})
-			end,
-			desc = "Git merge",
 		},
 	},
 }
