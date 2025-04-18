@@ -31,6 +31,9 @@ map("n", "<leader>qq", function()
 	vim.cmd("qa")
 end, "[Q]uit all (after closing terminals, like wqa)")
 
+-- [[ Search and Replace word under the cursor]]
+map("n", "<leader>r", [[:%s/\<<C-r><C-w>\>//gc<Left><Left><Left>]], "Replace word under cursor")
+
 -- Delete a single character without copying into register
 map("n", "x", '"_x', "Delete without copying")
 -- Substitue a single character without copying into register

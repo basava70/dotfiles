@@ -30,7 +30,7 @@ require("lazy").setup({
 	require("plugins.lint"),
 	require("plugins.neotree"),
 	-- require("plugins.indent-blankline"),
-	require("plugins.todo-comments"),
+	-- require("plugins.todo-comments"),
 	require("plugins.dashboard"),
 	require("plugins.bufferline"),
 	require("plugins.fugitive"),
@@ -39,7 +39,7 @@ require("lazy").setup({
 	require("plugins.snacks"),
 	require("plugins.hlslens"),
 	require("plugins.noice"),
-	require("plugins.fzf-lua"),
+	-- require("plugins.fzf-lua"),
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	{
 		-- Autoclose parentheses, brackets, quotes, etc.
