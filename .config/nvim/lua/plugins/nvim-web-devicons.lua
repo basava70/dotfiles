@@ -31,6 +31,16 @@ return {
 				color = "#ffa500",
 				name = "cmakeicon",
 			},
+			["h"] = {
+				icon = "",
+				color = "#a074c4",
+				name = "hicon",
+			},
+			["hpp"] = {
+				icon = "",
+				color = "#a074c4",
+				name = "hppicon",
+			},
 			["cc"] = {
 				icon = "󰙲",
 				color = "#7AA2F7",

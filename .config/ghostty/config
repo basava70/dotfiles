@@ -8,7 +8,7 @@ cursor-opacity = 0.75
 # font-size = 12.5
 # font-family = "Maple Mono NF"
 # Fonts
-font-size = 13.5
+font-size = 13
 font-family = "Maple Mono NF"
 # font-features = calt, liga, ss01, ss02, ss03, ss04, ss05, ss06, ss07, ss08, ss09
 
@@ -80,6 +80,6 @@ window-save-state = always
 window-title-font-family = "Monaspace Neon Nerd Font"
 window-titlebar-background = #191724
 window-titlebar-foreground = #e0def4
-window-width = 180
+window-width = 200
 window-height = 55
 # window-padding-balance = true

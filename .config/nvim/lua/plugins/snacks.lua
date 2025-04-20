@@ -131,7 +131,7 @@ return {
 		{
 			"<leader>sc",
 			function()
-				Snacks.picker.files({ cwd = vim.fn.expand("~/dotfiles/") })
+				Snacks.picker.files({ cwd = vim.fn.expand("~/dotfiles/"), hidden = true })
 			end,
 			desc = "Find Config File",
 		},
