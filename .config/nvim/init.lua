@@ -39,8 +39,9 @@ require("lazy").setup({
 	require("plugins.snacks"),
 	require("plugins.hlslens"),
 	require("plugins.noice"),
-	-- require("plugins.fzf-lua"),
-	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+	require("plugins.render-markdown"),
+		(		-- require("plugins.fzf-lua"),
+"tpope/vim-sleuth"), -- Detect tabstop and shiftwidth automatically
 	{
 		-- Autoclose parentheses, brackets, quotes, etc.
 		"windwp/nvim-autopairs",
