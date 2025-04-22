@@ -28,7 +28,7 @@ return {
 					desc = "Find Files",
 					group = "Lable",
 					action = function()
-						Snacks.picker.smart()
+						Snacks.picker.files({ hidden = true })
 					end,
 					key = "f",
 				},
