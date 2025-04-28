@@ -10,6 +10,7 @@ return {
 			cpp = { "cppcheck" },
 			c = { "cppcheck" },
 			cuda = { "cppcheck" },
+			python = { "ruff" },
 		}
 
 		-- Auto-run linting when opening, saving, or exiting insert mode

@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
+	-- event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		{ "williamboman/mason.nvim", config = true },
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -168,7 +168,7 @@ return {
 				end,
 			},
 
-			pyright = {},
+			pyright = { filetypes = { "python" } },
 
 			lua_ls = {
 				settings = {
@@ -200,7 +200,9 @@ return {
 			ensure_installed = {
 				"lua-language-server",
 				"stylua",
+				"pyright",
 				"black",
+				"ruff",
 				"isort",
 				"prettier",
 				"latexindent",
