@@ -32,7 +32,7 @@ require("lazy").setup({
 	require("plugins.neotree"),
 	-- require("plugins.indent-blankline"),
 	require("plugins.trouble"),
-	require("plugins.todo-comments"),
+	-- require("plugins.todo-comments"),
 	require("plugins.dashboard"),
 	require("plugins.bufferline"),
 	require("plugins.fugitive"),
