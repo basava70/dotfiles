@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	require("plugins.nvim-web-devicons"),
+	require("plugins.snacks"),
 	-- require("plugins.tokyonight"),
 	require("plugins.rosepine"),
 	require("plugins.mini"),
@@ -30,18 +31,17 @@ require("lazy").setup({
 	require("plugins.lint"),
 	require("plugins.neotree"),
 	-- require("plugins.indent-blankline"),
-	-- require("plugins.todo-comments"),
+	require("plugins.trouble"),
+	require("plugins.todo-comments"),
 	require("plugins.dashboard"),
 	require("plugins.bufferline"),
 	require("plugins.fugitive"),
 	require("plugins.toggleterm"),
 	require("plugins.vimtex"),
-	require("plugins.snacks"),
 	require("plugins.hlslens"),
 	require("plugins.noice"),
 	require("plugins.render-markdown"),
-		(		-- require("plugins.fzf-lua"),
-"tpope/vim-sleuth"), -- Detect tabstop and shiftwidth automatically
+	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
 	{
 		-- Autoclose parentheses, brackets, quotes, etc.
 		"windwp/nvim-autopairs",

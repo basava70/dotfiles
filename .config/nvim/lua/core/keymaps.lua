@@ -58,7 +58,7 @@ map("n", "<A-,>", "<cmd> BufferLineCyclePrev <CR>", "  cycle prev buffer")
 map("n", "<A-s-.>", "<cmd> BufferLineMoveNext <CR>", "  move next buffer")
 map("n", "<A-s-,>", "<cmd> BufferLineMovePrev <CR>", "  move prev buffer")
 map("n", "<A-f>", "<cmd> BufferLinePick <CR>")
-map("n", "<leader>xx", "<cmd> bp|sp|bn|bd! <CR>", "Close the current buffer") --"	close buffer"
+map("n", "<leader>xb", "<cmd> bp|sp|bn|bd! <CR>", "Close the current buffer") --"	close buffer"
 for i = 1, 9 do
 	vim.keymap.set("n", "<A-" .. i .. ">", function() -- choose <A-i> to choose that buffer
 		require("bufferline").go_to_buffer(i)
