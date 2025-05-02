@@ -1,19 +1,16 @@
 # Cursor
-cursor-style = block
-cursor-opacity = 0.75
+# cursor-style = block
+# cursor-opacity = 0.75
 # cursor-invert-fg-bg
 # cursor-style-blink = true
 
 # Fonts
-# font-size = 12.5
-# font-family = "Maple Mono NF"
-# Fonts
-font-size = 12.5
+font-size = 13
 # font-family = "MonaspiceAr Nerd Font Mono"
 # font-family = "FiraCode Nerd Font Mono"
+# font-family = "Maple Mono NF CN"
+# font-family = "VictorMono Nerd Font Mono"
 font-family = "Maple Mono NF"
-# font-features = calt, liga, ss01, ss02, ss03, ss04, ss05, ss06, ss07, ss08, ss09
-
 
 # General settings
 # initial-command = tmux
@@ -24,31 +21,7 @@ gtk-titlebar= true
 gtk-wide-tabs = false
 gtk-tabs-location = bottom
 
-# Keybindings
-keybind = ctrl+g>d=toggle_window_decorations
-keybind = ctrl+g>f=toggle_fullscreen
-
 keybind = ctrl+g>r=reload_config
-keybind = ctrl+g>t=new_tab
-keybind = ctrl+g>p=previous_tab
-keybind = ctrl+g>n=next_tab
-# keybind = ctrl+g>h=move_tab:-1
-# keybind = ctrl+g>l=move_tab:+1
-
-keybind = ctrl+g>v=new_split:right
-keybind = ctrl+g>s=new_split:down
-keybind = ctrl+g>h=goto_split:left
-keybind = ctrl+g>j=goto_split:bottom
-keybind = ctrl+g>k=goto_split:top
-keybind = ctrl+g>l=goto_split:right
-keybind = ctrl+g>z=toggle_split_zoom
-
-keybind = ctrl+g>c=open_config
-keybind = ctrl+g>w=new_window
-keybind = ctrl+g>o=toggle_tab_overview
-
-# keybind = ctrl+u=scroll_page_fractional:-0.1
-# keybind = ctrl+d=scroll_page_fractional:0.1
 #
 # Change Option to Alt in macos
 macos-option-as-alt = left
@@ -65,23 +38,23 @@ shell-integration = zsh
 
 # Themes
 theme = rose-pine
-background = #191724
-foreground = #e0def4
+# background = #191724
+# foreground = #e0def4
 # alpha-blending = linear-corrected
 # background-opacity = 1
 # background-blur = true
 
 # Title
-title = "Terminal"
-# title = " 󰮯  •••• 󱙝 •••• 󰊠  ••••  "
+# title = "Terminal"
+title = " 󰮯  •••• 󱙝 •••• 󰊠  ••••  "
 
 # Window
 # window-decoration = none
 window-save-state = always
-# window-title-font-family = "Maple Mono NF"
-window-title-font-family = "Monaspace Neon Nerd Font"
-window-titlebar-background = #191724
-window-titlebar-foreground = #e0def4
+window-title-font-family = "Maple Mono NF"
+# window-title-font-family = "Monaspace Neon Nerd Font"
+# window-titlebar-background = #191724
+# window-titlebar-foreground = #e0def4
 window-width = 200
 window-height = 55
 # window-padding-balance = true
