@@ -16,7 +16,10 @@ return {
 				-- ["@type.builtin"] = { italic = true }, -- int, float, etc.
 				["@keyword.operator"] = { italic = true }, -- new, delete, etc.
 				["@preproc"] = { italic = true }, -- #define, #include, etc.
-				-- ["Comment"] = { italic = true }, -- comments
+				-- ["@comment"] = { italic = true },
+				["@comment.documentation"] = { italic = true },
+				["@comment.twoline"] = { italic = true },
+				["@comment.tagged"] = { fg = "#eb6f92" },
 			},
 		})
 
