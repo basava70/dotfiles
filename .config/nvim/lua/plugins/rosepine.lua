@@ -20,6 +20,7 @@ return {
 				["@comment.documentation"] = { italic = true },
 				["@comment.twoline"] = { italic = true },
 				["@comment.tagged"] = { fg = "#eb6f92" },
+				-- ["@string"] = { italic = true },
 			},
 		})
 
