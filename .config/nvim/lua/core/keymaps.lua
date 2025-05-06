@@ -18,6 +18,9 @@ map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear search highlights")
 -- Save file without triggering autoformat
 map("n", "<leader>sN", "<cmd>noautocmd w<CR>", "Save without formatting")
 
+-- Copy full file into clipboard
+map("n", "<leader>G", "gg<S-v>Gy", "Copy entire file")
+
 -- map("n", "<leader>qq", "<cmd>wqa<CR>", "e[X]it and [S]ave all buffers")
 map("n", "<leader>qq", function()
 	-- Close all terminal buffers, but don't save anything yet
