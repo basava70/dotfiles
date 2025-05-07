@@ -150,6 +150,21 @@ end, "󰒕 Prev diagnostic")
 -- 	diagnosticsAsVirtualLines()
 -- end, { desc = "󰒕 Prev diagnostic" })
 
+-- [[ Lsp ]]
+local lsp_toggled = false
+
+vim.keymap.set("n", "<leader>ll", function()
+	if lsp_toggled then
+		vim.cmd("LspStop")
+		lsp_toggled = false
+		print("LSP stopped")
+	else
+		vim.cmd("LspStart")
+		lsp_toggled = true
+		print("LSP started")
+	end
+end, { desc = "Toggle LSP", silent = true })
+
 -- [[ Wrapping Toggle ]]
 
 map("n", "<leader>lw", "<cmd>set wrap!<CR>", "Toggle line wrapping")
