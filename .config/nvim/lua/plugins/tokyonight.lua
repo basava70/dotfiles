@@ -14,7 +14,7 @@ return {
 
 			-- Reapply the colorscheme with "night" style and updated transparency
 			tokyonight.setup({
-				style = "moon", -- Ensure the theme stays in "night" mode
+				style = "night", -- Ensure the theme stays in "night" mode
 				transparent = bg_transparent,
 				styles = {
 					comments = { italic = false },
@@ -24,7 +24,7 @@ return {
 			})
 
 			-- Reload the colorscheme
-			vim.cmd("colorscheme tokyonight-moon")
+			vim.cmd("colorscheme tokyonight-night")
 
 			-- Debugging: Print state in the command line
 			print("Transparency set to:", bg_transparent)
@@ -32,7 +32,7 @@ return {
 
 		-- Initial setup of colorscheme
 		tokyonight.setup({
-			style = "moon", -- Use "night" theme variant
+			style = "night", -- Use "night" theme variant
 			transparent = bg_transparent,
 			styles = {
 				comments = { italic = false },
@@ -42,7 +42,7 @@ return {
 		})
 
 		-- Apply the colorscheme initially
-		vim.cmd("colorscheme tokyonight-moon")
+		vim.cmd("colorscheme tokyonight-night")
 
 		-- Keybinding to toggle transparency
 		vim.keymap.set(

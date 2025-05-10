@@ -17,10 +17,10 @@ return {
 				["@keyword.operator"] = { italic = true }, -- new, delete, etc.
 				["@preproc"] = { italic = true }, -- #define, #include, etc.
 				-- ["@comment"] = { italic = true },
-				["@comment.documentation"] = { italic = true },
-				["@comment.twoline"] = { italic = true },
+				-- ["@comment.documentation"] = { italic = true },
+				-- ["@comment.twoline"] = { italic = true },
 				["@comment.tagged"] = { fg = "#eb6f92" },
-				["@string"] = { italic = true },
+				-- ["@string"] = { italic = true },
 			},
 		})
 		vim.cmd("colorscheme rose-pine")

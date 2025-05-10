@@ -1,0 +1,12 @@
+Host levante *.dkrz.de
+   User a270232
+
+Host albedo
+     Hostname albedo0.dmawi.de
+     User sebasa01
+
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/seshu_github
+  IdentitiesOnly yes
