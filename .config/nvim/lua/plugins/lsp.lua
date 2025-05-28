@@ -170,6 +170,8 @@ return {
 
 			pyright = { filetypes = { "python" } },
 
+			cmake = { filetypes = "cmake" },
+
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -208,6 +210,8 @@ return {
 				"latexindent",
 				"bibtex-tidy",
 				"shfmt",
+				"cmake-language-server",
+				"cmakelang",
 			},
 		})
 
