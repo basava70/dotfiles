@@ -153,7 +153,7 @@ end, "󰒕 Prev diagnostic")
 -- [[ Lsp ]]
 local lsp_toggled = false
 
-vim.keymap.set("n", "<leader>ll", function()
+vim.keymap.set("n", "<leader>Ll", function()
 	if lsp_toggled then
 		vim.cmd("LspStop")
 		lsp_toggled = false

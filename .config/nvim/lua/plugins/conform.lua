@@ -24,6 +24,7 @@ return {
 				c = { "clang_format" },
 				cpp = { "clang_format" },
 				cuda = { "clang_format" },
+				cmake = { "cmakelang" },
 				tex = { "latexindent" },
 				bibtex = { "bibtex-tidy" },
 				sh = { "shfmt" },
