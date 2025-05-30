@@ -63,11 +63,24 @@ return {
 			-- (Default) Only show the documentation popup when manually triggered
 			-- completion = { documentation = { auto_show = true } },
 			completion = {
-				menu = { border = "rounded" },
-				documentation = { window = { border = "rounded" } },
+				menu = {
+					border = "rounded",
+					draw = {
+						columns = {
+							{ "label", "label_description", gap = 1 },
+							{ "kind_icon", "kind" },
+						},
+					},
+				},
+				documentation = {
+					auto_show = true,
+					window = {
+						border = "rounded",
+					},
+				},
 			},
-			-- signature = { enabled = true, window = { border = "rounded" } },
-			signature = { window = { border = "rounded" } },
+			signature = { enabled = true, window = { border = "rounded" } },
+			-- signature = { window = { border = "rounded" } },
 
 			-- Default list of enabled providers defined so that you can extend it
 			-- elsewhere in your config, without redefining it, due to `opts_extend`
