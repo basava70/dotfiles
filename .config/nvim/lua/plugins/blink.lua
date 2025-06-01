@@ -42,7 +42,7 @@ return {
 			-- See :h blink-cmp-config-keymap for defining your own keymap
 			keymap = {
 				preset = "default",
-				["<TAB>"] = { "accept", "fallback" },
+				["<C-y>"] = { "accept", "fallback" },
 				["<C-k>"] = { "select_prev", "fallback_to_mappings" },
 				["<C-j>"] = { "select_next", "fallback_to_mappings" },
 				["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
@@ -69,6 +69,7 @@ return {
 						columns = {
 							{ "label", "label_description", gap = 1 },
 							{ "kind_icon", "kind" },
+							{ "source_name" },
 						},
 					},
 				},
