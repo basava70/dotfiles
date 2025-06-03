@@ -4,7 +4,7 @@ return {
 	opts = {
 		filetypes = { "*" }, -- enable for all files
 		user_default_options = {
-			names = true, -- "blue" instead of just #0000ff
+			names = false, -- "blue" instead of just #0000ff
 			css = true, -- enable parsing of CSS functions: rgb(), hsl()
 			rgb_fn = true, -- enable parsing rgb(...) functions
 			hsl_fn = true, -- enable parsing hsl(...) functions
