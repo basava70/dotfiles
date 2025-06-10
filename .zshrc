@@ -69,7 +69,7 @@ fi
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 
 # fzf key bindings and completion (if installed)
-[ -f "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh"
+[ -f "$HOME/dotfiles/Extras/fzf/rose-pine.sh" ] && source "$HOME/dotfiles/Extras/fzf/rose-pine.sh"
 # For Arch Linux (system-wide plugin location)
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
