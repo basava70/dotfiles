@@ -7,6 +7,7 @@ return {
 		-- "hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
+		require("plugins.diagnostics").setup()
 		local original_capabilities = vim.lsp.protocol.make_client_capabilities()
 		local capabilities = require("blink.cmp").get_lsp_capabilities(original_capabilities)
 		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())

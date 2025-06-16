@@ -15,7 +15,7 @@ return {
 				["@comment"] = { italic = true },
 				["@comment.documentation"] = { italic = true },
 				-- ["@comment.twoline"] = { italic = true },
-				-- ["@comment.tagged"] = { fg = "#eb6f92" },
+				["@comment.tagged"] = { fg = "#eb6f92" },
 				["@string"] = { italic = true },
 			},
 			palette = {

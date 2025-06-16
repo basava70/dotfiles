@@ -101,5 +101,4 @@ require("lazy").setup({
 	-- vim: ts=2 sts=2 sw=2 et
 })
 require("plugins.lsp_progress")
-require("plugins.virtual_lines")
 require("plugins.recording")
