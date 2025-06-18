@@ -156,12 +156,14 @@ return {
 					"--cross-file-rename",
 					"--header-insertion=never",
 					"--fallback-style=llvm",
+					"--function-arg-placeholders",
 				},
 				capabilities = vim.tbl_deep_extend("force", {}, capabilities, {
-					offsetEncoding = { "utf-8" },
+					offsetEncoding = { "utf-16" },
 				}),
 				init_options = {
 					clangdFileStatus = true,
+					usePlaceholders = true,
 				},
 				on_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = false
