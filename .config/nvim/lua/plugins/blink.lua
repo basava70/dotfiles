@@ -1,8 +1,11 @@
 return {
   {
-    "sagen/blink.cmp",
+    "saghen/blink.cmp",
     opts = {
       completion = {
+        documentation = {
+          window = { border = "rounded" },
+        },
         menu = {
           border = "rounded",
           draw = {
@@ -13,9 +16,7 @@ return {
               { "source_name" },
             },
           },
-        },
-        documentation = {
-          window = { border = "rounded" },
+          winblend = vim.o.pumblend,
         },
       },
       keymap = {
@@ -29,6 +30,11 @@ return {
         keymap = {
           ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
           ["<C-j>"] = { "select_next", "fallback_to_mappings" },
+        },
+      },
+      signature = {
+        window = {
+          winblend = vim.o.pumblend,
         },
       },
     },

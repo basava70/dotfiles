@@ -62,18 +62,18 @@ return {
         hidden = true, -- for hidden files
         ignored = true, -- for .gitignore files
       },
-      keys = {
-        {
-          "<leader>gb",
-          function()
-            Snacks.picker.git_branches({
-              all = true,
-              layout = "select",
-              win = { input = { keys = { ["<C-o>"] = "custom", mode = { "i", "n" } } } },
-            })
-          end,
-          desc = "Git Branches",
-        },
+    },
+    keys = {
+      {
+        "<leader>gb",
+        function()
+          Snacks.picker.git_branches({
+            all = true,
+            layout = "select",
+            win = { input = { keys = { ["<C-o>"] = "custom", mode = { "i", "n" } } } },
+          })
+        end,
+        desc = "Git Branches",
       },
     },
   },
