@@ -21,7 +21,10 @@ return {
       },
       keymap = {
         preset = "default",
-        ["<C-y>"] = { "accept", "fallback" },
+        ["<CR>"] = { "accept", "fallback" },
+        ["<Esc>"] = { "hide", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
         ["<C-j>"] = { "select_next", "fallback_to_mappings" },
         ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
