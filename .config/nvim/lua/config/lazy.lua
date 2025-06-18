@@ -17,7 +17,14 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      -- opts = {
+      --   colorscheme = "rosepine",
+      --   news = { lazyvim = true, neovim = true },
+      -- },
+    },
     -- import/override with your plugins
     { import = "lazyvim.plugins.extras.lang.clangd" },
     { import = "lazyvim.plugins.extras.lang.cmake" },
@@ -38,18 +45,19 @@ require("lazy").setup({
   },
   install = { colorscheme = { "tokyonight", "habamax" } },
   checker = {
-    enabled = true, -- check for plugin updates periodically
+    enabled = false, -- check for plugin updates periodically
     notify = false, -- notify on update
   }, -- automatically check for plugin updates
   performance = {
+    cache = { enable = true },
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
-        "flash",
         -- "matchit",
         -- "matchparen",
-        -- "netrwPlugin",
+        "netrwPlugin",
+        "rplugin",
         "tarPlugin",
         "tohtml",
         "tutor",
@@ -57,4 +65,5 @@ require("lazy").setup({
       },
     },
   },
+  debug = false,
 })

@@ -32,6 +32,7 @@ return {
         ["<C-d>"] = { "scroll_documentation_down", "fallback" },
       },
       cmdline = {
+        enabled = true,
         keymap = {
           ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
           ["<C-j>"] = { "select_next", "fallback_to_mappings" },
