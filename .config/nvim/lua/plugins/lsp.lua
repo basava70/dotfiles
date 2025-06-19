@@ -26,6 +26,13 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      diagnostics = {
+        virtual_text = true,
+        -- virtual_lines = { current_line = true },
+        -- underline = true,
+        update_in_insert = false,
+        float = { border = "rounded" },
+      },
       inlay_hints = { enabled = true },
       ---@type lspconfig.options
       servers = {
@@ -99,21 +106,21 @@ return {
       setup = {},
     },
   },
-  {
-    "neovim/nvim-lspconfig",
-    opts = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      vim.list_extend(keys, {
-        {
-          "gd",
-          function()
-            -- DO NOT RESUSE WINDOW
-            require("telescope.builtin").lsp_definitions({ reuse_win = false })
-          end,
-          desc = "Goto Definition",
-          has = "definition",
-        },
-      })
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = function()
+  --     local keys = require("lazyvim.plugins.lsp.keymaps").get()
+  --     vim.list_extend(keys, {
+  --       {
+  --         "gd",
+  --         function()
+  --           -- DO NOT RESUSE WINDOW
+  --           require("telescope.builtin").lsp_definitions({ reuse_win = false })
+  --         end,
+  --         desc = "Goto Definition",
+  --         has = "definition",
+  --       },
+  --     })
+  --   end,
+  -- },
 }
