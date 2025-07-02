@@ -5,10 +5,10 @@
 # cursor-style-blink = true
 
 # Fonts
-font-size = 14
+font-size = 15
 # font-family = "MonaspiceAr Nerd Font Mono"
 # font-family = "FiraCode Nerd Font"
-# font-family = "Maple Mono NF CN"
+# font-family = "0xProto Nerd Font"
 # font-family = "VictorMono Nerd Font Mono"
 font-family = "Maple Mono NF"
 # font-family = "JetBrainsMono Nerd Font"
