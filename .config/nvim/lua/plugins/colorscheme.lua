@@ -24,6 +24,9 @@ return {
           -- rose = "#ea9a97",
         },
       },
+      styles = {
+        transparency = true,
+      },
     })
     vim.cmd("colorscheme rose-pine")
     -- 		main = {
