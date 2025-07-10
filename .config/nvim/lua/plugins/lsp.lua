@@ -16,7 +16,6 @@ return {
         "shfmt",
         "neocmakelsp",
         "cmakelang",
-        "neocmakelsp",
         "luacheck",
         "shellcheck",
         "shfmt",
@@ -36,6 +35,7 @@ return {
       inlay_hints = { enabled = true },
       ---@type lspconfig.options
       servers = {
+        neocmakelsp = {},
         lua_ls = {
           -- enabled = false,
           single_file_support = true,
