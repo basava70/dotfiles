@@ -6,7 +6,6 @@
 
 # Fonts
 font-size = 15
-font-synthetic-style = false
 # font-family = "MonaspiceAr Nerd Font Mono"
 # font-family-bold = "FiraCode"
 font-family = "FiraCode Nerd Font"
@@ -16,6 +15,7 @@ font-family = "FiraCode Nerd Font"
 # font-family = "FiraCode"
 # font-family = "Maple Mono NF"
 font-family-italic = "Maple Mono NF"
+font-family-bold-italic = "Maple Mono NF"
 # font-family = "JetBrainsMono Nerd Font"
 
 # General settings
