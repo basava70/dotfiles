@@ -9,9 +9,9 @@ font-size = 15
 font-synthetic-style = false
 # font-family = "MonaspiceAr Nerd Font Mono"
 # font-family-bold = "FiraCode"
-# font-family = "FiraCode Nerd Font"
+font-family = "FiraCode Nerd Font"
 # font-family = "0xProto Nerd Font"
-font-family = "MonaspiceNe Nerd Font Mono"
+# font-family = "MonaspiceNe Nerd Font Mono"
 # font-family = "VictorMono Nerd Font Mono"
 # font-family = "FiraCode"
 # font-family = "Maple Mono NF"
@@ -47,7 +47,7 @@ theme = rose-pine
 # background = #191724
 # foreground = #e0def4
 # alpha-blending = linear-corrected
-background-opacity = 1
+background-opacity = 0.85
 # background-blur = true
 
 # Title
