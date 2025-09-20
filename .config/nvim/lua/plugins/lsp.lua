@@ -35,7 +35,7 @@ return {
       inlay_hints = { enabled = true },
       ---@type lspconfig.options
       servers = {
-        neocmakelsp = {},
+        neocmake = {},
         lua_ls = {
           -- enabled = false,
           single_file_support = true,

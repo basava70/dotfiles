@@ -5,7 +5,7 @@
 # cursor-style-blink = true
 
 # Fonts
-font-size = 15
+font-size = 14
 # font-family = "MonaspiceAr Nerd Font Mono"
 # font-family-bold = "FiraCode"
 font-family = "FiraCode Nerd Font"
@@ -43,11 +43,11 @@ keybind = alt+seven=unbind
 shell-integration = zsh
 
 # Themes
-theme = rose-pine
+theme = Rose Pine
 # background = #191724
 # foreground = #e0def4
 # alpha-blending = linear-corrected
-background-opacity = 0.85
+background-opacity = 1
 # background-blur = true
 
 # Title
