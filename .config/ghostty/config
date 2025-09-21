@@ -18,15 +18,6 @@ font-family-italic = "Maple Mono NF"
 font-family-bold-italic = "Maple Mono NF"
 # font-family = "JetBrainsMono Nerd Font"
 
-# General settings
-# initial-command = tmux
-
-# GTK
-gtk-adwaita = true
-gtk-titlebar= true
-gtk-wide-tabs = false
-gtk-tabs-location = bottom
-
 keybind = ctrl+g>r=reload_config
 #
 # Change Option to Alt in macos
@@ -47,7 +38,7 @@ theme = Rose Pine
 # background = #191724
 # foreground = #e0def4
 # alpha-blending = linear-corrected
-background-opacity = 1
+background-opacity = 0.85
 # background-blur = true
 
 # Title
