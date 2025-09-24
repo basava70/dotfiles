@@ -38,7 +38,7 @@ theme = Rose Pine
 # background = #191724
 # foreground = #e0def4
 # alpha-blending = linear-corrected
-background-opacity = 0.85
+background-opacity = 1
 # background-blur = true
 
 # Title
