@@ -5,22 +5,18 @@
 # cursor-style-blink = true
 
 # Fonts
-font-size = 15
+font-size = 14
 # font-family = "MonaspiceAr Nerd Font Mono"
-# font-family = "FiraCode Nerd Font"
+# font-family-bold = "FiraCode"
+font-family = "FiraCode Nerd Font"
 # font-family = "0xProto Nerd Font"
+# font-family = "MonaspiceNe Nerd Font Mono"
 # font-family = "VictorMono Nerd Font Mono"
-font-family = "Maple Mono NF"
+# font-family = "FiraCode"
+# font-family = "Maple Mono NF"
+font-family-italic = "Maple Mono NF"
+font-family-bold-italic = "Maple Mono NF"
 # font-family = "JetBrainsMono Nerd Font"
-
-# General settings
-# initial-command = tmux
-
-# GTK
-gtk-adwaita = true
-gtk-titlebar= true
-gtk-wide-tabs = false
-gtk-tabs-location = bottom
 
 keybind = ctrl+g>r=reload_config
 #
@@ -38,11 +34,11 @@ keybind = alt+seven=unbind
 shell-integration = zsh
 
 # Themes
-theme = rose-pine
+theme = Rose Pine
 # background = #191724
 # foreground = #e0def4
 # alpha-blending = linear-corrected
-# background-opacity = 1
+background-opacity = 1
 # background-blur = true
 
 # Title
