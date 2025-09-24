@@ -17,8 +17,23 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      -- opts = {
+      --   colorscheme = "rosepine",
+      --   news = { lazyvim = true, neovim = true },
+      -- },
+    },
     -- import/override with your plugins
+    { import = "lazyvim.plugins.extras.lang.clangd" },
+    { import = "lazyvim.plugins.extras.lang.cmake" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
+    { import = "lazyvim.plugins.extras.lang.python" },
+    { import = "lazyvim.plugins.extras.lang.tex" },
+    { import = "lazyvim.plugins.extras.lang.toml" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
+    { import = "lazyvim.plugins.extras.coding.luasnip" },
     { import = "plugins" },
   },
   defaults = {
@@ -30,19 +45,21 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  -- install = { colorscheme = { "tokyonight", "habamax" } },
   checker = {
-    enabled = true, -- check for plugin updates periodically
+    enabled = false, -- check for plugin updates periodically
     notify = false, -- notify on update
   }, -- automatically check for plugin updates
   performance = {
+    cache = { enable = true },
     rtp = {
       -- disable some rtp plugins
       disabled_plugins = {
         "gzip",
         -- "matchit",
         -- "matchparen",
-        -- "netrwPlugin",
+        "netrwPlugin",
+        "rplugin",
         "tarPlugin",
         "tohtml",
         "tutor",
@@ -50,4 +67,5 @@ require("lazy").setup({
       },
     },
   },
+  debug = false,
 })
