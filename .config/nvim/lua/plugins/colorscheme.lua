@@ -14,7 +14,6 @@ return {
         ["@preproc"] = { italic = true }, -- #define, #include, etc.
         ["@comment"] = { italic = true },
         ["@comment.documentation"] = { italic = true },
-        -- ["@comment.twoline"] = { italic = true },
         ["@comment.tagged"] = { fg = "#eb6f92" },
         ["@string"] = { italic = true },
       },
