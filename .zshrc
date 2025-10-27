@@ -24,13 +24,13 @@ eval "$(zoxide init --cmd cd zsh)"
 # Initialize eza
 export EZA_CONFIG_DIR="$HOME/.config/eza/"
 alias ls='eza --icons -a'
-alias lst1='eza --icons --tree -T --level 1'
-alias lst2='eza --icons --tree -T --level 2'
-alias lst3='eza --icons --tree -T --level 3'
-alias lst4='eza --icons --tree -T --level 4'
-alias lst5='eza --icons --tree -T --level 5'
-alias lst6='eza --icons --tree -T --level 6'
-alias lst7='eza --icons --tree -T --level 7'
+alias lst1='eza --icons -a --tree -T --level 1'
+alias lst2='eza --icons -a --tree -T --level 2'
+alias lst3='eza --icons -a --tree -T --level 3'
+alias lst4='eza --icons -a --tree -T --level 4'
+alias lst5='eza --icons -a --tree -T --level 5'
+alias lst6='eza --icons -a --tree -T --level 6'
+alias lst7='eza --icons -a --tree -T --level 7'
 
 # Remove nvim cache
 alias remove_nvim_cache='rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim'
@@ -72,7 +72,8 @@ fi
 ZSH_AUTOSUGGEST_STRATEGY=(history)
 
 # fzf key bindings and completion (if installed)
-[ -f "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh"
+# [ -f "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh"
+[ -f "$HOME/dotfiles/Extras/fzf/dist/tokyonight-night.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/tokyonight-night.sh"
 # For Arch Linux (system-wide plugin location)
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh

@@ -35,7 +35,7 @@ shell-integration = zsh
 
 # Themes
 # theme = Rose Pine
-theme = TokyoNight Night
+theme = /home/seshu/.config/ghostty/themes/tokyonight-night.conf
 # background = #191724
 # foreground = #e0def4
 # alpha-blending = linear-corrected
