@@ -34,7 +34,8 @@ keybind = alt+seven=unbind
 shell-integration = zsh
 
 # Themes
-theme = Rose Pine
+# theme = Rose Pine
+theme = TokyoNight Night
 # background = #191724
 # foreground = #e0def4
 # alpha-blending = linear-corrected
