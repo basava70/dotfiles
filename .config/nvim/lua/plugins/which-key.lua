@@ -57,7 +57,7 @@ return {
   --       -- 󰙨 Tests
   --       {
   --         "<leader>mt",
-  --         "<cmd>CMakeRunTests<CR>",
+  --         "<cmd>CMakeRunTest<CR>",
   --         desc = "Run Tests",
   --         icon = { icon = "󰙨", color = "yellow" },
   --       },
