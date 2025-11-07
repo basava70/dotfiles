@@ -1,3 +1,4 @@
+-- The following file is written with the help of ChatGPT
 local json = vim.fn.json_decode
 local cwd = vim.fn.getcwd()
 local cmake_file = cwd .. "/CMakePresets.json"
