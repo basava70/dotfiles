@@ -23,8 +23,8 @@ return {
         preset = "default",
         ["<Tab>"] = { "accept", "fallback" },
         ["<Esc>"] = { "hide", "fallback" },
-        -- ["<S-C-y>"] = { "snippet_backward", "fallback" },
-        -- ["<C-y>"] = { "snippet_forward", "fallback" },
+        ["<S-C-y>"] = { "snippet_backward", "fallback" },
+        ["<C-y>"] = { "snippet_forward", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback_to_mappings" },
         ["<C-j>"] = { "select_next", "fallback_to_mappings" },
         ["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
@@ -39,6 +39,7 @@ return {
         },
       },
       signature = {
+        enabled = true,
         window = {
           winblend = vim.o.pumblend,
         },
