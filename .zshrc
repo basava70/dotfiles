@@ -55,6 +55,8 @@ setopt hist_ignore_space  # Ignore commands that start with a space
 # cuda relatted stuff
 export PATH=/opt/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
+export PATH=/opt/nvidia/nsight-compute/2025.3.1:$PATH
+export PATH=/opt/nvidia/nsight-systems/2025.5.1/bin:$PATH
 
 # Detect platform and set GCC accordingly
 if [[ "$OSTYPE" == "darwin"* ]]; then
