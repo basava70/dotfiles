@@ -1,0 +1,15 @@
+CompileFlags:
+  Remove:
+    - "--generate-code=*"
+    - "--ptxas-options=*"
+    - "--expt-relaxed-constexpr"
+    - "--use_fast_math"
+    - "--options-file"
+    - "-forward-unknown-to-host-compiler"
+    - "--extended-lambda"
+    - "-Xcompiler=-fPIE"
+    - "-rdc=true"
+  Add:
+    - "--cuda-path=/opt/cuda"
+    - "--cuda-gpu-arch=sm_86"
+    - "--include=__clang_cuda_runtime_wrapper.h"
