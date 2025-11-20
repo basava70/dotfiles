@@ -8,6 +8,7 @@ CompileFlags:
     - "-forward-unknown-to-host-compiler"
     - "--extended-lambda"
     - "-Xcompiler=-fPIE"
+    - "-Xcompiler=-fPIC"
     - "-rdc=true"
   Add:
     - "--cuda-path=/opt/cuda"
