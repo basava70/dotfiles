@@ -11,6 +11,7 @@ font-size = 14
 # font-family = "MonoLisa"
 font-feature = ss02, zero, liga
 font-family = "FiraCode Nerd Font"
+# font-family = "JetBrains Mono"
 # font-family = "0xProto Nerd Font"
 # font-family = "MonaspiceNe Nerd Font Mono"
 # font-family = "VictorMono Nerd Font Mono"
@@ -20,7 +21,6 @@ font-family-italic = "MonoLisa"
 font-family-bold-italic = "MonoLisa"
 # font-family-italic = "Maple Mono NF"
 # font-family-bold-italic = "Maple Mono NF"
-# font-family = "JetBrainsMono Nerd Font"
 
 keybind = ctrl+g>r=reload_config
 #
