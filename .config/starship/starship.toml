@@ -19,23 +19,27 @@ $scala\
 $conda\
 $python\
 $time\n  \
-[󱞪](fg:iris) \
+[󱞪](fg:magenta) \
 """
 
-palette = "rose-pine"
+palette = "tokyonight"
 
-[palettes.rose-pine]
-overlay = '#26233a'
-love = '#eb6f92'
-gold = '#f6c177'
-rose = '#ebbcba'
-pine = '#31748f'
-foam = '#9ccfd8'
-iris = '#c4a7e7'
+[palettes.tokyonight]
+overlay = '#292e42' # bg_highlight
+blue = '#7aa2f7'
+cyan = '#7dcfff'
+green = '#9ece6a'
+magenta = '#bb9af7'
+orange = '#ff9e64'
+purple = '#9d7cd8'
+red = '#f7768e'
+teal = '#1abc9c'
+yellow = '#e0af68'
+fg = '#c0caf5'
 
 [directory]
 format = "[](fg:overlay)[ $path ]($style)[](fg:overlay) "
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:blue"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -51,28 +55,28 @@ symbol = " "
 
 [git_branch]
 format = "[](fg:overlay)[ $symbol $branch ]($style)[](fg:overlay) "
-style = "bg:overlay fg:foam"
+style = "bg:overlay fg:cyan"
 symbol = ""
 
 [git_status]
 disabled = false
-style = "bg:overlay fg:love"
+style = "bg:overlay fg:red"
 format = '[](fg:overlay)([$all_status$ahead_behind]($style))[](fg:overlay) '
-up_to_date = '[ ✓ ](bg:overlay fg:iris)'
-untracked = '[?\($count\)](bg:overlay fg:gold)'
-stashed = '[\$](bg:overlay fg:iris)'
-modified = '[!\($count\)](bg:overlay fg:gold)'
-renamed = '[»\($count\)](bg:overlay fg:iris)'
+up_to_date = '[ ✓ ](bg:overlay fg:green)'
+untracked = '[?\($count\)](bg:overlay fg:yellow)'
+stashed = '[\$](bg:overlay fg:cyan)'
+modified = '[!\($count\)](bg:overlay fg:orange)'
+renamed = '[»\($count\)](bg:overlay fg:blue)'
 deleted = '[✘\($count\)](style)'
-staged = '[++\($count\)](bg:overlay fg:gold)'
-ahead = '[⇡\(${count}\)](bg:overlay fg:foam)'
-diverged = '⇕[\[](bg:overlay fg:iris)[⇡\(${ahead_count}\)](bg:overlay fg:foam)[⇣\(${behind_count}\)](bg:overlay fg:rose)[\]](bg:overlay fg:iris)'
-behind = '[⇣\(${count}\)](bg:overlay fg:rose)'
+staged = '[++\($count\)](bg:overlay fg:yellow)'
+ahead = '[⇡\(${count}\)](bg:overlay fg:cyan)'
+diverged = '⇕[\[](bg:overlay fg:blue)[⇡\(${ahead_count}\)](bg:overlay fg:cyan)[⇣\(${behind_count}\)](bg:overlay fg:red)[\]](bg:overlay fg:blue)'
+behind = '[⇣\(${count}\)](bg:overlay fg:red)'
 
 [time]
 disabled = false
 format = " [](fg:overlay)[ $time 󰧱 ]($style)[](fg:overlay)"
-style = "bg:overlay fg:rose"
+style = "bg:overlay fg:magenta"
 time_format = "%I:%M%P"
 use_12hr = true
 
@@ -80,13 +84,13 @@ use_12hr = true
 disabled = false
 format = "[](fg:overlay)[ $user]($style)[](fg:overlay) "
 show_always = true
-style_root = "bg:overlay fg:iris"
-style_user = "bg:overlay fg:iris"
+style_root = "bg:overlay fg:purple"
+style_user = "bg:overlay fg:purple"
 
-# Languages
+# === Languages ===
 
 [c]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:blue"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = "󰙱 "
@@ -96,7 +100,7 @@ commands = [["gcc", "--version"], ["clang", "--version"], ["tcc", "--version"]]
 [custom.cuda]
 detect_extensions = ["cu", "cuh"]
 symbol = ""
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:cyan"
 format = " [](fg:overlay)[ $symbol $output ]($style)[](fg:overlay)"
 command = "nvcc --version | awk '/release/ {print $6}'"
 disabled = false
@@ -104,79 +108,79 @@ disabled = false
 [custom.cpp]
 detect_extensions = ["cpp", "hpp"]
 symbol = "󰙲"
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:blue"
 format = " [](fg:overlay)[ $symbol $output ]($style)[](fg:overlay)"
 command = "g++ --version | awk 'NR==1 {print $3}'"
 disabled = false
 
 [elixir]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:cyan"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = " "
 
 [elm]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:cyan"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = " "
 
 [golang]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:cyan"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = " "
 
 [haskell]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:purple"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = " "
 
 [java]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:orange"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = " "
 
 [julia]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:magenta"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = " "
 
 [nodejs]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:green"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = "󰎙 "
 
 [nim]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:yellow"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = "󰆥 "
 
 [rust]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:orange"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = " "
 
 [scala]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:red"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = " "
 
 [python]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:yellow"
 format = " [](fg:overlay)[ $symbol$version ]($style)[](fg:overlay)"
 disabled = false
 symbol = ' '
 
 [conda]
-style = "bg:overlay fg:pine"
+style = "bg:overlay fg:green"
 format = " [](fg:overlay)[ $symbol$environment ]($style)[](fg:overlay)"
 disabled = false
 symbol = '🅒 '
