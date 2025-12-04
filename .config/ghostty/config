@@ -8,8 +8,9 @@
 font-size = 14
 # font-family = "MonaspiceAr Nerd Font Mono"
 # font-family-bold = "FiraCode"
-# font-family = "MonoLisa"
 font-feature = ss02, zero, liga
+# font-family = "MonoLisa"
+# font-family = "Cascadia Code"
 font-family = "FiraCode Nerd Font"
 # font-family = "JetBrainsMono Nerd Font"
 # font-family = "0xProto Nerd Font"
@@ -17,8 +18,8 @@ font-family = "FiraCode Nerd Font"
 # font-family = "VictorMono Nerd Font Mono"
 # font-family = "FiraCode"
 # font-family = "Maple Mono NF"
-font-family-italic = "MonoLisa"
-font-family-bold-italic = "MonoLisa"
+# font-family-italic = "MonoLisa"
+# font-family-bold-italic = "MonoLisa"
 # font-family-italic = "Maple Mono NF"
 # font-family-bold-italic = "Maple Mono NF"
 
