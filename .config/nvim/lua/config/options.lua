@@ -6,4 +6,4 @@ vim.g.maplocalleader = "\\"
 vim.g.lazyvim_python_lsp = "pyright"
 vim.opt.wrap = true
 vim.opt.linebreak = true
-vim.opt.columns = 80
+vim.opt.scrolloff = 18
