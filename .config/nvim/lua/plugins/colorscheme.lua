@@ -1,10 +1,10 @@
 -- lua/plugins/rose-pine.lua
 return {
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   lazy = true,
-  --   opts = { style = "night" },
-  -- },
+  {
+    "folke/tokyonight.nvim",
+    lazy = true,
+    opts = { style = "night" },
+  },
   {
     "rose-pine/neovim",
     name = "rose-pine",
@@ -15,7 +15,7 @@ return {
     "LazyVim/LazyVim",
     import = "lazyvim.plugins",
     opts = {
-      colorscheme = "rose-pine",
+      -- colorscheme = "rose-pine",
     },
   },
 }

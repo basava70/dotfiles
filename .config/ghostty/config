@@ -40,7 +40,7 @@ shell-integration = zsh
 # Themes
 theme = Rose Pine
 # theme = Catppuccin Mocha
-# theme = /home/seshu/.config/ghostty/themes/tokyonight-night.conf
+theme = /home/seshu/.config/ghostty/themes/tokyonight-night.conf
 # background = #191724
 # foreground = #e0def4
 # alpha-blending = linear-corrected
