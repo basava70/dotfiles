@@ -1,115 +1,140 @@
-# Turn off screen going black after 10 seconds of inactivity
-# xset s off && xset -dpms
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# fastfetch 
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-alias c='clear'
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time Oh My Zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-# Initialize Zsh completion system
-autoload -Uz compinit
-zstyle ':completion:*' rehash true
-compinit -C
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  fzf
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch $(uname -m)"
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Editor
 export EDITOR=nvim
 
-# Point to custom Starship config location
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-
-# Initialize Starship prompt
-eval "$(starship init zsh)"
-
-# Initialize zoxide
-eval "$(zoxide init --cmd cd zsh)"
-
-# Initialize eza
-export EZA_CONFIG_DIR="$HOME/.config/eza/"
-alias ls='eza --icons -a'
-alias lst1='eza --icons -a --tree -T --level 1'
-alias lst2='eza --icons -a --tree -T --level 2'
-alias lst3='eza --icons -a --tree -T --level 3'
-alias lst4='eza --icons -a --tree -T --level 4'
-alias lst5='eza --icons -a --tree -T --level 5'
-alias lst6='eza --icons -a --tree -T --level 6'
-alias lst7='eza --icons -a --tree -T --level 7'
-
-# Remove nvim cache
-alias remove_nvim_cache='rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim'
-
-#
-# Ensure persistent history across reboots
+# History
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
+setopt inc_append_history share_history hist_ignore_all_dups hist_reduce_blanks hist_ignore_space
 
+# Aliases
+alias c='clear'
+alias ls='eza --icons -a'
+alias lst1='eza --icons -a --tree --level 1'
+alias lst2='eza --icons -a --tree --level 2'
+alias lst3='eza --icons -a --tree --level 3'
+alias lst4='eza --icons -a --tree --level 4'
+alias lst5='eza --icons -a --tree --level 5'
+alias remove_nvim_cache='rm -rf ~/.local/share/nvim ~/.local/state/nvim ~/.cache/nvim'
 
-# Append history instead of overwriting it
-setopt inc_append_history
-setopt share_history
+# Tools
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+export EZA_CONFIG_DIR="$HOME/.config/eza/"
+eval "$(starship init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 
-# Remove duplicate entries and optimize history
-setopt hist_ignore_all_dups
-setopt hist_expire_dups_first
-setopt hist_reduce_blanks
-setopt hist_ignore_space  # Ignore commands that start with a space
-
-# cuda relatted stuff
-export PATH=/opt/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/opt/cuda/lib64:$LD_LIBRARY_PATH
-export PATH=/opt/nvidia/nsight-compute/2025.3.1:$PATH
-export PATH=/opt/nvidia/nsight-systems/2025.5.1/bin:$PATH
-
-# Detect platform and set GCC accordingly
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    # macOS (Homebrew GCC)
-    export CC=/usr/bin/clang
-    export CXX=/usr/bin/clang++
-
-elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    # Arch Linux (typically GCC is already default)
-    export CC=/usr/bin/gcc
-    export CXX=/usr/bin/g++
-fi
-
-# Ensure zsh-autosuggestions uses persistent history
-ZSH_AUTOSUGGEST_STRATEGY=(history)
-
-# fzf key bindings and completion (if installed)
-# [ -f "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh"
+# fzf theme
 [ -f "$HOME/dotfiles/Extras/fzf/dist/tokyonight-night.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/tokyonight-night.sh"
-# For Arch Linux (system-wide plugin location)
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 
-# For Homebrew (macOS)
-if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh" ]]; then 
-  source "$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.zsh"
-fi
-if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh" ]]; then  
-  source "$HOMEBREW_PREFIX/opt/fzf/shell/completion.zsh"
-fi
-
-# For Homebrew (macOS)
-if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
-  source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-fi
-
-# For Arch Linux (system-wide plugin location)
-if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-  source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
-
-# Accept autosuggestions with Ctrl+L
+# Keybinds
 bindkey '^y' autosuggest-accept
-
-# Syntax highlighting (keep this at the very end)
-# macOS (Homebrew)
-if [[ -n "$HOMEBREW_PREFIX" && -f "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
-  source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-fi
-
-# Arch Linux or others (system-wide path)
-if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-export PATH="$HOME/.npm-global/bin:$PATH"
