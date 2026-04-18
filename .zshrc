@@ -134,7 +134,8 @@ eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # fzf theme
-[ -f "$HOME/dotfiles/Extras/fzf/dist/tokyonight-night.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/tokyonight-night.sh"
+# [ -f "$HOME/dotfiles/Extras/fzf/dist/tokyonight-night.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/tokyonight-night.sh"
+[ -f "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh" ] && source "$HOME/dotfiles/Extras/fzf/dist/rose-pine.sh"
 
 # Keybinds
 bindkey '^y' autosuggest-accept
