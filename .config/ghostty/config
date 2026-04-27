@@ -11,6 +11,13 @@ font-feature = ss02, zero, liga
 # font-family = "MonoLisa"
 # font-family = "Cascadia Code"
 font-family = "FiraCode Nerd Font"
+# font-family = "Monaspace Argon"
+# font-family = "Monaspace Xenon"
+# font-family = "Monaspace Radon"
+
+font-family-italic = "Monaspace Radon"
+font-family-bold-italic = "Monaspace Radon"
+
 # font-family = "JetBrains Mono"
 # font-family = "0xProto Nerd Font"
 # font-family = "MonaspiceNe Nerd Font Mono"
