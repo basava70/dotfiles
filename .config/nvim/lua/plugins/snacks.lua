@@ -11,22 +11,6 @@ return {
             },
           },
         },
-        actions = {
-          custom = {
-            desc = "Git merge selected branch into current",
-            name = "custom",
-            action = function(self, item)
-              self:close()
-              local line = item.text
-              local branch = line:match("^%*?%s*([%w%-%._/]+)")
-              local current = vim.b.gitsigns_head
-              vim.cmd("Git merge --no-ff " .. branch)
-              vim.notify("Merged branch " .. branch .. " into " .. current, vim.log.levels.INFO, {
-                title = "Git",
-              })
-            end,
-          },
-        },
         layout = "dropdown",
         layouts = {
           dropdown = {
@@ -77,7 +61,6 @@ return {
           Snacks.picker.git_branches({
             all = true,
             layout = "select",
-            win = { input = { keys = { ["<C-o>"] = "custom", mode = { "i", "n" } } } },
           })
         end,
         desc = "Git Branches",
