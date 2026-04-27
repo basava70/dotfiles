@@ -2,6 +2,11 @@ return {
   {
     "folke/snacks.nvim",
     opts = {
+      terminal = {
+        win = {
+          position = "right",
+        },
+      },
       picker = {
         win = {
           input = {
