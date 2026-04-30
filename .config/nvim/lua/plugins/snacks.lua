@@ -54,13 +54,6 @@ return {
     },
     keys = {
       {
-        "<leader>gD",
-        function()
-          Snacks.picker.git_diff()
-        end,
-        desc = "Git Diff (Hunks)",
-      },
-      {
         "<leader>gb",
         function()
           Snacks.picker.git_branches({
@@ -70,13 +63,6 @@ return {
         end,
         desc = "Git Branches",
       },
-      -- {
-      --   "<leader>gS",
-      --   function()
-      --     Snacks.picker.git_status()
-      --   end,
-      --   desc = "Git Status",
-      -- },
     },
   },
 }
