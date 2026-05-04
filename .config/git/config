@@ -13,3 +13,7 @@
   p = push -u origin
 [core]
   editor = nvim
+
+[pager]
+  branch = false
+  stash = false
