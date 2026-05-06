@@ -128,3 +128,5 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Keybinds
 bindkey '^y' autosuggest-accept
+
+source <(fzf --zsh)
