@@ -130,3 +130,5 @@ eval "$(zoxide init --cmd cd zsh)"
 bindkey '^y' autosuggest-accept
 
 source <(fzf --zsh)
+# claude code
+export PATH="$HOME/.local/bin:$PATH"
