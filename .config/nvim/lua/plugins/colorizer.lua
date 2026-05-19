@@ -9,7 +9,7 @@ return {
       rgb_fn = true, -- enable parsing rgb(...) functions
       hsl_fn = true, -- enable parsing hsl(...) functions
       tailwind = true, -- enable tailwind colors
-      mode = "foreground", -- "background" or "foreground"
+      mode = "background", -- "background" or "foreground"
     },
   },
 }

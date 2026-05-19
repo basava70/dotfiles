@@ -121,8 +121,8 @@ hl.config({
 		rounding_power = 2,
 
 		-- Change transparency of focused and unfocused windows
-		active_opacity = 1.0,
-		inactive_opacity = 1.0,
+		active_opacity = 0.9,
+		inactive_opacity = 0.8,
 
 		shadow = {
 			enabled = true,
@@ -133,9 +133,16 @@ hl.config({
 
 		blur = {
 			enabled = true,
-			size = 3,
+			size = 15,
 			passes = 1,
 			vibrancy = 0.1696,
+
+			noise = 0.08,
+			ignore_opacity = true,
+			contrast = 1.5,
+
+			xray = false,
+			new_optimizations = true,
 		},
 	},
 

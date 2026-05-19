@@ -1,5 +1,6 @@
 .config/tmux/plugins
-**.json
 **.bak
 .config/git/ignore
 .config/hypr/scheme
+.config/nvim/lazy-lock.json
+.config/nvim/lazyvim.json

@@ -1,0 +1,34 @@
+{
+    "appearance": {
+        "font": {
+            "family": {
+                "sans": "DejaVu Sans"
+            }
+        },
+        "transparency": {
+            "base": 0.9554264959723819,
+            "enabled": false,
+            "layers": 0.5847552862485615
+        }
+    },
+    "background": {
+        "desktopClock": {
+            "enabled": false,
+            "shadow": {
+                "blur": 0.3101462947512136
+            }
+        }
+    },
+    "bar": {
+        "status": {
+            "showAudio": false,
+            "showLockStatus": true
+        }
+    },
+    "border": {
+        "rounding": 34
+    },
+    "services": {
+        "useFahrenheit": false
+    }
+}
