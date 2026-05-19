@@ -2,3 +2,4 @@
 **.json
 **.bak
 .config/git/ignore
+.config/hypr/scheme
