@@ -1,5 +1,5 @@
 Host github.com
   HostName github.com
   User git
-  IdentityFile ~/.ssh/Hyprland
+  IdentityFile ~/.ssh/seshu_github
   IdentitiesOnly yes
