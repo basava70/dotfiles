@@ -40,3 +40,4 @@ bindkey '^y' autosuggest-accept
 
 # PATH
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="/opt/cuda/bin:$PATH"
