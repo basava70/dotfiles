@@ -1,10 +1,5 @@
 {
     "appearance": {
-        "font": {
-            "family": {
-                "sans": "DejaVu Sans"
-            }
-        },
         "transparency": {
             "base": 0.9554264959723819,
             "enabled": false,
@@ -28,7 +23,13 @@
     "border": {
         "rounding": 34
     },
+    "launcher": {
+        "useFuzzy": {
+            "apps": true
+        }
+    },
     "services": {
-        "useFahrenheit": false
+        "useFahrenheit": false,
+        "useTwelveHourClock": false
     }
 }
