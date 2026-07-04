@@ -24,6 +24,7 @@
         "rounding": 34
     },
     "launcher": {
+        "showOnHover": false,
         "useFuzzy": {
             "apps": true
         }
