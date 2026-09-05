@@ -49,6 +49,7 @@ local menu = "hyprlauncher"
 hl.on("hyprland.start", function()
 	-- Quickshell/Caelestia Shell
 	hl.exec_cmd("caelestia shell -d")
+	-- hl.exec_cmd("noctalia")
 
 	-- XDPH
 	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
@@ -274,25 +275,59 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
-hl.bind(
-	mainMod .. " + M",
-	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
-)
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+-- hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("firefox"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("google-chrome-stable"))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("caelestia shell drawers toggle sidebar"))
-hl.bind("PRINT", hl.dsp.exec_cmd("caelestia screenshot -r -f"))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("caelestia shell drawers toggle launcher"))
+
+-- caelestia shell
+-- Caelestia Shell
+hl.bind(mainMod .. " + SUPER_L", hl.dsp.global("caelestia:launcher"), { release = true }) -- tap Super to open launcher
+hl.bind(mainMod .. " + N", hl.dsp.global("caelestia:sidebar"))
+hl.bind(mainMod .. " + L", hl.dsp.global("caelestia:lock"))
+hl.bind(mainMod .. " + ESCAPE", hl.dsp.global("caelestia:session")) -- power menu
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.global("caelestia:clearNotifs"), { locked = true })
+hl.bind(mainMod .. " + A", hl.dsp.global("caelestia:showall"))
+
+-- Screenshots / recording
+hl.bind("PRINT", hl.dsp.exec_cmd("caelestia screenshot -r -f"), { locked = true })
+hl.bind(mainMod .. " + PRINT", hl.dsp.global("caelestia:screenshotFreeze"))
+hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd("caelestia record -r"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("hyprpicker -a"))
+
+-- Clipboard / emoji
+hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("caelestia clipboard"))
+hl.bind(mainMod .. " + SHIFT + PERIOD", hl.dsp.exec_cmd("caelestia clipboard -d"))
+hl.bind(mainMod .. " + SEMICOLON", hl.dsp.exec_cmd("caelestia emoji -p"))
+
+-- Kill/restart shell
+hl.bind("CTRL + " .. mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("qs -c caelestia kill"), { release = true })
+hl.bind(
+	"CTRL + " .. mainMod .. " + ALT + R",
+	hl.dsp.exec_cmd("qs -c caelestia kill; sleep .1; caelestia shell -d"),
+	{ release = true }
+)
+
+-- noctalia
+-- local ipc = "noctalia msg "
+
+-- Core binds noctalia
+-- hl.bind(mainMod .. "+Space", hl.dsp.exec_cmd(ipc .. "panel-toggle launcher"))
+-- hl.bind(mainMod .. "+S", hl.dsp.exec_cmd(ipc .. "panel-toggle control-center"))
+-- hl.bind(mainMod .. "+comma", hl.dsp.exec_cmd(ipc .. "settings-toggle"))
+-- hl.bind("ALT + Tab", hl.dsp.exec_cmd(ipc .. "window-switcher"))
+-- hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("caelestia shell drawers toggle sidebar"))
+-- hl.bind("PRINT", hl.dsp.exec_cmd("caelestia screenshot -r -f"))
+-- hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("caelestia shell drawers toggle launcher"))
 
 -- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "down" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
@@ -362,6 +397,13 @@ local suppressMaximizeRule = hl.window_rule({
 })
 -- suppressMaximizeRule:set_enabled(false)
 
+-- Noctalia Settings
+-- hl.window_rule({
+-- 	match = { class = "dev.noctalia.Noctalia" },
+-- 	float = true,
+-- 	size = { 1080, 920 },
+-- })
+
 hl.window_rule({
 	-- Fix some dragging issues with XWayland
 	name = "fix-xwayland-drags",
@@ -392,4 +434,20 @@ hl.window_rule({
 
 	move = "20 monitor_h-120",
 	float = true,
+})
+
+-- Keep the session awake while a Steam game is focused
+hl.window_rule({
+	name = "idle-inhibit-steam-games",
+	match = { class = "^steam_app_.*$" },
+
+	idle_inhibit = "focus",
+})
+
+-- Keep the session awake for any fullscreen window
+hl.window_rule({
+	name = "idle-inhibit-fullscreen",
+	match = { fullscreen = true },
+
+	idle_inhibit = "fullscreen",
 })
