@@ -1,19 +1,30 @@
 return {
   "lervag/vimtex",
-  --   ft = "tex",
   lazy = false,
   init = function()
-    --     -- Ensure VimTeX uses Zathura
     vim.g.vimtex_view_method = "zathura"
     vim.g.vimtex_view_general_viewer = "zathura"
-    --
-    --     -- Enable SyncTeX (Forward search: Neovim → Zathura)
-    --     vim.g.vimtex_view_general_options = [[--synctex-forward @line:@col:@tex --unique file:@pdf\#src:@line@tex]]
-    --
-    --     -- Other VimTeX settings
-    --     vim.g.vimtex_quickfix_enabled = 1
-    --     vim.g.vimtex_syntax_enabled = 1
-    --     vim.g.vimtex_quickfix_mode = 0
+
+    -- quickfix: open only when there are real errors
+    vim.g.vimtex_quickfix_open_on_warning = 0
+
+    -- 0 = never open automatically
+    -- 1 = open and jump to first entry
+    -- 2 = open, keep cursor in the editor  (default)
+    vim.g.vimtex_quickfix_mode = 2
+
+    -- drop noise from the list entirely (Vim regex, matched against the message)
+    vim.g.vimtex_quickfix_ignore_filters = {
+      "Underfull \\\\hbox",
+      "Overfull \\\\hbox",
+      "Underfull \\\\vbox",
+      "Overfull \\\\vbox",
+      "Font Warning",
+      "Package caption Warning",
+      "Package hyperref Warning",
+      "float specifier changed",
+      "Marginpar on page",
+    }
   end,
   keys = {
     { "<leader>vv", "<cmd>VimtexView<cr>", desc = "Vimtex View", ft = "tex" },
