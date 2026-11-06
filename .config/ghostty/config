@@ -7,13 +7,18 @@
 # Fonts
 font-size = 14
 # font-family = "MonaspiceAr Nerd Font Mono"
-font-feature = ss02, zero, liga
-# font-family = "MonoLisa"
+# font-feature = ss02, zero, liga
 # font-family = "Cascadia Code"
+# font-family = BlexMono Nerd Font
+# font-family = "Maple Mono NF"
+# font-family = "Monalisa"
 font-family = "FiraCode Nerd Font"
+# font-family = "Atkinson Hyperlegible"
 # font-family = "Monaspace Argon"
 # font-family = "Monaspace Xenon"
 # font-family = "Monaspace Radon"
+
+font-family-italic = "Monaspace Radon"
 # font-feature = calt
 # font-feature = ss01
 # font-feature = ss02
@@ -26,33 +31,6 @@ font-family = "FiraCode Nerd Font"
 # font-feature = ss09
 # font-feature = ss10
 # font-feature = liga
-
-# font-family-italic = "0xProto"
-font-family-italic = "Monaspace Radon"
-# font-family-bold-italic = "Monaspace Radon"
-font-feature = calt
-font-feature = ss01
-font-feature = ss02
-font-feature = ss03
-font-feature = ss04
-font-feature = ss05
-font-feature = ss06
-font-feature = ss07
-font-feature = ss08
-font-feature = ss09
-font-feature = ss10
-font-feature = liga
-
-# font-family = "JetBrains Mono"
-# font-family = "0xProto Nerd Font"
-# font-family = "MonaspiceNe Nerd Font Mono"
-# font-family = "VictorMono Nerd Font Mono"
-# font-family = "FiraCode"
-# font-family = "Maple Mono NF"
-# font-family-italic = "MonoLisa"
-# font-family-bold-italic = "MonoLisa"
-# font-family-italic = "Maple Mono NF"
-# font-family-bold-italic = "Maple Mono NF"
 
 keybind = ctrl+g>r=reload_config
 #
